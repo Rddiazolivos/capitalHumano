@@ -1,0 +1,37 @@
++--------+-----------+----------------------------------+----------------------+------------------------------------------------------------------------+--------------+
+| Domain | Method    | URI                              | Name                 | Action                                                                 | Middleware   |
++--------+-----------+----------------------------------+----------------------+------------------------------------------------------------------------+--------------+
+|        | GET|HEAD  | /                                |                      | Closure                                                                | web          |
+|        | POST      | actividad                        | actividad.store      | sdv\Http\Controllers\ActivityController@store                          | web          |
+|        | GET|HEAD  | actividad                        | actividad.index      | sdv\Http\Controllers\ActivityController@index                          | web          |
+|        | GET|HEAD  | actividad/create                 | actividad.create     | sdv\Http\Controllers\ActivityController@create                         | web          |
+|        | DELETE    | actividad/{actividad}            | actividad.destroy    | sdv\Http\Controllers\ActivityController@destroy                        | web          |
+|        | PUT|PATCH | actividad/{actividad}            | actividad.update     | sdv\Http\Controllers\ActivityController@update                         | web          |
+|        | GET|HEAD  | actividad/{actividad}            | actividad.show       | sdv\Http\Controllers\ActivityController@show                           | web          |
+|        | GET|HEAD  | actividad/{actividad}/edit       | actividad.edit       | sdv\Http\Controllers\ActivityController@edit                           | web          |
+|        | GET|HEAD  | api/user                         |                      | Closure                                                                | api,auth:api |
+|        | GET|HEAD  | departamento                     | departamento.index   | sdv\Http\Controllers\DepartamentoController@index                      | web          |
+|        | POST      | departamento                     | departamento.store   | sdv\Http\Controllers\DepartamentoController@store                      | web          |
+|        | GET|HEAD  | departamento/create              | departamento.create  | sdv\Http\Controllers\DepartamentoController@create                     | web          |
+|        | GET|HEAD  | departamento/{departamento}      | departamento.show    | sdv\Http\Controllers\DepartamentoController@show                       | web          |
+|        | PUT|PATCH | departamento/{departamento}      | departamento.update  | sdv\Http\Controllers\DepartamentoController@update                     | web          |
+|        | DELETE    | departamento/{departamento}      | departamento.destroy | sdv\Http\Controllers\DepartamentoController@destroy                    | web          |
+|        | GET|HEAD  | departamento/{departamento}/edit | departamento.edit    | sdv\Http\Controllers\DepartamentoController@edit                       | web          |
+|        | GET|HEAD  | home                             | home                 | sdv\Http\Controllers\HomeController@index                              | web,auth     |
+|        | GET|HEAD  | login                            | login                | sdv\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest    |
+|        | POST      | login                            |                      | sdv\Http\Controllers\Auth\LoginController@login                        | web,guest    |
+|        | POST      | logout                           | logout               | sdv\Http\Controllers\Auth\LoginController@logout                       | web          |
+|        | POST      | password/email                   | password.email       | sdv\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest    |
+|        | GET|HEAD  | password/reset                   | password.request     | sdv\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest    |
+|        | POST      | password/reset                   |                      | sdv\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest    |
+|        | GET|HEAD  | password/reset/{token}           | password.reset       | sdv\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest    |
+|        | POST      | proyecto                         | proyecto.store       | sdv\Http\Controllers\ProyectoController@store                          | web          |
+|        | GET|HEAD  | proyecto                         | proyecto.index       | sdv\Http\Controllers\ProyectoController@index                          | web          |
+|        | GET|HEAD  | proyecto/create                  | proyecto.create      | sdv\Http\Controllers\ProyectoController@create                         | web          |
+|        | PUT|PATCH | proyecto/{proyecto}              | proyecto.update      | sdv\Http\Controllers\ProyectoController@update                         | web          |
+|        | DELETE    | proyecto/{proyecto}              | proyecto.destroy     | sdv\Http\Controllers\ProyectoController@destroy                        | web          |
+|        | GET|HEAD  | proyecto/{proyecto}              | proyecto.show        | sdv\Http\Controllers\ProyectoController@show                           | web          |
+|        | GET|HEAD  | proyecto/{proyecto}/edit         | proyecto.edit        | sdv\Http\Controllers\ProyectoController@edit                           | web          |
+|        | POST      | register                         |                      | sdv\Http\Controllers\Auth\RegisterController@register                  | web,auth     |
+|        | GET|HEAD  | register                         | register             | sdv\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,auth     |
++--------+-----------+----------------------------------+----------------------+------------------------------------------------------------------------+--------------+
