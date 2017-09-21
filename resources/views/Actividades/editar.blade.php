@@ -5,14 +5,15 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Nueva actividad</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('actividad.store') }}">
+                    <form class="form-horizontal" method="post" action="{{ route('actividad.update', $actividad) }}">
                         {{ csrf_field() }}
+                        {{ method_field('PUT') }}
 
                         <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
                             <label for="nombre" class="col-md-4 control-label">Nombre</label>
 
                             <div class="col-md-6">
-                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ old('nombre') }}" required autofocus>
+                                <input id="nombre" type="text" class="form-control" name="nombre" value="{{ old('nombre', $actividad->nombre) }}" required autofocus>
 
                                 @if ($errors->has('nombre'))
                                     <span class="help-block">
@@ -26,7 +27,7 @@
                             <label for="descripcion" class="col-md-4 control-label">Descripcion</label>
 
                             <div class="col-md-6">
-                                <textarea rows="4" cols="50" id="descripcion" type="text" class="form-control" name="descripcion" required autofocus>{{ old('descripcion') }}</textarea>
+                                <textarea rows="4" cols="50" id="descripcion" type="text" class="form-control" name="descripcion" required autofocus>{{ old('descripcion', $actividad->descripcion) }}</textarea>
 
                                 @if ($errors->has('descripcion'))
                                     <span class="help-block">
@@ -40,7 +41,7 @@
                             <label for="fec_entrega" class="col-md-4 control-label">Fecha entrega</label>
 
                             <div class="col-md-6">
-                                <input id="fec_entrega" type="date" class="form-control" name="fec_entrega" value="{{ old('fec_entrega') }}" required autofocus>
+                                <input id="fec_entrega" type="date" class="form-control" name="fec_entrega" value="{{ old('fec_entrega', $actividad->fec_entrega) }}" required autofocus>
 
                                 @if ($errors->has('fec_entrega'))
                                     <span class="help-block">
@@ -54,7 +55,7 @@
                             <label for="observaciones" class="col-md-4 control-label">Observaciones</label>
 
                             <div class="col-md-6">
-                                <textarea rows="4" cols="50" id="observaciones" type="text" class="form-control" name="observaciones" autofocus>{{ old('observaciones') }}</textarea>
+                                <textarea rows="4" cols="50" id="observaciones" type="text" class="form-control" name="observaciones" autofocus>{{ old('observaciones', $actividad->observaciones) }}</textarea>
 
                                 @if ($errors->has('observaciones'))
                                     <span class="help-block">
@@ -71,7 +72,7 @@
                                 <select name="prioridad_id" id="prioridad_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione la prioridad</option>
                                   @foreach($prioridades as $prioridad)
-                                    <option value="{{ $prioridad->id }}">{{ $prioridad->nombre }}</option>
+                                   <option value="{{ $prioridad->id }}"  @if($prioridad->id==$actividad->prioridad_id) selected='selected' @endif >{{ $prioridad->nombre }}</option>
                                   @endforeach
                                 </select>
                             </div>
@@ -84,7 +85,7 @@
                                 <select name="tipo_id" id="tipo_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione el tipo</option>
                                   @foreach($tipos as $tipo)
-                                    <option value="{{ $tipo->id }}">{{ $tipo->nombre }}</option>
+                                    <option value="{{ $tipo->id }}"  @if($tipo->id==$actividad->tipo_id) selected='selected' @endif >{{ $tipo->nombre }}</option>
                                   @endforeach
                                 </select>
                             </div>
@@ -97,7 +98,7 @@
                                 <select name="estado_id" id="estado_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione el estado</option>
                                   @foreach($estados as $estado)
-                                    <option value="{{ $estado->id }}">{{ $estado->nombre }}</option>
+                                    <option value="{{ $estado->id }}"  @if($estado->id==$actividad->estado_id) selected='selected' @endif >{{ $estado->nombre }}</option>
                                   @endforeach
                                 </select>
                             </div>
@@ -110,7 +111,7 @@
                                 <select name="responsable_id" id="responsable_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione el responsable</option>
                                   @foreach($usuarios as $user)
-                                    <option value="{{ $user->id }}">{{ $user->nombre }}</option>
+                                    <option value="{{ $user->id }}"  @if($user->id==$actividad->responsable_id) selected='selected' @endif >{{ $user->nombre }}</option>
                                   @endforeach
                                 </select>
                             </div>
@@ -123,7 +124,7 @@
                                 <select name="etapa_id" id="etapa_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione la etapa</option>
                                   @foreach($etapas as $etapa)
-                                    <option value="{{ $etapa->id }}">{{ $etapa->nombre }}</option>
+                                    <option value="{{ $etapa->id }}"  @if($etapa->id==$actividad->etapa_id) selected='selected' @endif >{{ $etapa->nombre }}</option>
                                   @endforeach
                                 </select>
                             </div>
@@ -132,7 +133,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Nueva actividad
+                                    Guardar cambios
                                 </button>
                             </div>
                         </div>

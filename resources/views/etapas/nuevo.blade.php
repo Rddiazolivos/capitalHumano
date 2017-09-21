@@ -3,9 +3,9 @@
 @section('contenido')
 <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Nuevo proyecto</div>
+                <div class="panel-heading">Nueva etapa</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('proyecto.store') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('etapa.store') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('fec_creacion') ? ' has-error' : '' }}">
-                            <label for="fec_creacion" class="col-md-4 control-label">Fecha creación</label>
+                            <label for="fec_creacion" class="col-md-4 control-label">Fecha inicio</label>
 
                             <div class="col-md-6">
                                 <input id="fec_creacion" type="date" class="form-control" name="fec_creacion" value="{{ old('fec_creacion') }}" required autofocus>
@@ -63,24 +63,16 @@
                                 @endif
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
-                          <label for="user_id" class="col-md-4 control-label">Encargado</label>
-
-                            <div class="col-md-6">
-                                <select name="user_id" id="user_id" class="form-control" required>
-                                    <option selected hidden value="">Seleccione el Encargado</option>
-                                  @foreach($userList as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nombre }}</option>
-                                  @endforeach
-                                </select>
-                            </div>
+                        <!--id del proyecto-->
+                        <div class="invisible">
+                                <input id="proyecto_id" type="text" class="form-control" name="proyecto_id" value="{{ $id }}">
                         </div>
+                        
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Crear actividad
+                                    Crear etapa
                                 </button>
                             </div>
                         </div>

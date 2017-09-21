@@ -13,15 +13,22 @@ class CreateActivitiesTable extends Migration
      */
     public function up()
     {
-        Schema::create('activities', function (Blueprint $table) {
+        Schema::create('actividades', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->integer('porcentaje');
-            $table->text('observacion');
+            $table->text('descripcion');
+            $table->text('observaciones')->nullable();
+            $table->date('fec_entrega');
+            $table->integer('prioridad_id')->unsigned();
+            $table->foreign('prioridad_id')->references('id')->on('prioridades')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('tipo_id')->unsigned();
+            $table->foreign('tipo_id')->references('id')->on('tipo_tareas')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('estado_id')->unsigned();
             $table->foreign('estado_id')->references('id')->on('estados')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('etapa_id')->unsigned();
             $table->foreign('etapa_id')->references('id')->on('etapas')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('responsable_id')->unsigned();
+            $table->foreign('responsable_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -33,6 +40,6 @@ class CreateActivitiesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('activities');
+        Schema::dropIfExists('actividades');
     }
 }

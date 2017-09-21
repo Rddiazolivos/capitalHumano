@@ -4,7 +4,7 @@ namespace sdv;
 
 use Illuminate\Database\Eloquent\Model;
 
-class activity extends Model
+class tipo_tarea extends Model
 {
     //
 }

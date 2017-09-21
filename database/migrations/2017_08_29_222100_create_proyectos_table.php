@@ -16,7 +16,7 @@ class CreateProyectosTable extends Migration
         Schema::create('proyectos', function (Blueprint $table) {
             $table->increments('id');
             $table->string('nombre');
-            $table->date('fec_creaacion');
+            $table->date('fec_creacion');
             $table->date('fec_termino');
             $table->text('observaciones')->nullable();
             $table->smallInteger('porcentaje')->default(0);

@@ -11,18 +11,25 @@ class rolsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('rols')->insert([
+        DB::table('roles')->insert([
             'nombre' => 'Administrador',
         ]);
-        DB::table('rols')->insert([
+        DB::table('roles')->insert([
             'nombre' => 'Evaluador',
         ]);
-        DB::table('rols')->insert([
+        DB::table('roles')->insert([
             'nombre' => 'Evaluado',
         ]);
         DB::table('departamentos')->insert([
             'nombre' => 'Ventas',
             'descripcion' => 'Ventas'
         ]);
+        DB::table('estados')->insert([
+            'nombre' => 'Pendiente'
+        ]);
+        DB::table('estados')->insert([
+            'nombre' => 'Terminada'
+        ]);
+       
     }
 }

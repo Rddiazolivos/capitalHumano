@@ -17,6 +17,9 @@ class CreateEtapasTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->smallInteger('porcentaje')->default(0);
+            $table->date('fec_creacion');
+            $table->date('fec_termino');
+            $table->text('observaciones')->nullable();
             $table->integer('estado_id')->unsigned();
             $table->foreign('estado_id')->references('id')->on('estados')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('proyecto_id')->unsigned();

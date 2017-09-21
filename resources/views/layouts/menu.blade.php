@@ -22,6 +22,11 @@
                                         <span class="glyphicon glyphicon-user text-primary"></span><a href="{{ url('/register') }}">Registrar</a>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-tasks text-primary"></span><a href="{{ url('/usuario') }}">Usuarios registrados</a>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     </div>
@@ -32,7 +37,7 @@
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
-                            </span>Mis proyectos</a>
+                            </span>Proyectos</a>
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse">
@@ -40,14 +45,40 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('proyecto.create') }}">Proyectos</a>
+                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('proyecto.index') }}">Mis proyectos </a><span class="label label-info">5</span>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('proyecto.create') }}">Crear proyecto</a>
+                                    </td>
+                                </tr>
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            @endif
+
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion" href="#actividadesEvaluado"><span class="glyphicon glyphicon-list-alt">
+                            </span>Actividades</a>
+                        </h4>
+                    </div>
+                    <div id="actividadesEvaluado" class="panel-collapse collapse">
+                        <div class="panel-body">
+                            <table class="table">
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('actividad.ver') }}">Actividades asignadas  </a><span class="label label-info">{{DB::table('actividades')->where('responsable_id', Auth::user()->id)->where('estado_id', 1)->count()}}</span>
                                     </td>
                                 </tr>
                             </table>
                         </div>
                     </div>
                 </div>
-            @endif
                 
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -61,7 +92,7 @@
                             <table class="table">                                
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-tasks"></span><a href="http://www.jquery2dotnet.com">Graficos</a>
+                                        <span class="glyphicon glyphicon-tasks"></span><a href="#">Graficos</a>
                                     </td>
                                 </tr>
                             </table>
@@ -81,23 +112,28 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">Cambiar Password</a>
+                                        <a href="{{ route('usuario.show', Auth::user()->rol->id) }}">Mi cuenta</a>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!--<tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">Notificaciones</a> <span class="label label-info">5</span>
+                                        <a class="btn btn-link" href="{{ route('password.request') }}">
+                                        ¿Cambiar Contraseña
+                                        </a>
                                     </td>
-                                </tr>
+                                </tr>-->
                                 <tr>
                                     <td>
-                                        <a href="http://www.jquery2dotnet.com">Importar/Exportar</a>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-trash text-danger"></span><a href="http://www.jquery2dotnet.com" class="text-danger">
-                                            Borrar Cuenta</a>
+                                        <span class="glyphicon glyphicon-trash text-danger"></span>
+                                        <a href="{{ route('logout') }}"
+                                            onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();" class="text-danger">
+                                            Cerrar sesión
+                                        </a>
+
+                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                            {{ csrf_field() }}
+                                        </form>
                                     </td>
                                 </tr>
                             </table>

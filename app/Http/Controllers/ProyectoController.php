@@ -16,7 +16,7 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $proyectos = proyecto::paginate(1);
+        $proyectos = proyecto::paginate(6);
         return view('proyectos.index', compact('proyectos'));
     }
 
@@ -47,13 +47,15 @@ class ProyectoController extends Controller
         //permite revisar lo contenido en el formulario
         $proyecto = new proyecto;
         $proyecto->nombre = $request->nombre;
-        $proyecto->fec_creaacion = $request->fec_creaacion;
+        $proyecto->fec_creacion = $request->fec_creacion;
         $proyecto->fec_termino = $request->fec_termino;
         $proyecto->observaciones = $request->observaciones;
         $proyecto->user_id = $request->user_id;
         $proyecto->save();
         //redirección
-        return 'Se ha guardado correctamente';
+        return redirect()->action(
+            'ProyectoController@index'
+        );
     }
 
     /**

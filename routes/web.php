@@ -18,9 +18,14 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/usuario', 'UserController@index')->name('usuario');
+Route::get('/usuario/{usuario}', 'UserController@show')->name('usuario.show');
+Route::get('/etapa/crear/{etapa}', 'EtapaController@crear')->name('etapa.crear');
+Route::get('/actividad/ver', 'ActividadController@ver')->name('actividad.ver');
 Route::resource('/departamento', 'DepartamentoController');
 Route::resource('/proyecto', 'ProyectoController');
-Route::resource('/actividad', 'ActivityController');
+Route::resource('/etapa', 'EtapaController');
+Route::resource('actividad', 'ActividadController');
 
 Route::middleware(['rol'])->group(function () {
     //Route::resource('/proyecto', 'ProyectoController');
