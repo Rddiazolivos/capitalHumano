@@ -158,7 +158,7 @@
                                 <select name="rol_id" id="rol_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione el perfil</option>
                                   @foreach($rolesList as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                    <option value="{{ $item->id }}" @if($item->id==old('rol_id')) selected='selected' @endif>{{ $item->nombre }}</option>
                                   @endforeach
                                 </select>
                             </div>
@@ -171,7 +171,7 @@
                                 <select name="departamento_id" id="departamento_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione el departamento</option>
                                   @foreach($departamentosList as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                    <option value="{{ $item->id }}" @if($item->id==old('departamento_id')) selected='selected' @endif >{{ $item->nombre }}</option>
                                   @endforeach
                                 </select>
                             </div>

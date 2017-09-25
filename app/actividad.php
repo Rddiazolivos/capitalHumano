@@ -11,7 +11,14 @@ class actividad extends Model
     public function prioridad(){
     	return $this->belongsTo('sdv\prioridad');
     }
+    public function tipo(){
+    	return $this->belongsTo('sdv\tipo_tarea');
+    }
     public function estado(){
     	return $this->belongsTo('sdv\estado');
+    }
+    public function comentario()
+    {
+        return $this->hasMany('sdv\comentario');
     }
 }

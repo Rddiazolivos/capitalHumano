@@ -112,7 +112,7 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <a href="{{ route('usuario.show', Auth::user()->rol->id) }}">Mi cuenta</a>
+                                        <a href="{{ route('usuario.show') }}">Mi cuenta</a>
                                     </td>
                                 </tr>
                                 <!--<tr>

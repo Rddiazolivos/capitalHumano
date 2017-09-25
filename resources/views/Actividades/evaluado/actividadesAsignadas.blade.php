@@ -6,9 +6,10 @@
             </div>
             <div class="col-md-13">
                 <div class="panel panel-default">
-                    <div class="panel-heading">Actividades Pendientes</div>
+                    <div class="panel-heading">
                     <div class='row'>
                     <div class="col-md-11">
+                        Actividades Pendientes
                         <form class='navbar-form navbar-right' role='search' method="GET" action="{{ route('actividad.ver') }}">
                             <div class='form-group'>
                                 <input type='text' class='form-control' placeholder='Buscar' name="scope" value="{{ old('scope', $scope) }}">
@@ -16,6 +17,7 @@
                             <button type='submit' class='btn btn-default'>Buscar</button>
                         </form>
                         </div>
+                    </div>
                     </div>
                     @if(count($pendientes)>0)          
                     <table class="table table-hover">
@@ -31,7 +33,7 @@
                         <td><p>{{ $actividad->nombre }}</p></td>
                         <td><p class='text-center'>{{ $actividad->prioridad->nombre }}</p></td>
                         <td><p class='text-center'>{{ $actividad->estado->nombre }}</p></td>
-                        <td><a data-toggle="tooltip" title="Ver Actividad" href="{{ route('actividad.edit',$actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a></td>                        
+                        <td><a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a></td>                        
                     </tr>
                     @endforeach
                     </table>

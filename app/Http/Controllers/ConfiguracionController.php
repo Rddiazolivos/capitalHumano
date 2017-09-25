@@ -2,11 +2,10 @@
 
 namespace sdv\Http\Controllers;
 
+use sdv\configuracion;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
-use sdv\User;
 
-class UserController extends Controller
+class ConfiguracionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        $usuarios = User::paginate(6);
-        return view('auth.index', compact('usuarios'));    }
+        //
+    }
 
     /**
      * Show the form for creating a new resource.
@@ -42,22 +41,21 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  \sdv\configuracion  $configuracion
      * @return \Illuminate\Http\Response
      */
-    public function show()
+    public function show(configuracion $configuracion)
     {
-        $usuario = User::find(Auth::user()->id);        
-        return view('auth.show', compact('usuario'));
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  \sdv\configuracion  $configuracion
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(configuracion $configuracion)
     {
         //
     }
@@ -66,10 +64,10 @@ class UserController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
+     * @param  \sdv\configuracion  $configuracion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, configuracion $configuracion)
     {
         //
     }
@@ -77,10 +75,10 @@ class UserController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  \sdv\configuracion  $configuracion
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(configuracion $configuracion)
     {
         //
     }

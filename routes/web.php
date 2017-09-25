@@ -19,13 +19,16 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/usuario', 'UserController@index')->name('usuario');
-Route::get('/usuario/{usuario}', 'UserController@show')->name('usuario.show');
+Route::get('/usuario/cuenta', 'UserController@show')->name('usuario.show');
 Route::get('/etapa/crear/{etapa}', 'EtapaController@crear')->name('etapa.crear');
 Route::get('/actividad/ver', 'ActividadController@ver')->name('actividad.ver');
+Route::get('/actividad/{actividad}/comentar', 'ActividadController@comentar')->name('actividad.comentar');
 Route::resource('/departamento', 'DepartamentoController');
 Route::resource('/proyecto', 'ProyectoController');
 Route::resource('/etapa', 'EtapaController');
 Route::resource('actividad', 'ActividadController');
+Route::get('comentario/create/{actividad}', 'ComentarioController@create')->name('comentario.crear');
+Route::resource('comentario', 'ComentarioController');
 
 Route::middleware(['rol'])->group(function () {
     //Route::resource('/proyecto', 'ProyectoController');

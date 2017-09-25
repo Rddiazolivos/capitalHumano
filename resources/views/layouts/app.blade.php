@@ -83,5 +83,6 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('js/miScript.js') }}"></script>
 </body>
 </html>

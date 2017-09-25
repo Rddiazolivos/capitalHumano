@@ -8,6 +8,7 @@ use sdv\tipo_tarea;
 use sdv\estado;
 use sdv\User;
 use sdv\etapa;
+use sdv\comentario;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -52,6 +53,7 @@ class ActividadController extends Controller
      */
     public function store(Request $request)
     {
+        $this->validate($request, ['nombre' => 'required|string']);
         $actividad = new actividad;
         $actividad->nombre = $request->nombre;
         $actividad->descripcion = $request->descripcion;
@@ -138,6 +140,7 @@ class ActividadController extends Controller
             'terminadas' =>  actividad::where('estado_id', '2')->where('responsable_id', Auth::user()->id)->paginate(4),
             'scope' => $request->scope
         );
-        return view('Actividades.actividadesAsignadas',$actividades);
+        return view('Actividades.evaluado.actividadesAsignadas',$actividades);
     }
+    
 }

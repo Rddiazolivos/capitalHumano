@@ -32,5 +32,8 @@ class User extends Authenticatable
     public function rol(){
         return $this->belongsTo('sdv\rol');
     }
+    public function departamento(){
+        return $this->belongsTo('sdv\departamento');
+    }
 }
 
