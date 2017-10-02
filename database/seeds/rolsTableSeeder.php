@@ -28,7 +28,10 @@ class rolsTableSeeder extends Seeder
             'nombre' => 'Pendiente'
         ]);
         DB::table('estados')->insert([
-            'nombre' => 'Terminada'
+            'nombre' => 'Finalizada'
+        ]);
+        DB::table('estados')->insert([
+            'nombre' => 'Cerrada'
         ]);
        
     }

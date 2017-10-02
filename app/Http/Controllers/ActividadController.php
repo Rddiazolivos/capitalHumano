@@ -62,7 +62,6 @@ class ActividadController extends Controller
         $actividad->prioridad_id = $request->prioridad_id;
         $actividad->tipo_id = $request->tipo_id;
         $actividad->estado_id = $request->estado_id;
-        $actividad->responsable_id = $request->responsable_id;
         $actividad->etapa_id = $request->etapa_id;
         $actividad->save();
         //redirección
@@ -136,9 +135,15 @@ class ActividadController extends Controller
     public function ver(Request $request)
     {
         $actividades = array(
-            'pendientes' =>  actividad::where('nombre','like', "%$request->scope%")->where('estado_id', '1')->where('responsable_id', Auth::user()->id)->paginate(4),
-            'terminadas' =>  actividad::where('estado_id', '2')->where('responsable_id', Auth::user()->id)->paginate(4),
-            'scope' => $request->scope
+            'pendientes' =>  actividad::nombre($request->get('scope'))
+                ->estado($request->get('estado_id'))
+                ->join('responsables', 'actividades.id', '=', 'responsables.actividad_id')
+                ->where('responsables.responsable_id', Auth::user()->id)
+                ->select('*','actividades.id as id_acti')
+                ->paginate(5),
+            'scope' => $request->scope,
+            'estado_id' => $request->estado_id,
+            'estados' =>  estado::all()
         );
         return view('Actividades.evaluado.actividadesAsignadas',$actividades);
     }

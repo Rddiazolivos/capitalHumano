@@ -27,8 +27,6 @@ class CreateActivitiesTable extends Migration
             $table->foreign('estado_id')->references('id')->on('estados')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('etapa_id')->unsigned();
             $table->foreign('etapa_id')->references('id')->on('etapas')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('responsable_id')->unsigned();
-            $table->foreign('responsable_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

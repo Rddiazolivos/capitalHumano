@@ -3,7 +3,29 @@
 @section('contenido')
 <div class="col-md-12">
             <div class="panel panel-default">
-                <div class="panel-heading"><strong>Nombre: </strong>{{$actividad->nombre}}
+                <div class="panel-heading">                    
+
+                    <div class="row">
+                        <div class="col-md-8"><strong>Nombre: </strong>{{$actividad->nombre}}</div>
+                        <div class="col-md-4">
+                            <div class="row">
+                                <div class="col-md-7" id="estadoTexto"><strong>Estado: </strong>{{$actividad->estado->nombre}}</div>
+                                <div class="col-md-5">
+                                <!-- Trigger the modal with a button -->
+                                @if($actividad->estado_id == 1 && Auth::user()->rol_id === 3)
+                                <button id="btnModal" type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalFinalizar">Cambiar</button>
+                                @elseif($actividad->estado_id == 2 && Auth::user()->rol_id === 3 )
+                                <button id="btnModal" type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalReanuadar">Cambiar</button>
+                                @elseif(($actividad->estado_id == 2 || $actividad->estado_id == 1) && Auth::user()->rol_id === 2 )
+                                <button id="btnModal" type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalEvaluador">Cambiar</button>
+                                @endif
+                                
+                                </div>
+                            </div>
+                                                        
+                        </div>
+                    </div>
+
                     <div class="row">
                         <div class="col-md-12"><strong>Descripción: </strong>{{$actividad->descripcion}}</div>
                     </div>
@@ -46,7 +68,7 @@
                         </div>
                         <!-- el campo oculto -->
                         <input name="actividad_id" type="hidden" value="{{$actividad->id}}">
-                        <input name="activida" type="hidden" value="{{$actividad->id}}">
+                        <input name="estadoActividad" id="campoFinalizar" type="hidden" value="{{$actividad->estado_id}}">                       
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
@@ -54,10 +76,82 @@
                                 </button>
                             </div>
                         </div>
-                    </form>
+                    </form> 
+                    <!--<button type="button" class="btn btn-danger lol" data-dismiss="modal" id="finalizar">Finalizar</button> -->                  
                 </div>
             </div>
 
 </div>
 
+<!-- Modal Pendiente-->
+<div id="modalFinalizar" class="modal fade" role="dialog">
+    <div class="modal-dialog">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Finalizar actividad</h4>
+        </div>
+        <div class="modal-body">
+            <p>Una vez finalizada un actividad, dejara de tener acceso.</p>
+            <small>*El cambio se reflejara al guardar los cambios.</small>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-danger lol" data-dismiss="modal" id="finalizar">Finalizar</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+<!-- Modal Reanuadar-->
+<div id="modalReanuadar" class="modal fade" role="dialog">
+    <div class="modal-dialog ">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Reanuadar</h4>
+        </div>
+        <div class="modal-body">
+            <p>Reanudar la activadad dejara el estado como "Pendiente".</p>
+            <small>*El cambio se reflejara al guardar los cambios.</small>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-warning lol" data-dismiss="modal" id="pendiente">Reanudar</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+
+<!-- Modal para el evaluador-->
+<div id="modalEvaluador" class="modal fade" role="dialog">
+    <div class="modal-dialog ">
+
+    <!-- Modal content-->
+    <div class="modal-content">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal">&times;</button>
+            <h4 class="modal-title">Cambiar estado</h4>
+        </div>
+        <div class="modal-body">
+            <p>Reanudar la activadad dejará el estado como "Pendiente".</p>
+            <p>Finalizar la activadad dejará el estado como "Cerrada".</p>
+            <small>*El cambio se reflejara al guardar los cambios.</small>
+        </div>
+        <div class="modal-footer">
+            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
+            <button type="button" class="btn btn-warning lol" data-dismiss="modal" id="pendiente">Pendiente</button>
+            <button type="button" class="btn btn-danger lol" data-dismiss="modal" id="finalizar">Finalizar</button>
+        </div>
+    </div>
+
+    </div>
+</div>
+<!-- div con el usuario actual -->
+<div id='usuarioActual' data-user='{{Auth::user()->rol_id}}'></div>
 @endsection

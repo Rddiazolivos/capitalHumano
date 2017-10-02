@@ -4,17 +4,27 @@
             <div class="panel panel-default">
                 <div class="panel-heading">Listado de actividades</div>                
             </div>
-            <div class="col-md-13">
+            <div class="col-md-12">
                 <div class="panel panel-default">
                     <div class="panel-heading">
                     <div class='row'>
-                    <div class="col-md-11">
-                        Actividades Pendientes
-                        <form class='navbar-form navbar-right' role='search' method="GET" action="{{ route('actividad.ver') }}">
-                            <div class='form-group'>
-                                <input type='text' class='form-control' placeholder='Buscar' name="scope" value="{{ old('scope', $scope) }}">
+                    <div class="col-md-12">
+                        <form class='navbar-form ' role='search' method="GET" action="{{ route('actividad.ver') }}">
+                            <div class="form-group{{ $errors->has('estado_id') ? ' has-error' : '' }}">
+                                <div class="col-md-6">
+                                    <select name="estado_id" id="estado_id" class="form-control">         
+                                      @foreach($estados as $estado)
+                                        <option value="{{ $estado->id }}" @if($estado->id==old('estado_id', $estado_id)) selected='selected' @endif > {{ "Actividades ". $estado->nombre ."s"}}</option>
+                                      @endforeach
+                                    </select>
+                                </div>
                             </div>
-                            <button type='submit' class='btn btn-default'>Buscar</button>
+                            <div class='form-group'>
+                            <div class="col-md-6">
+                                <input type='text' class='form-control' placeholder='Buscar' name="scope" value="{{ old('scope', $scope) }}">
+                                </div>
+                            </div>
+                            <button type='submit' class='btn btn-default' id='botonFiltro'>Buscar</button>
                         </form>
                         </div>
                     </div>
@@ -29,36 +39,16 @@
                     </tr>
                     @foreach($pendientes as $actividad)
                     <tr>
-                        <td>{{ $actividad->id }}</td>
+                        <td>{{ $actividad->id_acti }}</td>
                         <td><p>{{ $actividad->nombre }}</p></td>
                         <td><p class='text-center'>{{ $actividad->prioridad->nombre }}</p></td>
                         <td><p class='text-center'>{{ $actividad->estado->nombre }}</p></td>
-                        <td><a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a></td>                        
+                        <td><a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id_acti) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a></td>                        
                     </tr>
                     @endforeach
                     </table>
-                    {{ $pendientes->links() }}
+                    {{ $pendientes->appends(Request::all())->links() }}
                     @endIf            
-                </div>
-            </div>
-            <div class="col-md-6 ">
-                <div class="panel panel-default">
-                    <div class="panel-heading">Actividades Terminadas</div> 
-                    @if(count($terminadas)>0)          
-                    <table class="table table-hover">                    
-                    <tr>
-                        <td><strong>Nombre: </strong></td>
-                        <td class='text-center'><strong>Prioridad: </strong></td>                        
-                    </tr>                    
-                    @foreach($terminadas as $actividad)
-                    <tr>
-                        <td><p>{{ $actividad->nombre }}</p></td>
-                        <td><p class='text-center'>{{ $actividad->prioridad->nombre }}</p></td>
-                        <td><a data-toggle="tooltip" title="Ver Actividad" href="{{ route('actividad.edit',$actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a></td> 
-                    </tr>
-                    @endforeach
-                    </table> 
-                    @endIf           
                 </div>
             </div>           
         </div>

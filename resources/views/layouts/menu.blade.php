@@ -72,7 +72,11 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('actividad.ver') }}">Actividades asignadas  </a><span class="label label-info">{{DB::table('actividades')->where('responsable_id', Auth::user()->id)->where('estado_id', 1)->count()}}</span>
+                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('actividad.ver') }}">Actividades asignadas  </a><span class="label label-info"> {{ DB::table('actividades')
+                                        ->join('responsables', 'actividades.id', '=', 'responsables.actividad_id')
+                                        ->where('estado_id', '1')
+                                        ->where('responsables.responsable_id', Auth::user()->id)
+                                        ->count() }}</span>
                                     </td>
                                 </tr>
                             </table>

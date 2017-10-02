@@ -2,12 +2,10 @@
 
 namespace sdv\Http\Controllers;
 
-use sdv\comentario;
-use sdv\estado;
-use sdv\actividad;
+use sdv\responsable;
 use Illuminate\Http\Request;
 
-class ComentarioController extends Controller
+class ResponsableController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -24,13 +22,9 @@ class ComentarioController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create(actividad $actividad)
+    public function create()
     {
-        $formulario = array(
-            'estados' =>  estado::all(),
-            'actividad' => $actividad
-        );
-        return view('Actividades.evaluado.actividadesAsignadasComentar', $formulario);
+        //
     }
 
     /**
@@ -41,24 +35,16 @@ class ComentarioController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request);
-        $actividad = actividad::find($request->actividad_id);
-        $actividad->estado_id = $request->estadoActividad;
-        $actividad->save();
-
-        $comentario = new comentario;
-        $comentario->fill($request->all());
-        $comentario->save();
-        return redirect()->route('comentario.crear', $request->actividad_id);
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \sdv\comentario  $comentario
+     * @param  \sdv\responsable  $responsable
      * @return \Illuminate\Http\Response
      */
-    public function show(comentario $comentario)
+    public function show(responsable $responsable)
     {
         //
     }
@@ -66,10 +52,10 @@ class ComentarioController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \sdv\comentario  $comentario
+     * @param  \sdv\responsable  $responsable
      * @return \Illuminate\Http\Response
      */
-    public function edit(comentario $comentario)
+    public function edit(responsable $responsable)
     {
         //
     }
@@ -78,10 +64,10 @@ class ComentarioController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \sdv\comentario  $comentario
+     * @param  \sdv\responsable  $responsable
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, comentario $comentario)
+    public function update(Request $request, responsable $responsable)
     {
         //
     }
@@ -89,10 +75,10 @@ class ComentarioController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \sdv\comentario  $comentario
+     * @param  \sdv\responsable  $responsable
      * @return \Illuminate\Http\Response
      */
-    public function destroy(comentario $comentario)
+    public function destroy(responsable $responsable)
     {
         //
     }
