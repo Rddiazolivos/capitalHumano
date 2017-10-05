@@ -9,6 +9,7 @@ use sdv\estado;
 use sdv\User;
 use sdv\etapa;
 use sdv\comentario;
+use sdv\responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -33,14 +34,15 @@ class ActividadController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         $formulario = array(
             'prioridades' =>  prioridad::all(),
             'tipos' =>  tipo_tarea::all(),
             'estados' =>  estado::all(),
             'usuarios' =>  User::all(),
-            'etapas' =>  etapa::all()
+            'etapas' =>  etapa::all(),
+            'id_etapa' =>  $id
         );
         return view('Actividades.nuevo', $formulario);
     }
@@ -63,7 +65,20 @@ class ActividadController extends Controller
         $actividad->tipo_id = $request->tipo_id;
         $actividad->estado_id = $request->estado_id;
         $actividad->etapa_id = $request->etapa_id;
-        $actividad->save();
+        $result = $actividad->save();
+
+        if($result){
+            $evaluadorResponsable = new responsable;
+            $evaluadorResponsable->responsable_id = Auth::user()->id;
+            $evaluadorResponsable->actividad_id = $actividad->id;
+            $evaluadorResponsable->save();
+            if(Auth::user()->id <> $request->responsable_id){
+                $evaluadoResponsable = new responsable;
+                $evaluadoResponsable->responsable_id = $request->responsable_id;
+                $evaluadoResponsable->actividad_id = $actividad->id;
+                $evaluadoResponsable->save();
+            }
+        }
         //redirección
         return redirect()->action(
             'ActividadController@show', ['id' => $request->etapa_id]
@@ -76,15 +91,18 @@ class ActividadController extends Controller
      * @param  \sdv\activity  $activity
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Request $request, $id)
     {        
         $actividades = array(
-            'pendientes' =>  actividad::where('etapa_id', $id)
-                    ->where('estado_id', 1)->get(),
-            'terminadas' =>  actividad::where('etapa_id', $id)
-                    ->where('estado_id', 2)->get()
+            'pendientes' =>  actividad::nombre($request->get('scope'))
+                ->where('etapa_id', $id)
+                ->paginate(5),
+            'scope' => $request->scope,
+            'estado_id' => $request->estado_id,
+            'estados' =>  estado::all(),
+            'id_etapa' => $id
         );
-        return view('Actividades.index', $actividades);
+        return view('Actividades.show', $actividades);
     }
 
     /**

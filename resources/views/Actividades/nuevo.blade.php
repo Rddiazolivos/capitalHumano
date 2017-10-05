@@ -115,19 +115,8 @@
                                 </select>
                             </div>
                         </div>
-
-                        <div class="form-group{{ $errors->has('etapa_id') ? ' has-error' : '' }}">
-                          <label for="etapa_id" class="col-md-4 control-label">Etapa</label>
-
-                            <div class="col-md-6">
-                                <select name="etapa_id" id="etapa_id" class="form-control" required>
-                                    <option selected hidden value="">Seleccione la etapa</option>
-                                  @foreach($etapas as $etapa)
-                                    <option value="{{ $etapa->id }}">{{ $etapa->nombre }}</option>
-                                  @endforeach
-                                </select>
-                            </div>
-                        </div>
+                        <!-- el campo oculto -->
+                        <input name="etapa_id" type="hidden" value="{{$id_etapa}}">
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

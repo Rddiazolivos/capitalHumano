@@ -26,9 +26,13 @@ Route::get('/actividad/{actividad}/comentar', 'ActividadController@comentar')->n
 Route::resource('/departamento', 'DepartamentoController');
 Route::resource('/proyecto', 'ProyectoController');
 Route::resource('/etapa', 'EtapaController');
+
+Route::get('actividad/create/{actividad}', 'ActividadController@create')->name('actividad.crear');
 Route::resource('actividad', 'ActividadController');
+
 Route::get('comentario/create/{actividad}', 'ComentarioController@create')->name('comentario.crear');
 Route::resource('comentario', 'ComentarioController');
+Route::resource('evaluar', 'EvaluacionController');
 
 Route::middleware(['rol'])->group(function () {
     //Route::resource('/proyecto', 'ProyectoController');

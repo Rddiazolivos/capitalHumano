@@ -45,7 +45,11 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('proyecto.index') }}">Mis proyectos </a><span class="label label-info">5</span>
+                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('proyecto.index') }}">Mis proyectos </a><span class="label label-info">
+                                        {{ DB::table('proyectos')
+                                        ->where('user_id', Auth::user()->id)
+                                        ->count() }}
+                                        </span>
                                     </td>
                                 </tr>
                                 <tr>

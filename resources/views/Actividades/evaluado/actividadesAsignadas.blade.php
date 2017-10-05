@@ -10,7 +10,7 @@
                     <div class='row'>
                     <div class="col-md-12">
                         <form class='navbar-form ' role='search' method="GET" action="{{ route('actividad.ver') }}">
-                            <div class="form-group{{ $errors->has('estado_id') ? ' has-error' : '' }}">
+                            <div class="row">
                                 <div class="col-md-6">
                                     <select name="estado_id" id="estado_id" class="form-control">         
                                       @foreach($estados as $estado)
@@ -18,13 +18,11 @@
                                       @endforeach
                                     </select>
                                 </div>
-                            </div>
-                            <div class='form-group'>
-                            <div class="col-md-6">
-                                <input type='text' class='form-control' placeholder='Buscar' name="scope" value="{{ old('scope', $scope) }}">
+                                <div class="col-md-6 form-group">
+                                    <input type='text' class='form-control' placeholder='Buscar' name="scope" value="{{ old('scope', $scope) }}">
+                                    <button type='submit' class='btn btn-default' id='botonFiltro'>Buscar</button>
                                 </div>
-                            </div>
-                            <button type='submit' class='btn btn-default' id='botonFiltro'>Buscar</button>
+                            </div>                         
                         </form>
                         </div>
                     </div>

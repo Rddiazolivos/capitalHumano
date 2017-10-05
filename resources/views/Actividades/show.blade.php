@@ -1,46 +1,58 @@
-<html>
-  <head>
-    <!--Load the AJAX API-->
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
-    <script type="text/javascript">
-
-      // Load the Visualization API and the corechart package.
-      google.charts.load('current', {'packages':['corechart']});
-
-      // Set a callback to run when the Google Visualization API is loaded.
-      google.charts.setOnLoadCallback(drawChart);
-
-      // Callback that creates and populates a data table,
-      // instantiates the pie chart, passes in the data and
-      // draws it.
-      function drawChart() {
-
-        // Create the data table.
-        var data = new google.visualization.DataTable();
-        data.addColumn('string', 'Topping');
-        data.addColumn('number', 'Slices');
-        data.addRows([
-          ['Mushrooms', 3],
-          ['Onions', 1],
-          ['Olives', 1],
-          ['Zucchini', 1],
-          ['Pepperoni', 2]
-        ]);
-
-        // Set chart options
-        var options = {'title':'How Much Pizza I Ate Last Night',
-                       'width':400,
-                       'height':300};
-
-        // Instantiate and draw our chart, passing in some options.
-        var chart = new google.visualization.PieChart(document.getElementById('chart_div'));
-        chart.draw(data, options);
-      }
-    </script>
-  </head>
-
-  <body>
-    <!--Div that will hold the pie chart-->
-    <div id="chart_div"></div>
-  </body>
-</html>
+@extends('layouts.menu')
+@section('contenido')
+<div class="container-fluid">
+  <div class="row">
+        <div class="col-md-12">
+            <div class="panel panel-default">
+                <div class="panel-heading">Listado de actividades
+                    <div style="float: right;">
+                    <a data-toggle="tooltip" title="Agregar Actividad" href="{{ route('actividad.crear' , $id_etapa) }}"><span style="font-size:1.5em;" class="glyphicon glyphicon-plus-sign text-success"></span></a>
+                  </div>
+                </div>
+            </div>
+                <div class='row'>
+                    <div class="col-md-12">
+                        <form class='navbar-form ' role='search' method="GET" action="{{ route('actividad.show', $id_etapa) }}">
+                            <div class="row">
+                                <div class="col-md-5 col-md-offset-7 form-group">
+                                    <input type='text' class='form-control' placeholder='Buscar' name="scope" value="{{ old('scope', $scope) }}">
+                                    <button type='submit' class='btn btn-default' id='botonFiltro'>Buscar</button>
+                                </div>
+                            </div>                         
+                        </form>
+                        </div>
+                    </div>
+            <div class="col-md-12">
+                <div class="panel panel-default">
+                    @if(count($pendientes)>0)          
+                    <table class="table table-hover">
+                    <tr>
+                        <td><strong>N°: </strong></td>
+                        <td><strong>Nombre: </strong></td>
+                        <td class='text-center'><strong>Prioridad: </strong></td>
+                        <td class='text-center'><strong>Estado: </strong></td>
+                        <td class='text-center'><strong>Acciones: </strong></td>
+                    </tr>
+                    @foreach($pendientes as $actividad)
+                    <tr>
+                        <td>{{ $actividad->id }}</td>
+                        <td><p>{{ $actividad->nombre }}</p></td>
+                        <td><p class='text-center'>{{ $actividad->prioridad->nombre }}</p></td>
+                        <td><p class='text-center'>{{ $actividad->estado->nombre }}</p></td>
+                        <td class='text-center'>                            
+                            <a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a>
+                            @if($actividad->estado_id == 2)
+                            <a data-toggle="tooltip" title="Evaluar Actividad" href="{{ route('evaluar.create') }}"><span class="glyphicon glyphicon-education text-warning"></span></a>
+                            @endif
+                        </td>                        
+                    </tr>
+                    @endforeach
+                    </table>
+                    {{ $pendientes->appends(Request::all())->links() }}
+                    @endIf            
+                </div>
+            </div>              
+        </div>
+    </div>
+</div>
+@endsection
