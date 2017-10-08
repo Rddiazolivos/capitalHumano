@@ -42,7 +42,7 @@
                         <td class='text-center'>                            
                             <a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a>
                             @if($actividad->estado_id == 2)
-                            <a data-toggle="tooltip" title="Evaluar Actividad" href="{{ route('evaluar.create') }}"><span class="glyphicon glyphicon-education text-warning"></span></a>
+                            <a data-toggle="tooltip" title="Evaluar Actividad" href="{{ route('evaluar.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-education text-warning"></span></a>
                             @endif
                         </td>                        
                     </tr>

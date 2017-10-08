@@ -84,6 +84,6 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script type="text/javascript" src="{{ asset('js/miScript.js') }}"></script>
-    
+    <script src='js/highcharts.js'></script>
 </body>
 </html>

@@ -25,6 +25,7 @@ class CreateUsersTable extends Migration
             $table->string('email')->unique();
             $table->string('password');
             $table->rememberToken();
+            $table->boolean('condicion')->default(true);
             $table->integer('departamento_id')->unsigned();
             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade')->onUpdate('cascade');            
             $table->integer('rol_id')->unsigned();

@@ -2,10 +2,10 @@
 
 namespace sdv\Http\Controllers;
 
-use sdv\configuracion;
+use sdv\tipo;
 use Illuminate\Http\Request;
 
-class ConfiguracionController extends Controller
+class TipoTareaController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class ConfiguracionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \sdv\configuracion  $configuracion
+     * @param  \sdv\tipo_tarea  $tipo_tarea
      * @return \Illuminate\Http\Response
      */
-    public function show(configuracion $configuracion)
+    public function show(tipo_tarea $tipo_tarea)
     {
         //
     }
@@ -52,10 +52,10 @@ class ConfiguracionController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \sdv\configuracion  $configuracion
+     * @param  \sdv\tipo_tarea  $tipo_tarea
      * @return \Illuminate\Http\Response
      */
-    public function edit(configuracion $configuracion)
+    public function edit(tipo_tarea $tipo_tarea)
     {
         //
     }
@@ -64,10 +64,10 @@ class ConfiguracionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \sdv\configuracion  $configuracion
+     * @param  \sdv\tipo_tarea  $tipo_tarea
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, configuracion $configuracion)
+    public function update(Request $request, tipo_tarea $tipo_tarea)
     {
         //
     }
@@ -75,10 +75,10 @@ class ConfiguracionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \sdv\configuracion  $configuracion
+     * @param  \sdv\tipo_tarea  $tipo_tarea
      * @return \Illuminate\Http\Response
      */
-    public function destroy(configuracion $configuracion)
+    public function destroy(tipo_tarea $tipo_tarea)
     {
         //
     }

@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateConfiguracionsTable extends Migration
+class CreatePreguntaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,14 @@ class CreateConfiguracionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('configuraciones', function (Blueprint $table) {
+        Schema::create('preguntas', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('verActividad');
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->string('concepto');
+            $table->integer('encuesta_id')->unsigned()->default(1);
+            $table->foreign('encuesta_id')->references('id')->on('encuestas')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
+
     }
 
     /**
@@ -29,6 +30,6 @@ class CreateConfiguracionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('configuraciones');
+        Schema::dropIfExists('preguntas');
     }
 }

@@ -11,7 +11,7 @@ class tipoTareasTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('tipo_tareas')->insert([
+        DB::table('tipos')->insert([
             'nombre' => 'Tarea'
         ]);
     }

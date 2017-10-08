@@ -50,20 +50,6 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('observaciones') ? ' has-error' : '' }}">
-                            <label for="observaciones" class="col-md-4 control-label">Observaciones</label>
-
-                            <div class="col-md-6">
-                                <textarea rows="4" cols="50" id="observaciones" type="text" class="form-control" name="observaciones" autofocus>{{ old('observaciones') }}</textarea>
-
-                                @if ($errors->has('observaciones'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('observaciones') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
                         <div class="form-group{{ $errors->has('prioridad_id') ? ' has-error' : '' }}">
                           <label for="prioridad_id" class="col-md-4 control-label">Prioridad</label>
 

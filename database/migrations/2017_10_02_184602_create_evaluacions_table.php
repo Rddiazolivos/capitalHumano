@@ -13,12 +13,11 @@ class CreateEvaluacionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('evaluaciones', function (Blueprint $table) {
+        Schema::create('evaluacion', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('nombre');
-            $table->decimal('nota', 1, 1);
-            $table->integer('usuario_id')->unsigned();
-            $table->foreign('usuario_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('conforme');            
+            $table->integer('calificacion');
+            $table->string('observacion');
             $table->integer('actividad_id')->unsigned();
             $table->foreign('actividad_id')->references('id')->on('actividades')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
@@ -32,6 +31,6 @@ class CreateEvaluacionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('evaluaciones');
+        Schema::dropIfExists('evaluacion');
     }
 }

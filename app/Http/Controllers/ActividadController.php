@@ -4,7 +4,7 @@ namespace sdv\Http\Controllers;
 
 use sdv\actividad;
 use sdv\prioridad;
-use sdv\tipo_tarea;
+use sdv\tipo;
 use sdv\estado;
 use sdv\User;
 use sdv\etapa;
@@ -38,7 +38,7 @@ class ActividadController extends Controller
     {
         $formulario = array(
             'prioridades' =>  prioridad::all(),
-            'tipos' =>  tipo_tarea::all(),
+            'tipos' =>  tipo::all(),
             'estados' =>  estado::all(),
             'usuarios' =>  User::all(),
             'etapas' =>  etapa::all(),
@@ -60,7 +60,6 @@ class ActividadController extends Controller
         $actividad->nombre = $request->nombre;
         $actividad->descripcion = $request->descripcion;
         $actividad->fec_entrega = $request->fec_entrega;
-        $actividad->observaciones = $request->observaciones;
         $actividad->prioridad_id = $request->prioridad_id;
         $actividad->tipo_id = $request->tipo_id;
         $actividad->estado_id = $request->estado_id;
@@ -115,7 +114,7 @@ class ActividadController extends Controller
     {
         $formulario = array(
             'prioridades' =>  prioridad::all(),
-            'tipos' =>  tipo_tarea::all(),
+            'tipos' =>  tipo::all(),
             'estados' =>  estado::all(),
             'usuarios' =>  User::all(),
             'etapas' =>  etapa::all(),
@@ -164,6 +163,18 @@ class ActividadController extends Controller
             'estados' =>  estado::all()
         );
         return view('Actividades.evaluado.actividadesAsignadas',$actividades);
+    }
+    public function all(Request $request)
+    {
+        $actividades = array(
+            'todas' =>  actividad::nombre($request->get('scope'))
+                ->EstadoAll($request->get('estado_id'))
+                ->paginate(5),
+            'scope' => $request->scope,
+            'estado_id' => $request->estado_id,
+            'estados' =>  estado::all()
+        );
+        return view('Actividades.all',$actividades);
     }
     
 }

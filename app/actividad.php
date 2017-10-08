@@ -12,7 +12,7 @@ class actividad extends Model
     	return $this->belongsTo('sdv\prioridad');
     }
     public function tipo(){
-    	return $this->belongsTo('sdv\tipo_tarea');
+    	return $this->belongsTo('sdv\tipo');
     }
     public function estado(){
     	return $this->belongsTo('sdv\estado');
@@ -32,5 +32,12 @@ class actividad extends Model
         }else{
             $query->where('estado_id', "$estado_id" );
         }
+    }
+    public function scopeEstadoAll($query, $estado_id){        
+        if($estado_id==null || $estado_id==10){
+            //no se agreg nada
+        }else{
+            $query->where('estado_id', "$estado_id" );
+        }      
     }
 }

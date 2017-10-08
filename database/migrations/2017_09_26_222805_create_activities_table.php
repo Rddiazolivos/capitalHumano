@@ -17,12 +17,11 @@ class CreateActivitiesTable extends Migration
             $table->increments('id');
             $table->string('nombre');
             $table->text('descripcion');
-            $table->text('observaciones')->nullable();
             $table->date('fec_entrega');
             $table->integer('prioridad_id')->unsigned();
             $table->foreign('prioridad_id')->references('id')->on('prioridades')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('tipo_id')->unsigned();
-            $table->foreign('tipo_id')->references('id')->on('tipo_tareas')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('estado_id')->unsigned();
             $table->foreign('estado_id')->references('id')->on('estados')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('etapa_id')->unsigned();

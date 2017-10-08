@@ -16,7 +16,7 @@
                                 <button id="btnModal" type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalFinalizar">Cambiar</button>
                                 @elseif($actividad->estado_id == 2 && Auth::user()->rol_id === 3 )
                                 <button id="btnModal" type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalReanuadar">Cambiar</button>
-                                @elseif(($actividad->estado_id == 2 || $actividad->estado_id == 1) && Auth::user()->rol_id === 2 )
+                                @elseif(($actividad->estado_id == 2 || $actividad->estado_id == 1) && (Auth::user()->rol_id === 2 || Auth::user()->rol_id === 1 ))
                                 <button id="btnModal" type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalEvaluador">Cambiar</button>
                                 @endif
                                 

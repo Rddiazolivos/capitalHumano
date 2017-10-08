@@ -83,6 +83,11 @@
                                         ->count() }}</span>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('actividad.all') }}">Listar actividades</a>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     </div>
@@ -100,7 +105,12 @@
                             <table class="table">                                
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-tasks"></span><a href="#">Graficos</a>
+                                        <span class="glyphicon glyphicon-tasks"></span><a href="{{ route('reporte.trabajador') }}">Reporte por trabajador</a>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-print text-primary"></span><a href="{{ route('proyecto.create') }}">Reporte proyectos</a>
                                     </td>
                                 </tr>
                             </table>

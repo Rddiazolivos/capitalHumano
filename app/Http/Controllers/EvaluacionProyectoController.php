@@ -2,10 +2,10 @@
 
 namespace sdv\Http\Controllers;
 
-use sdv\tipo_tarea;
+use sdv\evaluacionProyecto;
 use Illuminate\Http\Request;
 
-class TipoTareaController extends Controller
+class EvaluacionProyectoController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class TipoTareaController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \sdv\tipo_tarea  $tipo_tarea
+     * @param  \sdv\evaluacionProyecto  $evaluacionProyecto
      * @return \Illuminate\Http\Response
      */
-    public function show(tipo_tarea $tipo_tarea)
+    public function show(evaluacionProyecto $evaluacionProyecto)
     {
         //
     }
@@ -52,10 +52,10 @@ class TipoTareaController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \sdv\tipo_tarea  $tipo_tarea
+     * @param  \sdv\evaluacionProyecto  $evaluacionProyecto
      * @return \Illuminate\Http\Response
      */
-    public function edit(tipo_tarea $tipo_tarea)
+    public function edit(evaluacionProyecto $evaluacionProyecto)
     {
         //
     }
@@ -64,10 +64,10 @@ class TipoTareaController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \sdv\tipo_tarea  $tipo_tarea
+     * @param  \sdv\evaluacionProyecto  $evaluacionProyecto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, tipo_tarea $tipo_tarea)
+    public function update(Request $request, evaluacionProyecto $evaluacionProyecto)
     {
         //
     }
@@ -75,10 +75,10 @@ class TipoTareaController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \sdv\tipo_tarea  $tipo_tarea
+     * @param  \sdv\evaluacionProyecto  $evaluacionProyecto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(tipo_tarea $tipo_tarea)
+    public function destroy(evaluacionProyecto $evaluacionProyecto)
     {
         //
     }

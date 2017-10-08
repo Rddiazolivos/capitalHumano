@@ -2,7 +2,7 @@
 
 namespace sdv\Http\Controllers;
 
-use sdv\evaluacion;
+use sdv\evaluacionActividad;
 use sdv\actividad;
 use sdv\responsable;
 use Illuminate\Http\Request;
@@ -24,10 +24,10 @@ class EvaluacionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create($id)
     {
         $metricas = array(
-            'actividad' =>  actividad::all()->find('1'),
+            'actividad' =>  actividad::all()->find($id),
             'responsable_evaluador' =>  responsable::all()
                 ->where('actividad_id', '1')
                 ->where('responsable_id', '1')
@@ -43,7 +43,15 @@ class EvaluacionController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, ['actividad_id' => 'required|unique:evaluacionActividad']);
+        $evaluacion = new evaluacionActividad;
+        $evaluacion->conforme = $request->conforme;
+        $evaluacion->calificacion = $request->calificacion;
+        $evaluacion->observacion = $request->observacion;
+        $evaluacion->actividad_id = $request->actividad_id;
+        $evaluacion->save();
+        //redirección
+        return view( '/home'  );
     }
 
     /**

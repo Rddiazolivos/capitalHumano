@@ -35,5 +35,9 @@ class User extends Authenticatable
     public function departamento(){
         return $this->belongsTo('sdv\departamento');
     }
+
+    public function fullName(){
+        return $this->nombre . ' ' . $this->ape_paterno;
+    }
 }
 
