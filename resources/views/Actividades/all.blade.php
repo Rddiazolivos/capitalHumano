@@ -28,24 +28,26 @@
                         </div>
                     </div>
                     </div>
-                    @if(count($todas)>0)          
-                    <table class="table table-hover">
-                    <tr>
-                        <td><strong>Número: </strong></td>
-                        <td><strong>Nombre: </strong></td>
-                        <td class='text-center'><strong>Prioridad: </strong></td>
-                        <td class='text-center'><strong>Estado: </strong></td>
-                    </tr>
-                    @foreach($todas as $actividad)
-                    <tr>
-                        <td>{{ $actividad->id }}</td>
-                        <td><p>{{ $actividad->nombre }}</p></td>
-                        <td><p class='text-center'>{{ $actividad->prioridad->nombre }}</p></td>
-                        <td><p class='text-center'>{{ $actividad->estado->nombre }}</p></td>
-                        <td><a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a></td>                        
-                    </tr>
-                    @endforeach
-                    </table>
+                    @if(count($todas)>0)
+                    <div class="table-responsive">           
+                        <table class="table table-hover">
+                        <tr>
+                            <td><strong>Número: </strong></td>
+                            <td><strong>Nombre: </strong></td>
+                            <td class='text-center'><strong>Prioridad: </strong></td>
+                            <td class='text-center'><strong>Estado: </strong></td>
+                        </tr>
+                        @foreach($todas as $actividad)
+                        <tr>
+                            <td>{{ $actividad->id }}</td>
+                            <td><p>{{ $actividad->nombre }}</p></td>
+                            <td><p class='text-center'>{{ $actividad->prioridad->nombre }}</p></td>
+                            <td><p class='text-center'>{{ $actividad->estado->nombre }}</p></td>
+                            <td><a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a></td>                        
+                        </tr>
+                        @endforeach
+                        </table>
+                    </div>
                     {{ $todas->appends(Request::all())->links() }}
                     @endIf            
                 </div>

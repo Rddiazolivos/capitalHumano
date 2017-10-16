@@ -43,10 +43,55 @@
                 </div>
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
+                    <div class="visible-xs" id="xs-check"></div>
                     <!-- Left Side Of Navbar -->
-                    <ul class="nav navbar-nav">
-                        &nbsp;
+                    <ul class="nav navbar-nav menu-celular">
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-folder-close"></span> Usuarios <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ url('/register') }}"><span class="glyphicon glyphicon-user text-primary"></span> Registrar</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url('/usuario') }}"><span class="glyphicon glyphicon-tasks text-primary"></span> Usuarios registrados</a>
+                                    </li>
+                                </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-th"></span> Proyectos <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('proyecto.index') }}"><span class="glyphicon glyphicon-list text-primary"></span> Mis proyectos </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('proyecto.create') }}"><span class="glyphicon glyphicon-list text-primary"></span> Crear proyecto</a>
+                                    </li>
+                                </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Actividades <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('actividad.ver') }}"><span class="glyphicon glyphicon-list text-primary"></span> Actividades asignadas  </a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('actividad.all') }}"><span class="glyphicon glyphicon-list text-primary"></span> Listar actividades</a>
+                                    </li>
+                                </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-file"></span> Reportes <span class="caret"></span></a>
+                                <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('reporte.trabajador') }}"><span class="glyphicon glyphicon-tasks"></span> Reporte por trabajador</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('reporte.actividad') }}"><span class="glyphicon glyphicon-print text-primary"></span> Reporte avance actividades</a>
+                                    </li>
+                                </ul>
+                        </li>
                     </ul>
+                    
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -61,6 +106,9 @@
                                 </a>
 
                                 <ul class="dropdown-menu" role="menu">
+                                    <li>
+                                        <a href="{{ route('usuario.show') }}">Mi cuenta</a>
+                                    </li>
                                     <li>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
@@ -79,6 +127,7 @@
                 </div>
             </div>
         </nav>
+        
         @yield('content')
     </div>
 

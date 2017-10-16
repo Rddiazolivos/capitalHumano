@@ -20,11 +20,13 @@
                                 </div>
                             </div>                         
                         </form>
-                        </div>
                     </div>
+                </div>
+        <div class='row'>
             <div class="col-md-12">
                 <div class="panel panel-default">
-                    @if(count($pendientes)>0)          
+                    @if(count($pendientes)>0)
+                <div class="table-responsive">          
                     <table class="table table-hover">
                     <tr>
                         <td><strong>N°: </strong></td>
@@ -53,10 +55,12 @@
                     </tr>
                     @endforeach
                     </table>
+                </div>
                     {{ $pendientes->appends(Request::all())->links() }}
                     @endIf            
                 </div>
-            </div>              
+            </div> 
+            </div>             
         </div>
     </div>
 </div>

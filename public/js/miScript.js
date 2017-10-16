@@ -28,8 +28,17 @@ $(document).ready(function() {
     $(".js-example-basic-multiple").select2({
         placeholder: "Selecciona un encargado"
     });
+    
 });
 
 //deja al final los comentarios
 var d = $('#data');
 d.scrollTop(d.prop("scrollHeight"));
+
+//determina el tamaño
+    if( $(".navbar-toggle").css('display') == 'none' ){
+        $('.menu-celular').hide();
+
+    }else{
+        $('.menu-desktop').hide();
+    };

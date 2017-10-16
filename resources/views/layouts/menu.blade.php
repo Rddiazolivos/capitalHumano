@@ -5,7 +5,8 @@
     <div class="row">
     <div class="menu">
         <div class="col-sm-3 col-md-3">
-            <div class="panel-group" id="accordion">
+
+            <div class="panel-group menu-desktop" id="accordion">
             @if ( Auth::user()->rol->nombre === 'Administrador')
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -36,8 +37,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th">
-                            </span>Proyectos</a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th"></span>Proyectos</a>
                         </h4>
                     </div>
                     <div id="collapseTwo" class="panel-collapse collapse">
@@ -67,8 +67,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#actividadesEvaluado"><span class="glyphicon glyphicon-list-alt">
-                            </span>Actividades</a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#actividadesEvaluado"><span class="glyphicon glyphicon-list-alt"></span>Actividades</a>
                         </h4>
                     </div>
                     <div id="actividadesEvaluado" class="panel-collapse collapse">
