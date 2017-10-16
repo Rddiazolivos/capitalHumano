@@ -83,11 +83,13 @@
                                         ->count() }}</span>
                                     </td>
                                 </tr>
+                                @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
                                 <tr>
                                     <td>
                                         <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('actividad.all') }}">Listar actividades</a>
                                     </td>
                                 </tr>
+                                @endif
                             </table>
                         </div>
                     </div>
@@ -110,7 +112,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-print text-primary"></span><a href="{{ route('proyecto.create') }}">Reporte proyectos</a>
+                                        <span class="glyphicon glyphicon-print text-primary"></span><a href="{{ route('reporte.actividad') }}">Reporte avance actividades</a>
                                     </td>
                                 </tr>
                             </table>

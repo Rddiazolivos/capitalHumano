@@ -18,6 +18,7 @@ class CreateActivitiesTable extends Migration
             $table->string('nombre');
             $table->text('descripcion');
             $table->date('fec_entrega');
+            $table->boolean('asignacion')->default(false);            
             $table->integer('prioridad_id')->unsigned();
             $table->foreign('prioridad_id')->references('id')->on('prioridades')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('tipo_id')->unsigned();

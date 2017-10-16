@@ -2,7 +2,7 @@
 
 namespace sdv\Http\Controllers;
 
-use sdv\evaluacionActividad;
+use sdv\evaluacion;
 use sdv\actividad;
 use sdv\responsable;
 use Illuminate\Http\Request;
@@ -26,11 +26,17 @@ class EvaluacionController extends Controller
      */
     public function create($id)
     {
+        $actividad = actividad::all()->find($id);
         $metricas = array(
-            'actividad' =>  actividad::all()->find($id),
-            'responsable_evaluador' =>  responsable::all()
-                ->where('actividad_id', '1')
-                ->where('responsable_id', '1')
+            'actividad' =>  $actividad,
+            'supervisor' =>  responsable::where('responsables.actividad_id', $actividad->id)
+                ->join('users', 'responsables.responsable_id', '=', 'users.id')
+                ->where('users.rol_id', 2)
+                ->select('*','responsables.id as id_res')
+                ->first(),
+            'encargados' =>  responsable::where('responsables.actividad_id', $actividad->id)
+            ->join('users', 'responsables.responsable_id', '=', 'users.id')
+            ->where('users.rol_id', 3)->get(),
         );
         return view ("evaluaciones.nuevo", $metricas);
     }
@@ -43,8 +49,8 @@ class EvaluacionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['actividad_id' => 'required|unique:evaluacionActividad']);
-        $evaluacion = new evaluacionActividad;
+        $this->validate($request, ['actividad_id' => 'required|unique:evaluacion']);
+        $evaluacion = new evaluacion;
         $evaluacion->conforme = $request->conforme;
         $evaluacion->calificacion = $request->calificacion;
         $evaluacion->observacion = $request->observacion;

@@ -40,7 +40,7 @@ class ActividadController extends Controller
             'prioridades' =>  prioridad::all(),
             'tipos' =>  tipo::all(),
             'estados' =>  estado::all(),
-            'usuarios' =>  User::all(),
+            'usuarios' =>  User::all()->where("rol_id", "3"),
             'etapas' =>  etapa::all(),
             'id_etapa' =>  $id
         );
@@ -64,20 +64,7 @@ class ActividadController extends Controller
         $actividad->tipo_id = $request->tipo_id;
         $actividad->estado_id = $request->estado_id;
         $actividad->etapa_id = $request->etapa_id;
-        $result = $actividad->save();
-
-        if($result){
-            $evaluadorResponsable = new responsable;
-            $evaluadorResponsable->responsable_id = Auth::user()->id;
-            $evaluadorResponsable->actividad_id = $actividad->id;
-            $evaluadorResponsable->save();
-            if(Auth::user()->id <> $request->responsable_id){
-                $evaluadoResponsable = new responsable;
-                $evaluadoResponsable->responsable_id = $request->responsable_id;
-                $evaluadoResponsable->actividad_id = $actividad->id;
-                $evaluadoResponsable->save();
-            }
-        }
+        $actividad->save();
         //redirección
         return redirect()->action(
             'ActividadController@show', ['id' => $request->etapa_id]

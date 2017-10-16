@@ -10,4 +10,8 @@ class estado extends Model
     public function etapa(){
     	return $this->hasone('sdv\etapa');
     }
+    public function actividad()
+    {
+        return $this->hasOne('sdv\actividad');
+    }
 }

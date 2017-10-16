@@ -5,6 +5,9 @@ namespace sdv\Http\Controllers;
 use Illuminate\Http\Request;
 use sdv\User;
 use sdv\responsable;
+use sdv\proyecto;
+use sdv\etapa;
+
 
 class pdfController extends Controller
 {
@@ -21,10 +24,10 @@ class pdfController extends Controller
             ->count();
         $Promedio = Responsable::where("responsable_id", $request->user)
             ->join('actividades', 'responsables.actividad_id', '=', 'actividades.id')
-            ->join('evaluacionActividad', 'actividades.id', '=', 'evaluacionActividad.actividad_id')
+            ->join('evaluacion', 'actividades.id', '=', 'evaluacion.actividad_id')
             ->where('actividades.estado_id', 2)
             ->select('actividades.calificacion')
-            ->avg('evaluacionActividad.calificacion');
+            ->avg('evaluacion.calificacion');
         $Porcentaje = (($cantActividadesAbier/100)*$cantActividades);
 
         $datos =array(
@@ -56,5 +59,29 @@ class pdfController extends Controller
     public function show()
     {      
         return view('Actividades.grafico');
+    }
+    public function actividad(Request $request)
+    {        
+        $datos =array(
+            "proyecto" => proyecto::find($request->proyecto_id),
+            "etapas" => etapa::all()
+                ->where("proyecto_id", $request->proyecto_id),
+        );
+        
+        $view =  \View::make('pdf.actividad', $datos)->render();  
+        $pdf = \App::make('dompdf.wrapper');      
+        $pdf->loadHTML($view);
+        if($request->tipo == 1){
+            return $pdf->download($request->proyecto_id.'.pdf');
+        }else if($request->tipo == 2){
+            return $pdf->stream();
+        }        
+    }
+    public function SeleccionarProyecto()
+    {       
+        $datos = array(
+            "proyectos" => proyecto::all(),
+        );
+        return view('pdf.vistaActividad', $datos);
     }
 }

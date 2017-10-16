@@ -7,29 +7,29 @@ $(document).ready(function(){
     	if(boton == "finalizar"){            
     		$('#campoFinalizar').attr("value", 2);
     		$("#estadoTexto").html("<strong>Estado: </strong>Finalizada");
-            if(usuario === 3){
-                $('#btnModal').attr("data-target", "#modalReanuadar");
-            }else{
-                $('#btnModal').attr("data-target", "#modalEvaluador");
-            }    		
+            $('#btnModal').attr("data-target", "#modalReanuadar");    		
     	}  	        
     	else if(boton == "pendiente"){
     		$('#campoFinalizar').attr("value", 1);
     		$("#estadoTexto").html("<strong>Estado: </strong>Pendiente");
-            if(usuario === 3){
-                $('#btnModal').attr("data-target", "#modalFinalizar");
-            }else{
-                $('#btnModal').attr("data-target", "#modalEvaluador");
-            }
+            $('#btnModal').attr("data-target", "#modalFinalizar");
     	}  
         //var k = $(".estado").text();
         //alert(k); reanuadar
     });
+    //permite que al cambiar el select de estados, se busque de inmediato
     $("#estado_id").change(function(){
         $("#botonFiltro").click();
     });
 });
 
+$(document).ready(function() {
+    //entrega la pripoedad multiselect a encargados
+    $(".js-example-basic-multiple").select2({
+        placeholder: "Selecciona un encargado"
+    });
+});
 
+//deja al final los comentarios
 var d = $('#data');
 d.scrollTop(d.prop("scrollHeight"));

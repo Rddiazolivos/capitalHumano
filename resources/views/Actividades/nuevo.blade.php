@@ -87,20 +87,7 @@
                                   @endforeach
                                 </select>
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('responsable_id') ? ' has-error' : '' }}">
-                          <label for="responsable_id" class="col-md-4 control-label">Responsable</label>
-
-                            <div class="col-md-6">
-                                <select name="responsable_id" id="responsable_id" class="form-control" required>
-                                    <option selected hidden value="">Seleccione el responsable</option>
-                                  @foreach($usuarios as $user)
-                                    <option value="{{ $user->id }}">{{ $user->nombre }}</option>
-                                  @endforeach
-                                </select>
-                            </div>
-                        </div>
+                        </div>                    
                         <!-- el campo oculto -->
                         <input name="etapa_id" type="hidden" value="{{$id_etapa}}">
 

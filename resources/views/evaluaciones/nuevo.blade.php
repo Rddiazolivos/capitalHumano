@@ -13,7 +13,24 @@
                     <div class="col-md-6">Fecha de cierre: {{ \Carbon\Carbon::parse($actividad->updated_at)->format('d/m/Y')}}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">Responsable: {{$responsable_evaluador}}</div>
+                    <div class="col-md-12">Responsable: {{$supervisor->nombre}}</div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">Encargados: 
+                        <?php
+                        $i = 0;
+                        $len = count($encargados);
+                        foreach($encargados as $encargado){
+                            if ($i == $len - 1) {
+                                echo $encargado->nombre . ' ' . $encargado->ape_paterno . '.';
+                            } else{
+                                echo $encargado->nombre . ' ' . $encargado->ape_paterno . ', ';
+                            }
+                            // …
+                            $i++;
+                        }
+                        ?>
+                    </div>
                 </div>
             </div>
         </div>

@@ -44,6 +44,11 @@
                             @if($actividad->estado_id == 2)
                             <a data-toggle="tooltip" title="Evaluar Actividad" href="{{ route('evaluar.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-education text-warning"></span></a>
                             @endif
+                            @if($actividad->asignacion == 0)
+                            <a data-toggle="tooltip" title="Asignar responsable" href="{{ route('responsable.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-check text-warning"></span></a>
+                            @elseif($actividad->asignacion == 1)
+                            <a data-toggle="tooltip" title="Editar responsable" href="{{ route('responsable.editar' , $actividad->id) }}"><span class="glyphicon glyphicon-check text-primary"></span></a>
+                            @endif
                         </td>                        
                     </tr>
                     @endforeach

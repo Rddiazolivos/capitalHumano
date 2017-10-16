@@ -12,12 +12,10 @@
                                 <div class="col-md-7" id="estadoTexto"><strong>Estado: </strong>{{$actividad->estado->nombre}}</div>
                                 <div class="col-md-5">
                                 <!-- Trigger the modal with a button -->
-                                @if($actividad->estado_id == 1 && Auth::user()->rol_id === 3)
+                                @if($actividad->estado_id == 1)
                                 <button id="btnModal" type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalFinalizar">Cambiar</button>
-                                @elseif($actividad->estado_id == 2 && Auth::user()->rol_id === 3 )
+                                @elseif($actividad->estado_id == 2)
                                 <button id="btnModal" type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalReanuadar">Cambiar</button>
-                                @elseif(($actividad->estado_id == 2 || $actividad->estado_id == 1) && (Auth::user()->rol_id === 2 || Auth::user()->rol_id === 1 ))
-                                <button id="btnModal" type="button" class="btn btn-link btn-xs" data-toggle="modal" data-target="#modalEvaluador">Cambiar</button>
                                 @endif
                                 
                                 </div>
@@ -128,30 +126,6 @@
     </div>
 </div>
 
-<!-- Modal para el evaluador-->
-<div id="modalEvaluador" class="modal fade" role="dialog">
-    <div class="modal-dialog ">
-
-    <!-- Modal content-->
-    <div class="modal-content">
-        <div class="modal-header">
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <h4 class="modal-title">Cambiar estado</h4>
-        </div>
-        <div class="modal-body">
-            <p>Reanudar la activadad dejará el estado como "Pendiente".</p>
-            <p>Finalizar la activadad dejará el estado como "Cerrada".</p>
-            <small>*El cambio se reflejara al guardar los cambios.</small>
-        </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-default pull-left" data-dismiss="modal">Cancelar</button>
-            <button type="button" class="btn btn-warning lol" data-dismiss="modal" id="pendiente">Pendiente</button>
-            <button type="button" class="btn btn-danger lol" data-dismiss="modal" id="finalizar">Finalizar</button>
-        </div>
-    </div>
-
-    </div>
-</div>
 <!-- div con el usuario actual -->
 <div id='usuarioActual' data-user='{{Auth::user()->rol_id}}'></div>
 @endsection
