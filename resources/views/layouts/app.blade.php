@@ -17,6 +17,7 @@
 
 </head>
 <body>
+    <div class="visible-xs" id="xs-check"></div>
     <div id="app">
         <nav class="navbar navbar-default navbar-static-top">
             <div class="container">
@@ -42,9 +43,9 @@
                     @endif
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">
-                    <div class="visible-xs" id="xs-check"></div>
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">                    
                     <!-- Left Side Of Navbar -->
+                    @if(Auth::check())
                     <ul class="nav navbar-nav menu-celular">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-folder-close"></span> Usuarios <span class="caret"></span></a>
@@ -91,6 +92,7 @@
                                 </ul>
                         </li>
                     </ul>
+                    @endif
                     
 
                     <!-- Right Side Of Navbar -->

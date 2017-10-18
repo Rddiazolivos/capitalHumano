@@ -28,7 +28,6 @@ $(document).ready(function() {
     $(".js-example-basic-multiple").select2({
         placeholder: "Selecciona un encargado"
     });
-    
 });
 
 //deja al final los comentarios
@@ -36,9 +35,22 @@ var d = $('#data');
 d.scrollTop(d.prop("scrollHeight"));
 
 //determina el tamaño
-    if( $(".navbar-toggle").css('display') == 'none' ){
-        $('.menu-celular').hide();
+    if( $("#xs-check").is(":visible") ){
+        $('.menu-desktop').hide();
 
     }else{
-        $('.menu-desktop').hide();
+        $('.menu-celular').hide();
     };
+
+$(window).resize(function() {
+    var aest = $("#xs-check").is(":visible");
+    //alert(aest);
+    if( aest ){
+        $('.menu-desktop').hide();
+        $('.menu-celular').show();
+    }else{        
+        $('.menu-celular').hide();
+        $('.menu-desktop').show();
+    };
+
+});
