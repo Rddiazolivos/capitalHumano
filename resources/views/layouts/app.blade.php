@@ -32,7 +32,7 @@
                     </button>
 
                     <!-- Branding Image -->
-                    @if (Auth::guest())                    
+                    @if (Auth::guest())
                     <a class="navbar-brand" href="{{ url('/') }}">
                         {{ config('app.name', 'SDV') }}
                     </a>
@@ -43,10 +43,10 @@
                     @endif
                 </div>
 
-                <div class="collapse navbar-collapse" id="app-navbar-collapse">                    
+                <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
                     @if(Auth::check())
-                    <ul class="nav navbar-nav menu-celular">
+                    <ul class="nav navbar-nav menu-celular hidden-sm hidden-md hidden-lg ">
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-folder-close"></span> Usuarios <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -93,7 +93,7 @@
                         </li>
                     </ul>
                     @endif
-                    
+
 
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
@@ -129,7 +129,7 @@
                 </div>
             </div>
         </nav>
-        
+
         @yield('content')
     </div>
 
@@ -137,6 +137,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/select2.js') }}"></script>
     <script src="{{ asset('js/miScript.js') }}"></script>
-    
+
 </body>
 </html>
