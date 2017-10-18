@@ -21,8 +21,34 @@ class rolsTableSeeder extends Seeder
             'nombre' => 'Evaluado',
         ]);
         DB::table('departamentos')->insert([
-            'nombre' => 'Ventas',
-            'descripcion' => 'Ventas'
+            [
+                'nombre' => 'Direción',
+                'descripcion' => 'Altos cargos',
+            ],
+            [
+                'nombre' => 'Ventas',
+                'descripcion' => 'Departamento a cargo de ventas',
+            ],
+            [
+                'nombre' => 'Recursos humanos',
+                'descripcion' => 'Departamento a cargo de personal',
+            ],
+            [
+                'nombre' => 'Administración',
+                'descripcion' => 'Departamento a cargo de la administración',
+            ],
+            [
+                'nombre' => 'Finanza y contabilidad',
+                'descripcion' => 'Departamento a cargo de dinero',
+            ],
+            [
+                'nombre' => 'Publicidad',
+                'descripcion' => 'Departamento a cargo de marketing',
+            ],
+            [
+                'nombre' => 'Informatica',
+                'descripcion' => 'Core',
+            ],
         ]);
         DB::table('estados')->insert([
             'nombre' => 'Pendiente'

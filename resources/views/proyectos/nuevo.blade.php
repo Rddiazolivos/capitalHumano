@@ -71,7 +71,7 @@
                                 <select name="user_id" id="user_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione el Encargado</option>
                                   @foreach($userList as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nombre }}</option>
+                                    <option value="{{ $item->id }}">{{ $item->nombre . " " . $item->ape_paterno }}</option>
                                   @endforeach
                                 </select>
                             </div>

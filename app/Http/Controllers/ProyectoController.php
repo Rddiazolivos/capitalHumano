@@ -28,7 +28,7 @@ class ProyectoController extends Controller
     public function create()
     {
         $items = array(
-            'userList' =>  user::all()->where('nombre', '<>', 'Administrador')
+            'userList' =>  user::all()->where('rol_id', '<>', '1')
         );
         return view('proyectos.nuevo',  $items);
     }

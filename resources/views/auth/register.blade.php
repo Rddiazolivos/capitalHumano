@@ -8,6 +8,21 @@
                     <form class="form-horizontal" method="POST" action="{{ route('register') }}">
                         {{ csrf_field() }}
 
+                        
+                        <div class="form-group{{ $errors->has('rut') ? ' has-error' : '' }}">
+                            <label for="rut" class="col-md-4 control-label">Rut</label>
+
+                            <div class="col-md-6">
+                                <input id="rut" type="text" class="form-control" name="rut" value="{{ old('rut') }}" required autofocus>
+
+                                @if ($errors->has('rut'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('rut') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
                         <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
                             <label for="nombre" class="col-md-4 control-label">Nombre</label>
 
@@ -17,6 +32,34 @@
                                 @if ($errors->has('nombre'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('nombre') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('ape_paterno') ? ' has-error' : '' }}">
+                            <label for="ape_paterno" class="col-md-4 control-label">Apellido Paterno</label>
+
+                            <div class="col-md-6">
+                                <input id="ape_paterno" type="text" class="form-control" name="ape_paterno" value="{{ old('ape_paterno') }}" required autofocus>
+
+                                @if ($errors->has('ape_paterno'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ape_paterno') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('ape_materno') ? ' has-error' : '' }}">
+                            <label for="ape_materno" class="col-md-4 control-label">Apellido Materno</label>
+
+                            <div class="col-md-6">
+                                <input id="ape_materno" type="text" class="form-control" name="ape_materno" value="{{ old('ape_materno') }}" required autofocus>
+
+                                @if ($errors->has('ape_materno'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('ape_materno') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -56,49 +99,7 @@
                             <div class="col-md-6">
                                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
                             </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('ape_paterno') ? ' has-error' : '' }}">
-                            <label for="ape_paterno" class="col-md-4 control-label">Apellido Paterno</label>
-
-                            <div class="col-md-6">
-                                <input id="ape_paterno" type="text" class="form-control" name="ape_paterno" value="{{ old('ape_paterno') }}" required autofocus>
-
-                                @if ($errors->has('ape_paterno'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('ape_paterno') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('ape_materno') ? ' has-error' : '' }}">
-                            <label for="ape_materno" class="col-md-4 control-label">Apellido Materno</label>
-
-                            <div class="col-md-6">
-                                <input id="ape_materno" type="text" class="form-control" name="ape_materno" value="{{ old('ape_materno') }}" required autofocus>
-
-                                @if ($errors->has('ape_materno'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('ape_materno') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
-
-                        <div class="form-group{{ $errors->has('rut') ? ' has-error' : '' }}">
-                            <label for="rut" class="col-md-4 control-label">Rut</label>
-
-                            <div class="col-md-6">
-                                <input id="rut" type="text" class="form-control" name="rut" value="{{ old('rut') }}" required autofocus>
-
-                                @if ($errors->has('rut'))
-                                    <span class="help-block">
-                                        <strong>{{ $errors->first('rut') }}</strong>
-                                    </span>
-                                @endif
-                            </div>
-                        </div>
+                        </div>                        
 
                         <div class="form-group{{ $errors->has('fec_nacimiento') ? ' has-error' : '' }}">
                             <label for="fec_nacimiento" class="col-md-4 control-label">Fecha Nacimiento</label>

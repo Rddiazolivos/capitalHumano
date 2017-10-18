@@ -5,8 +5,8 @@
                 <div class="panel-heading">Listado de usuarios</div>            
                 <table class="table table-hover">
                 <tr>
-                    <td><strong>Email: </strong></td>
-                    <td><strong>Nombre: </strong></td>
+                    <td><strong>Email</strong></td>
+                    <td><strong>Nombre y apellidos</strong></td>
                 </tr>
                 @foreach($usuarios as $usuario)
                 <tr>

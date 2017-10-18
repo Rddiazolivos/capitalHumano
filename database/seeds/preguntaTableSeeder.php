@@ -17,8 +17,5 @@ class preguntaTableSeeder extends Seeder
         DB::table('preguntas')->insert([
             'concepto' => '¿El trabajor cumplio con lo requerido?'
         ]);
-        DB::table('prioridades')->insert([
-            'nombre' => 'Alta'
-        ]);
     }
 }
