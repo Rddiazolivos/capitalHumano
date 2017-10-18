@@ -15,7 +15,7 @@
                         <select name="user" id="user" class="form-control" required>
                             <option selected hidden value="">Seleccione un usuario</option>
                             @foreach($usuarios as $usuario)
-	                            <option value="{{ $usuario->id }}">{{ $usuario->nombre }}</option>
+	                            <option value="{{ $usuario->id }}">{{ $usuario->full_name }}</option>
 	                        @endforeach
 
                         </select>

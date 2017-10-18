@@ -18,7 +18,7 @@
                                 <select name="supervisor_id" id="supervisor_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione el Supervisor</option>
                                   @foreach($responsables as $responsable)
-                                    <option value="{{ $responsable->id }}" @if($supervisor->id==$responsable->id) selected='selected' @endif>{{ $responsable->nombre }}</option>
+                                    <option value="{{ $responsable->id }}" @if($supervisor->id==$responsable->id) selected='selected' @endif>{{ $responsable->full_name }}</option>
                                   @endforeach
                                 </select>
                             </div>
@@ -36,7 +36,7 @@
                                                 selected='selected'
                                             @endif 
                                         @endforeach
-                                    >{{ $usuario->nombre." " .$usuario->ape_paterno }}</option>
+                                    >{{ $usuario->full_name }}</option>
                                   @endforeach
                                 </select>
                             </div>

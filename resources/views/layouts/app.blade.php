@@ -51,7 +51,7 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-folder-close"></span> Usuarios <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ url('/register') }}"><span class="glyphicon glyphicon-user text-primary"></span> Registrar</a>
+                                        <a href="{{ url('/register') }}"><span class="glyphicon glyphicon-plus-sign text-success"></span> Nuevo usuario</a>
                                     </li>
                                     <li>
                                         <a href="{{ url('/usuario') }}"><span class="glyphicon glyphicon-tasks text-primary"></span> Usuarios registrados</a>
@@ -62,18 +62,18 @@
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-th"></span> Proyectos <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('proyecto.index') }}"><span class="glyphicon glyphicon-list text-primary"></span> Mis proyectos </a>
+                                        <a href="{{ route('proyecto.create') }}"><span class="glyphicon glyphicon-plus-sign text-success"></span> Crear proyecto</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('proyecto.create') }}"><span class="glyphicon glyphicon-list text-primary"></span> Crear proyecto</a>
-                                    </li>
+                                        <a href="{{ route('proyecto.index') }}"><span class="glyphicon glyphicon-list text-primary"></span> Mis proyectos </a>
+                                    </li>                                    
                                 </ul>
                         </li>
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Actividades <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
-                                        <a href="{{ route('actividad.ver') }}"><span class="glyphicon glyphicon-list text-primary"></span> Actividades asignadas  </a>
+                                        <a href="{{ route('actividad.ver') }}"><span class="glyphicon glyphicon-check text-success"></span> Actividades asignadas  </a>
                                     </li>
                                     <li>
                                         <a href="{{ route('actividad.all') }}"><span class="glyphicon glyphicon-list text-primary"></span> Listar actividades</a>

@@ -20,7 +20,7 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-user text-primary"></span><a href="{{ url('/register') }}">Registrar</a>
+                                        <span class="glyphicon glyphicon-plus-sign text-success"></span><a href="{{ url('/register')}}">Nuevo usuario</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -44,6 +44,11 @@
                         <div class="panel-body">
                             <table class="table">
                                 <tr>
+                                    <tr>
+                                        <td>
+                                            <span class="glyphicon glyphicon-plus-sign text-success"></span><a href="{{ route('proyecto.create') }}">Crear proyecto</a>
+                                        </td>
+                                    </tr>
                                     <td>
                                         <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('proyecto.index') }}">Mis proyectos </a><span class="label label-info">
                                         {{ DB::table('proyectos')
@@ -51,13 +56,7 @@
                                         ->count() }}
                                         </span>
                                     </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('proyecto.create') }}">Crear proyecto</a>
-                                    </td>
-                                </tr>
-
+                                </tr>                                
                             </table>
                         </div>
                     </div>
@@ -75,7 +74,7 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('actividad.ver') }}">Actividades asignadas  </a><span class="label label-info"> {{ DB::table('actividades')
+                                        <span class="glyphicon glyphicon-check text-success"></span><a href="{{ route('actividad.ver') }}">Actividades asignadas  </a><span class="label label-info"> {{ DB::table('actividades')
                                         ->join('responsables', 'actividades.id', '=', 'responsables.actividad_id')
                                         ->where('estado_id', '1')
                                         ->where('responsables.responsable_id', Auth::user()->id)

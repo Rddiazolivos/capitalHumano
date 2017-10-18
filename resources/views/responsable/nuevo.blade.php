@@ -17,7 +17,7 @@
                                 <select name="supervisor_id" id="supervisor_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione el Supervisor</option>
                                   @foreach($responsables as $responsable)
-                                    <option value="{{ $responsable->id }}">{{ $responsable->nombre }}</option>
+                                    <option value="{{ $responsable->id }}">{{ $responsable->full_name }}</option>
                                   @endforeach
                                 </select>
                             </div>
@@ -29,7 +29,7 @@
                                 <select class="js-example-basic-multiple form-control" name="encargados[]" multiple="multiple" required>
                                   <option hidden value="">Seleccione el Encargado</option>
                                   @foreach($usuarios as $usuario)
-                                    <option value="{{ $usuario->id }}">{{ $usuario->nombre }}</option>
+                                    <option value="{{ $usuario->id }}">{{ $usuario->full_name }}</option>
                                   @endforeach
                                 </select>
                             </div>

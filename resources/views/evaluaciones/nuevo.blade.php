@@ -13,7 +13,7 @@
                     <div class="col-md-6">Fecha de cierre: {{ \Carbon\Carbon::parse($actividad->updated_at)->format('d/m/Y')}}</div>
                 </div>
                 <div class="row">
-                    <div class="col-md-12">Responsable: {{$supervisor->nombre}}</div>
+                    <div class="col-md-12">Responsable: {{$supervisor->nombre . ' ' . $supervisor->ape_paterno}}</div>
                 </div>
                 <div class="row">
                     <div class="col-md-12">Encargados: 

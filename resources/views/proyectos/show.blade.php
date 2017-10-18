@@ -9,7 +9,7 @@
                     <strong>Fecha de creación: </strong><p>{{ \Carbon\Carbon::parse($proyecto->fec_creacion)->format('d/m/Y') }}</p>
                     <strong>Fecha de termino: </strong><p>{{ \Carbon\Carbon::parse($proyecto->fec_termino)->format('d/m/Y')}}</p>
                     <strong>Observación: </strong><p>{{ $proyecto->observaciones }}</p>
-                    <strong>Encargado: </strong><p>{{ $proyecto->user->nombre }}</p>
+                    <strong>Encargado: </strong><p>{{ $proyecto->user->full_name }}</p>
                 </div>
             </div>
         </div>

@@ -11,7 +11,7 @@
                 @foreach($usuarios as $usuario)
                 <tr>
                     <td><p>{{ $usuario->email }}</p></td>
-                    <td><p>{{ $usuario->nombre }} {{ $usuario->ape_paterno }}</p></td>
+                    <td><p>{{ $usuario->full_name }}</p></td>
                 </tr>
                 @endforeach
                 </table>                        

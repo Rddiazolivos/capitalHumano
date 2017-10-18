@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('fec_creacion') ? ' has-error' : '' }}">
-                            <label for="fec_creacion" class="col-md-4 control-label">Fecha creación</label>
+                            <label for="fec_creacion" class="col-md-4 control-label">Fecha inicio</label>
 
                             <div class="col-md-6">
                                 <input id="fec_creacion" type="date" class="form-control" name="fec_creacion" value="{{ old('fec_creacion') }}" required autofocus>
@@ -71,7 +71,7 @@
                                 <select name="user_id" id="user_id" class="form-control" required>
                                     <option selected hidden value="">Seleccione el Encargado</option>
                                   @foreach($userList as $item)
-                                    <option value="{{ $item->id }}">{{ $item->nombre . " " . $item->ape_paterno }}</option>
+                                    <option value="{{ $item->id }}">{{ $item->full_name }}</option>
                                   @endforeach
                                 </select>
                             </div>
