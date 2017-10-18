@@ -6,7 +6,7 @@
     <div class="menu">
         <div class="col-sm-3 col-md-3">
 
-            <div class="panel-group menu-desktop" id="accordion">
+            <div class="panel-group menu-desktop hidden-xs" id="accordion">
             @if ( Auth::user()->rol->nombre === 'Administrador')
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -93,7 +93,7 @@
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -103,7 +103,7 @@
                     </div>
                     <div id="collapseFour" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <table class="table">                                
+                            <table class="table">
                                 <tr>
                                     <td>
                                         <span class="glyphicon glyphicon-tasks"></span><a href="{{ route('reporte.trabajador') }}">Reporte por trabajador</a>

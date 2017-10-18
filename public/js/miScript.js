@@ -4,16 +4,16 @@ $(document).ready(function(){
         var boton = $(this).attr('id');
     	var estado = $('#campoFinalizar').attr("value");
     	//alert(boton);
-    	if(boton == "finalizar"){            
+    	if(boton == "finalizar"){
     		$('#campoFinalizar').attr("value", 2);
     		$("#estadoTexto").html("<strong>Estado: </strong>Finalizada");
-            $('#btnModal').attr("data-target", "#modalReanuadar");    		
-    	}  	        
+            $('#btnModal').attr("data-target", "#modalReanuadar");
+    	}
     	else if(boton == "pendiente"){
     		$('#campoFinalizar').attr("value", 1);
     		$("#estadoTexto").html("<strong>Estado: </strong>Pendiente");
             $('#btnModal').attr("data-target", "#modalFinalizar");
-    	}  
+    	}
         //var k = $(".estado").text();
         //alert(k); reanuadar
     });
@@ -34,21 +34,14 @@ $(document).ready(function() {
 var d = $('#data');
 d.scrollTop(d.prop("scrollHeight"));
 
-//determina el tamaño
-    if( $("#xs-check").is(":visible") ){
-        $('.menu-desktop').hide();
-
-    }else{
-        $('.menu-celular').hide();
-    };
-
 $(window).resize(function() {
+  //determina el tamaño
     var aest = $("#xs-check").is(":visible");
     //alert(aest);
     if( aest ){
         $('.menu-desktop').hide();
         $('.menu-celular').show();
-    }else{        
+    }else{
         $('.menu-celular').hide();
         $('.menu-desktop').show();
     };
