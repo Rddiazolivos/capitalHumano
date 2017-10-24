@@ -38,8 +38,8 @@
                     <label for="conforme" class="col-md-4 control-label">Conformidad</label>
 
                     <div class="col-md-6">                        
-                        <label class="radio-inline"><input type="radio" name="conforme" value="1" required>Conforme</label>
-                        <label class="radio-inline"><input type="radio" name="conforme" value="0">Disconforme</label>
+                        <label class="radio-inline"><input type="radio" name="conforme" value="1" @if($evaluacion->conforme ==  '1') checked="checked" @endif required>Conforme</label>
+                        <label class="radio-inline"><input type="radio" name="conforme" value="0" @if($evaluacion->conforme ==  '0') checked="checked" @endif>Disconforme</label>
 
                         @if ($errors->has('conforme'))
                             <span class="help-block">
@@ -55,16 +55,16 @@
                     <div class="col-md-6">
                         <select name="calificacion" id="calificacion" class="form-control" required>
                             <option selected hidden value="">Seleccione la calificacion</option>
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="4">4</option>
-                            <option value="5">5</option>
-                            <option value="6">6</option>
-                            <option value="7">7</option>
-                            <option value="8">8</option>
-                            <option value="9">9</option>
-                            <option value="10">10</option>
+                            <option value="1" @if($evaluacion->calificacion==1) selected='selected' @endif>1</option>
+                            <option value="2" @if($evaluacion->calificacion==2) selected='selected' @endif>2</option>
+                            <option value="3" @if($evaluacion->calificacion==3) selected='selected' @endif>3</option>
+                            <option value="4" @if($evaluacion->calificacion==4) selected='selected' @endif>4</option>
+                            <option value="5" @if($evaluacion->calificacion==5) selected='selected' @endif>5</option>
+                            <option value="6" @if($evaluacion->calificacion==6) selected='selected' @endif>6</option>
+                            <option value="7" @if($evaluacion->calificacion==7) selected='selected' @endif>7</option>
+                            <option value="8" @if($evaluacion->calificacion==8) selected='selected' @endif>8</option>
+                            <option value="9" @if($evaluacion->calificacion==9) selected='selected' @endif>9</option>
+                            <option value="10" @if($evaluacion->calificacion==10) selected='selected' @endif>10</option>
 
                         </select>
                     </div>
@@ -74,7 +74,7 @@
                             <label for="observacion" class="col-md-4 control-label">Observaciones</label>
 
                     <div class="col-md-6">
-                        <textarea rows="4" cols="50" id="observacion" type="text" class="form-control" name="observacion" value="{{ old('observacion') }}" autofocus></textarea>
+                        <textarea rows="4" cols="50" id="observacion" type="text" class="form-control" name="observacion" autofocus>{{ old('observacion', $evaluacion->observacion) }}</textarea>
 
                         @if ($errors->has('observacion'))
                             <span class="help-block">
@@ -91,7 +91,7 @@
                     <div class="text-center">
                         <a href="{{ route('actividad.show', $actividad->etapa_id)}}" class="btn btn-info" role="button">Cancelar</a>
                         <button type="submit" class="btn btn-primary">
-                            Guardar
+                            Editar evaluación
                         </button>
                     </div>
                 </div>

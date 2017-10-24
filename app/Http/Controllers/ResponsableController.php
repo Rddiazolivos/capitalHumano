@@ -27,8 +27,7 @@ class ResponsableController extends Controller
     public function create($id)
     {
         $formulario = array(
-            'responsables' =>  User::all()->where("rol_id", "2"),
-            'usuarios' =>  User::all()->where("rol_id", "3"),
+            'responsables' =>  User::all()->where("rol_id", "3"),
             'id_actividad' =>  $id ,
         );
         return view('responsable.nuevo', $formulario);
@@ -42,17 +41,14 @@ class ResponsableController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['supervisor_id' => 'required']);
-        $supervisor = new responsable;
-        $supervisor->responsable_id = $request->supervisor_id;
-        $supervisor->actividad_id = $request->id_actividad;
-        $supervisor->save();
+        $this->validate($request, ['encargados' => 'required']);
         foreach($request->encargados as $encargado_id ){
             $encargado = new responsable;
             $encargado->responsable_id = $encargado_id;
             $encargado->actividad_id = $request->id_actividad;
             $encargado->save();
         }
+        //permite encontrar la activad asociada y colocar true la asignacion
         $actividad = actividad::find($request->id_actividad);
         $actividad->asignacion = true;
         $actividad->save();
@@ -81,13 +77,7 @@ class ResponsableController extends Controller
     public function edit(actividad $actividad)
     {
         $formulario = array(
-            'responsables' =>  User::all()->where("rol_id", "2"),
             'usuarios' =>  User::all()->where("rol_id", "3"),
-            'supervisor' =>  responsable::where('responsables.actividad_id', $actividad->id)
-                ->join('users', 'responsables.responsable_id', '=', 'users.id')
-                ->where('users.rol_id', 2)
-                ->select('*','responsables.id as id_res')
-                ->first(),
             'encargados' =>  responsable::where('responsables.actividad_id', $actividad->id)
             ->join('users', 'responsables.responsable_id', '=', 'users.id')
             ->where('users.rol_id', 3)->get(),
@@ -102,11 +92,9 @@ class ResponsableController extends Controller
      * @param  \sdv\responsable  $responsable
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, responsable $responsable)
+    public function update(Request $request)
     {
-        //actualizar evaluador
-        $responsable->responsable_id = $request->supervisor_id;
-        $responsable->save();
+        $this->validate($request, ['encargados' => 'required']);
         //actualizar evaluado
         $encargadosActual =  responsable::where('responsables.actividad_id', $request->id_actividad)
             ->join('users', 'responsables.responsable_id', '=', 'users.id')

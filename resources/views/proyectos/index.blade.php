@@ -1,22 +1,32 @@
 @extends('layouts.menu')
 @section('contenido')
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default">
-                <div class="panel-heading">Listado de proyectos</div>            
-                <table class="table table-hover">
-                <tr>
-                    <td><strong>Nombre: </strong></td>
-                    <td class='text-center'><strong>Avance: </strong></td>
-                </tr>
-                @foreach($proyectos as $proyecto)
-                <tr>
-                    <td><p>{{ $proyecto->nombre }}</p></td>
-                    <td><p class='text-center'>{{ $proyecto->porcentaje }}%</p></td>
-                    <td><a href="{{ route('etapa.show', $proyecto->id) }}"><span class="glyphicon glyphicon-folder-open"></span></a></td>
-                </tr>
-                @endforeach
-                </table>            
-            {{$proyectos->links()}}
+<div class='row'>
+    <div class="col-md-12">
+        <form class='navbar-form ' role='search' method="GET" action="">
+            <div class="row">
+                <div class="col-md-5 col-md-offset-7 input-group">
+                    <input type='text' class='form-control' placeholder='Buscar' name="scope" value="">
+                    <div class="input-group-btn">
+                        <button type='submit' class='btn btn-default' id='botonFiltro'><i class="glyphicon glyphicon-search"></i></button>
+                    </div>
+                </div>
+            </div>                         
+        </form>
+    </div>
+</div>     
+<div class="row">
+    @foreach($proyectos as $proyecto)                
+        <div class="col-sm-6 col-md-4">
+            <div class="panel panel-primary">
+                <div class="panel-heading">{{ $proyecto->nombre }}</div>
+                <div class="panel-body">
+                    <p>{{ str_limit($proyecto->observaciones, $limit = 120, $end = ' ...') }}</p>
+                    <p>Porcentaje de avance: {{$proyecto->porcentaje}}%</p>
+                    <a href="{{ route('etapa.show', $proyecto->id) }}" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-folder-open text-primary"></span>  Inspeccionar</a>
+                </div>
             </div>
-        </div>
+        </div>                
+    @endforeach 
+</div>           
+{{$proyectos->links()}}            
 @endsection

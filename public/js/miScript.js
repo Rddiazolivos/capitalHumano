@@ -26,7 +26,8 @@ $(document).ready(function(){
 $(document).ready(function() {
     //entrega la pripoedad multiselect a encargados
     $(".js-example-basic-multiple").select2({
-        placeholder: "Selecciona un encargado"
+        placeholder: "Selecciona un encargado",
+        width: 'resolve'
     });
 });
 

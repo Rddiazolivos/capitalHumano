@@ -11,6 +11,6 @@
                     <strong>Observación: </strong><p>{{ $proyecto->observaciones }}</p>
                     <strong>Encargado: </strong><p>{{ $proyecto->user->full_name }}</p>
                 </div>
-            </div>
+            </div>            
         </div>
 @endsection

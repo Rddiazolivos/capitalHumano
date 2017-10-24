@@ -43,13 +43,23 @@ class ComentarioController extends Controller
     {
         //dd($request);
         $actividad = actividad::find($request->actividad_id);
-        $actividad->estado_id = $request->estadoActividad;
-        $actividad->save();
-
-        $comentario = new comentario;
-        $comentario->fill($request->all());
-        $comentario->save();
-        return redirect()->route('comentario.crear', $request->actividad_id);
+        if($actividad->estado_id == $request->estadoActividad){            
+            $this->validate($request, ['nombre' => 'required']);
+            $comentario = new comentario;
+            $comentario->fill($request->all());
+            $comentario->save();
+            return redirect()->route('comentario.crear', $request->actividad_id);
+        }else{
+            $actividad->estado_id = $request->estadoActividad;
+            $actividad->save();
+            if($request->nombre <> null){
+                $comentario = new comentario;
+                $comentario->fill($request->all());
+                $comentario->save();
+            }            
+            return redirect()->route('actividad.show', $actividad->etapa_id);
+        }
+                
     }
 
     /**

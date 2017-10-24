@@ -29,11 +29,6 @@ class EvaluacionController extends Controller
         $actividad = actividad::all()->find($id);
         $metricas = array(
             'actividad' =>  $actividad,
-            'supervisor' =>  responsable::where('responsables.actividad_id', $actividad->id)
-                ->join('users', 'responsables.responsable_id', '=', 'users.id')
-                ->where('users.rol_id', 2)
-                ->select('*','responsables.id as id_res')
-                ->first(),
             'encargados' =>  responsable::where('responsables.actividad_id', $actividad->id)
             ->join('users', 'responsables.responsable_id', '=', 'users.id')
             ->where('users.rol_id', 3)->get(),
@@ -49,15 +44,18 @@ class EvaluacionController extends Controller
      */
     public function store(Request $request)
     {
-        $this->validate($request, ['actividad_id' => 'required|unique:evaluacion']);
+        //$this->validate($request, ['actividad_id' => 'required|unique:evaluacion']);
         $evaluacion = new evaluacion;
         $evaluacion->conforme = $request->conforme;
         $evaluacion->calificacion = $request->calificacion;
         $evaluacion->observacion = $request->observacion;
-        $evaluacion->actividad_id = $request->actividad_id;
         $evaluacion->save();
+
+        $actividad = actividad::find($request->actividad_id);
+        $actividad->evaluacion_id = $evaluacion->id;
+        $actividad->save();
         //redirección
-        return view( '/home'  );
+        return redirect()->route('actividad.show', $actividad->etapa_id);
     }
 
     /**
@@ -77,9 +75,16 @@ class EvaluacionController extends Controller
      * @param  \sdv\evaluacion  $evaluacion
      * @return \Illuminate\Http\Response
      */
-    public function edit(evaluacion $evaluacion)
+    public function edit(actividad $actividad, evaluacion $evaluacion)
     {
-        //
+        $formulario = array(
+            'actividad' =>  $actividad,
+            'evaluacion' =>  $evaluacion,
+            'encargados' =>  responsable::where('responsables.actividad_id', $actividad->id)
+            ->join('users', 'responsables.responsable_id', '=', 'users.id')
+            ->where('users.rol_id', 3)->get(),
+        );
+        return view('evaluaciones.editar', $formulario);
     }
 
     /**
@@ -91,7 +96,9 @@ class EvaluacionController extends Controller
      */
     public function update(Request $request, evaluacion $evaluacion)
     {
-        //
+        $evaluacion->fill($request->all());
+        $evaluacion->save();
+        return redirect()->route('actividad.show', $request->actividad_id);
     }
 
     /**

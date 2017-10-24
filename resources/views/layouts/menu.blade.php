@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container-fluid">
     <div class="row">
-    <div class="menu">
-        <div class="col-sm-3 col-md-3">
+        <div class="col-sm-2 col-md-2">
+            <div class="menu">
 
             <div class="panel-group menu-desktop hidden-xs" id="accordion">
             @if ( Auth::user()->rol->nombre === 'Administrador')
@@ -162,8 +162,10 @@
             </div>
         </div>
         </div>
-        <div class="col-sm-9 col-md-9">
+        <div class="col-sm-10 col-md-10">
+            <div class="container-fluid">
             @yield('contenido')
+            </div>
         </div>
     </div>
 </div>

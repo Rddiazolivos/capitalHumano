@@ -56,7 +56,7 @@
                         <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
                             <label for="nombre" class="control-label">Comentar</label>
 
-                                <textarea rows="4" cols="50" id="nombre" type="text" class="form-control" name="nombre" required autofocus>{{ old('nombre') }}</textarea>
+                                <textarea rows="4" cols="50" id="nombre" type="text" class="form-control" name="nombre" autofocus>{{ old('nombre') }}</textarea>
 
                                 @if ($errors->has('nombre'))
                                     <span class="help-block">
@@ -69,6 +69,7 @@
                         <input name="estadoActividad" id="campoFinalizar" type="hidden" value="{{$actividad->estado_id}}">                       
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
+                                <a href="{{ route('actividad.show', $actividad->etapa_id)}}" class="btn btn-info" role="button">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">
                                     Guardar cambios
                                 </button>
