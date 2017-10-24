@@ -250,7 +250,7 @@
     <aside class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
-                <h2 class="text-primary">Comenzar</h2>
+                <h2 class="text-primary">Tecnología</h2>
             </div>
             <br>
             <hr/>
