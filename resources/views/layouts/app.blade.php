@@ -9,17 +9,22 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>{{ config('app.name', 'Laravel') }}</title>
+    <!-- Permite colocar el icono -->
+    <link rel="icon" type="image/png" href="/img/SDV_icono.png" />
 
     <!-- Styles -->
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/app.css') }}" rel="stylesheet">    
     <link href="{{ asset('css/select2.min.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" />
+    <link href="{{ asset('css/estiloEtapas.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
+    @yield("estiloPersonalisado")
 
 </head>
 <body>
     <div class="visible-xs" id="xs-check"></div>
     <div id="app">
-        <nav class="navbar navbar-default navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
@@ -33,12 +38,13 @@
 
                     <!-- Branding Image -->
                     @if (Auth::guest())
-                    <a class="navbar-brand" href="{{ url('/') }}">
+                    <a class="navbar-brand" href="{{ url('/') }}">                        
                         {{ config('app.name', 'SDV') }}
                     </a>
                     @else
                     <a class="navbar-brand" href="{{ route('home') }}">
-                        {{ config('app.name', 'SDV') }}
+                        <span>{{ config('app.name', 'SDV') }} </span>
+                        <!--<img  class="img-responsive" border="0" alt="SDV" src="/img/SDV_icono.png" width="35">-->
                     </a>
                     @endif
                 </div>
@@ -131,12 +137,13 @@
         </nav>
 
         @yield('content')
+
     </div>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/select2.js') }}"></script>
     <script src="{{ asset('js/miScript.js') }}"></script>
-
+    <script src="{{ asset('js/evaluaciones.js') }}"></script>
 </body>
 </html>

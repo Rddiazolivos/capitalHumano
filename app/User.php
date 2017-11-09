@@ -39,5 +39,17 @@ class User extends Authenticatable
     public function getFullNameAttribute() {
         return ucfirst($this->nombre) . ' ' . ucfirst($this->ape_paterno);
     }
+
+    public function getCondicionNombreAttribute() {
+        $nombre;
+        if($this->condicion == 1){
+            $nombre = "Activo";
+        }else if($this->condicion == 0){
+            $nombre = "Inactivo";
+        }else{
+            $nombre = "Desconocida";
+        }
+        return $nombre;
+    }
 }
 

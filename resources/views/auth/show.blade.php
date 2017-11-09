@@ -2,7 +2,7 @@
 @section('contenido')
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-info">
-                <div class="panel-heading text-center">Mi cuenta</div>
+                <div class="panel-heading text-center">Datos</div>
 
                 <div class="panel-body">
                 <div class="container-fluid">

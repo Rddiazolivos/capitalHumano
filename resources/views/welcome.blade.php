@@ -90,7 +90,7 @@
                         Para lograr estos objetivos el sistema cuenta con tecnología de punta para crear una interfaz amigable y adaptable, fácil de usar.
                         Finalmente, el sistema genera reportes y documentos formales.
                     </p>
-                    <a href="#three" class="btn btn-default btn-xl page-scroll">Leer más</a>
+                    <a href="#four" class="btn btn-default btn-xl page-scroll">Leer más</a>
                 </div>
             </div>
         </div>
@@ -387,9 +387,8 @@
         <div class="modal-dialog modal-sm">
         <div class="modal-content">
             <div class="modal-body">
-                <h2 class="text-center">Nice Job!</h2>
-                <p class="text-center">You clicked the button, but it doesn't actually go anywhere because this is only a demo.</p>
-                <p class="text-center"><a href="http://www.bootstrapzero.com">Learn more at BootstrapZero</a></p>
+                <h2 class="text-center">Buen trabajo!</h2>
+                <p class="text-center">Solo Demo.</p>
                 <br/>
                 <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true">OK <i class="ion-android-close"></i></button>
             </div>

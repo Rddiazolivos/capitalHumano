@@ -19,8 +19,13 @@ Auth::routes();
 
 Route::group(['middleware' => ['auth']], function () {
 	Route::get('/home', 'HomeController@index')->name('home');
+
+	Route::resource('/usuario', 'UserController');
 	Route::get('/usuario', 'UserController@index')->name('usuario');
+	Route::get('/usuario/detalles/{user}', 'UserController@detalle')->name('usuario.detalle');
 	Route::get('/usuario/cuenta', 'UserController@show')->name('usuario.show');
+
+
 	Route::get('/etapa/crear/{etapa}', 'EtapaController@crear')->name('etapa.crear');
 
 	Route::resource('/departamento', 'DepartamentoController');
@@ -51,6 +56,14 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::post('pdf2', 'pdfController@actividad')->name('pdf.actividad');
 	Route::get('reporteActividad', 'pdfController@SeleccionarProyecto')->name('reporte.actividad');
+
+	Route::get('evaluacion/datos', 'EvaluacionProyectoController@datos')->name('evaluacion.datos');
+	Route::get('evaluacion/{user}', 'EvaluacionProyectoController@evaluar')->name('evaluacion.ok');
+	Route::get('evaluacion/', 'EvaluacionProyectoController@index')->name('evaluacion.index');	
+
+	Route::get('pruebas', function () {
+    return view('pruebas.1');
+});
 });
 
 

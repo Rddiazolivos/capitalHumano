@@ -1,6 +1,11 @@
+@section('estiloPersonalisado')
+  <link href="{{ asset('css/estiloEtapas.css') }}" rel="stylesheet">
+@endsection
+
 @extends('layouts.menu')
 @section('contenido')
 <div class="row">
+<div class="col-md-offset-1 col-md-10 ">
   <div class="panel panel-default">
     <div class="panel-heading">Fases del proyecto
       <div style="float: right;">
@@ -14,7 +19,10 @@
     <div class="panel panel-default">
       <div class="panel-heading">
         <h4 class="panel-title">
-          <a data-toggle="collapse" data-parent="#accordion" href="#{{ $etapa->id }}">{{ $etapa->nombre }}</a>
+          <a data-toggle="collapse" data-parent="#accordion" href="#{{ $etapa->id }}" class="collapsed">
+            {{ $etapa->nombre }}
+            <span class="etapa"></span>
+          </a>
         </h4>
       </div>
       <div id="{{ $etapa->id }}" class="panel-collapse collapse">
@@ -37,6 +45,6 @@
   <div style="float: right;">
     <a href="{{route('etapa.crear', $id_proyecto)}}">Agregar Etapa <span class="glyphicon glyphicon-plus"></span></a>
   </div> 
-
+</div>
 </div>
 @endsection

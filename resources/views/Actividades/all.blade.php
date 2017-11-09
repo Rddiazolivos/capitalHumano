@@ -1,12 +1,12 @@
 @extends('layouts.menu')
 @section('contenido')
-        <div class="col-md-11 col-md-offset-1">
-            <div class="panel panel-default">
-                <div class="panel-heading">Listado de actividades</div>                
-            </div>
-            <div class="panel panel-default">
-                <div class="panel-heading">
-                    <div class="container-fluid">
+    <div class="col-md-11 col-md-offset-1">
+        <div class="panel panel-default">
+            <div class="panel-heading">Listado de actividades</div>                
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <div class="container-fluid">
                     <div class='row'>
                         <form class='form-inline' role='search' method="GET" action="{{ route('actividad.all') }}">
                             <div class="col-md-6 form-group">
@@ -25,30 +25,33 @@
                             </div>                    
                         </form>
                     </div>
-                    </div>
                 </div>
-                @if(count($todas)>0)
-                <div class="table-responsive">           
-                    <table class="table table-hover">
-                    <tr>
-                        <td><strong>Número: </strong></td>
-                        <td><strong>Nombre: </strong></td>
-                        <td class='text-center'><strong>Prioridad: </strong></td>
-                        <td class='text-center'><strong>Estado: </strong></td>
-                    </tr>
+            </div>
+            @if(count($todas)>0)
+            <div class="table-responsive">           
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>N°</th>
+                            <th>Nombre</th>
+                            <th>Prioridad</th>
+                            <th><strong>Estado</th>
+                            <th></th>
+                        </tr>
+                    </thead>                    
                     @foreach($todas as $actividad)
-                    <tr>
+                    <tr class="centrar">
                         <td>{{ $actividad->id }}</td>
-                        <td><p>{{ $actividad->nombre }}</p></td>
-                        <td><p class='text-center'>{{ $actividad->prioridad->nombre }}</p></td>
-                        <td><p class='text-center'>{{ $actividad->estado->nombre }}</p></td>
+                        <td>{{ $actividad->nombre }}</td>
+                        <td>{{ $actividad->prioridad->nombre }}</td>
+                        <td>{{ $actividad->estado->nombre }}</td>
                         <td><a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a></td>                        
                     </tr>
                     @endforeach
-                    </table>
-                </div>
-                {{ $todas->appends(Request::all())->links() }}
-                @endIf            
-            </div>       
-        </div>
+                </table>
+            </div>
+            {{ $todas->appends(Request::all())->links() }}
+            @endIf            
+        </div>       
+    </div>
 @endsection

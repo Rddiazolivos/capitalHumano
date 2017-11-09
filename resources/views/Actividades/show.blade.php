@@ -32,20 +32,22 @@
                     <div class="panel panel-default">                        
                     <div class="table-responsive">          
                         <table class="table table-hover">
-                        <tr>
-                            <td><strong>N°: </strong></td>
-                            <td><strong>Nombre: </strong></td>
-                            <td class='text-center'><strong>Prioridad: </strong></td>
-                            <td class='text-center'><strong>Estado: </strong></td>
-                            <td class='text-center'><strong>Acciones: </strong></td>
-                        </tr>
+                            <thead>
+                                <tr>
+                                    <th>N°</th>
+                                    <th>Nombre</th>
+                                    <th>Prioridad</th>
+                                    <th>Estado</th>
+                                    <th>Acciones</th>
+                                </tr>
+                            </thead>                        
                         @foreach($pendientes as $actividad)
-                        <tr>
+                        <tr class="centrar">
                             <td>{{ $actividad->id }}</td>
-                            <td><p>{{ $actividad->nombre }}</p></td>
-                            <td><p class='text-center'>{{ $actividad->prioridad->nombre }}</p></td>
-                            <td><p class='text-center'>{{ $actividad->estado->nombre }}</p></td>
-                            <td class='text-center'>                            
+                            <td>{{ $actividad->nombre }}</td>
+                            <td>{{ $actividad->prioridad->nombre }}</td>
+                            <td>{{ $actividad->estado->nombre }}</td>
+                            <td>                            
                                 <a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a>
                                 @if($actividad->estado_id == 2 && $actividad->asignacion)
                                     @if($actividad->evaluacion_id == null)

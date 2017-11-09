@@ -7,7 +7,9 @@
                 <div class="col-md-5 col-md-offset-7 input-group">
                     <input type='text' class='form-control' placeholder='Buscar' name="scope" value="">
                     <div class="input-group-btn">
-                        <button type='submit' class='btn btn-default' id='botonFiltro'><i class="glyphicon glyphicon-search"></i></button>
+                        <button type='submit' class='btn btn-default' id='botonFiltro'>
+                            <i class="glyphicon glyphicon-search"></i>
+                        </button>
                     </div>
                 </div>
             </div>                         

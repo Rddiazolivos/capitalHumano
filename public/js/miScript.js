@@ -48,3 +48,16 @@ $(window).resize(function() {
     };
 
 });
+
+//para poder cambiar de color el menú
+$(document).ready(function() {
+    $(".menu .panel").hover(
+        function() {
+            //mouse over
+            $(this).removeClass( "panel-default" ).addClass( "panel-primary" );
+        }, function() {
+            //mouse out
+            $(this).removeClass( "panel-primary" ).addClass( "panel-default" );
+        }
+    );
+});

@@ -3,7 +3,7 @@
 @section('content')
 <div class="container-fluid">
     <div class="row">
-        <div class="col-sm-2 col-md-2">
+        <div class="col-sm-3 col-md-2 sidebar">
             <div class="menu">
 
             <div class="panel-group menu-desktop hidden-xs" id="accordion">
@@ -11,8 +11,7 @@
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
-                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><span class="glyphicon glyphicon-folder-close">
-                            </span> Usuarios</a>
+                            <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="glyphicon ion-person-stalker"></i> Usuarios</a>
                         </h4>
                     </div>
                     <div id="collapseOne" class="panel-collapse collapse">
@@ -20,7 +19,7 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-plus-sign text-success"></span><a href="{{ url('/register')}}">Nuevo usuario</a>
+                                        <span class="glyphicon ion-university text-success"></span><a href="{{ url('/register')}}">Nuevo usuario</a>
                                     </td>
                                 </tr>
                                 <tr>
@@ -30,6 +29,15 @@
                                 </tr>
                             </table>
                         </div>
+                    </div>
+                </div>
+            @endif
+            @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-parent="#accordion" href="{{ route('evaluacion.index') }}"><span class="glyphicon glyphicon-education"></span>Evaluaciones</a>
+                        </h4>
                     </div>
                 </div>
             @endif
@@ -74,7 +82,7 @@
                             <table class="table">
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-check text-success"></span><a href="{{ route('actividad.ver') }}">Actividades asignadas  </a><span class="label label-info"> {{ DB::table('actividades')
+                                        <span class="glyphicon glyphicon-check text-success"></span><a href="{{ route('actividad.ver') }}">Mis actividades </a><span class="label label-info"> {{ DB::table('actividades')
                                         ->join('responsables', 'actividades.id', '=', 'responsables.actividad_id')
                                         ->where('estado_id', '1')
                                         ->where('responsables.responsable_id', Auth::user()->id)
@@ -162,7 +170,7 @@
             </div>
         </div>
         </div>
-        <div class="col-sm-10 col-md-10">
+        <div class="col-sm-9 col-md-10 col-md-offset-2 col-sm-offset-3">
             <div class="container-fluid">
             @yield('contenido')
             </div>

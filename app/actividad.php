@@ -8,6 +8,10 @@ class actividad extends Model
 {
     protected $table = 'actividades';
     protected $fillable = ['nombre', 'descripcion', 'fec_entrega', 'observaciones', 'prioridad_id', 'tipo_id', 'estado_id', 'etapa_id'];
+
+    public function etapa(){
+        return $this->belongsTo('sdv\etapa');
+    }
     public function prioridad(){
     	return $this->belongsTo('sdv\prioridad');
     }
