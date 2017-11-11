@@ -1,11 +1,10 @@
-
 <?php
 
 use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateRespuestaEncuestaTable extends Migration
+class CreateUserRespuestaTable extends Migration
 {
     /**
      * Run the migrations.
@@ -14,14 +13,12 @@ class CreateRespuestaEncuestaTable extends Migration
      */
     public function up()
     {
-        Schema::create('respuestas_proyectos', function (Blueprint $table) {
+        Schema::create('userRespuesta', function (Blueprint $table) {
             $table->increments('id');
-            $table->string('valor');
-            $table->integer('pregunta_id')->unsigned()->default(1);
-            $table->foreign('pregunta_id')->references('id')->on('preguntas')->onDelete('cascade')->onUpdate('cascade');
+            $table->boolean('status')->default(false);
             $table->integer('user_id')->unsigned();
             $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('proyecto_id')->unsigned();
+            $table->integer('proyecto_id')->unsigned()->default(1);
             $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
@@ -35,6 +32,6 @@ class CreateRespuestaEncuestaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('respuestas_proyectos');
+        Schema::dropIfExists('userRespuesta');
     }
 }

@@ -4,6 +4,14 @@
 
 @extends('layouts.menu')
 @section('contenido')
+@if(count($etapas) == 0)
+<div class="col-md-12">
+  <div class="jumbotron text-center">
+    <h1>No posee etapas.</h1> 
+    <a href="{{route('etapa.crear', $id_proyecto)}}">Agregar Etapa <span class="glyphicon glyphicon-plus"></span></a>
+  </div>
+</div>
+@else
 <div class="row">
 <div class="col-md-offset-1 col-md-10 ">
   <div class="panel panel-default">
@@ -47,4 +55,5 @@
   </div> 
 </div>
 </div>
+@endif
 @endsection

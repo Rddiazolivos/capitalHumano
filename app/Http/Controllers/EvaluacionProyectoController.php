@@ -10,6 +10,7 @@ use sdv\etapa;
 use sdv\User;
 use sdv\responsable;
 use sdv\actividad;
+use sdv\respuestas_proyecto;
 use Illuminate\Http\Request;
 
 class EvaluacionProyectoController extends Controller
@@ -45,7 +46,21 @@ class EvaluacionProyectoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //dd($request);
+        $this->validate($request, ['proyecto_id' => 'unique:respuestas_proyecto,proyecto_id']);
+        foreach($request->MiArray as $clave => $elemento){
+            $respuesta = new respuestas_proyecto;
+            $respuesta->valor = $elemento;
+            $respuesta->pregunta_id = $request->MiArray2[$clave];
+            $respuesta->user_id = $request->user_id;
+            $respuesta->proyecto_id = $request->proyecto_id;
+            $respuesta->save();
+        }
+        
+        //redirección
+        return redirect()->action(
+            'EvaluacionProyectoController@index'
+        );
     }
 
     /**
@@ -93,12 +108,13 @@ class EvaluacionProyectoController extends Controller
         //
     }
 
-    public function evaluar(User $user)
+    public function evaluar(User $user, proyecto $proyecto)
     {
         $evaluacion = array(
             'areas'     =>  area::all(),
             'preguntas' =>  pregunta::all()->where('encuesta_id', '==', 1),
             'Usuario'   =>  $user,
+            'proyecto' => $proyecto,
         );
         //dd($user);
         return view('evaluacionComportamiento.evaluar', $evaluacion);
@@ -124,7 +140,7 @@ class EvaluacionProyectoController extends Controller
             ->select('users.*', 'responsables.responsable_id')
             ->get();
 
-        return response()->json([ 'responsables' => $responsables, ]);
+        return response()->json([ 'responsables' => $responsables, 'proyecto_id' => $request->id]);
           
     }
 }

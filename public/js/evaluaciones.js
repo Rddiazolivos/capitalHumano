@@ -28,7 +28,7 @@ $(document).ready(function(){
 					"  </div>" +
 					"  <div class='media-body'>"+
 					"    <h4 class='media-heading'>"+ field.nombre+" "+ field.ape_paterno+"</h4>" +
-					"    <p><a href='evaluacion/"+field.responsable_id+"'><span class='glyphicon glyphicon-education'></span>Evaluar</a></p>" +
+					"    <p><a href='evaluacion/"+field.responsable_id+"/"+result.proyecto_id+"'><span class='glyphicon glyphicon-education'></span>Evaluar</a></p>" +
 					"  </div>" +
 					"</div>"
 				);

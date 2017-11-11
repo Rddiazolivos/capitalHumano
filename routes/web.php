@@ -58,8 +58,10 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('reporteActividad', 'pdfController@SeleccionarProyecto')->name('reporte.actividad');
 
 	Route::get('evaluacion/datos', 'EvaluacionProyectoController@datos')->name('evaluacion.datos');
-	Route::get('evaluacion/{user}', 'EvaluacionProyectoController@evaluar')->name('evaluacion.ok');
-	Route::get('evaluacion/', 'EvaluacionProyectoController@index')->name('evaluacion.index');	
+	Route::get('evaluacion/{user}/{proyecto}', 'EvaluacionProyectoController@evaluar')->name('evaluacion.ok');
+	Route::get('evaluacion/', 'EvaluacionProyectoController@index')->name('evaluacion.index');
+	Route::resource('/evaluacion', 'EvaluacionProyectoController');	
+
 
 	Route::get('pruebas', function () {
     return view('pruebas.1');
