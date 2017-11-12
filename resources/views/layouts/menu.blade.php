@@ -31,16 +31,7 @@
                         </div>
                     </div>
                 </div>
-            @endif
-            @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
-                <div class="panel panel-default">
-                    <div class="panel-heading">
-                        <h4 class="panel-title">
-                            <a data-parent="#accordion" href="{{ route('evaluacion.index') }}"><span class="glyphicon glyphicon-education"></span>Evaluaciones</a>
-                        </h4>
-                    </div>
-                </div>
-            @endif
+            @endif            
             @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
                 <div class="panel panel-default">
                     <div class="panel-heading">
@@ -58,11 +49,14 @@
                                         </td>
                                     </tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('proyecto.index') }}">Mis proyectos </a><span class="label label-info">
+                                        <span class="glyphicon glyphicon-list text-primary"></span><a href="{{ route('proyecto.index') }}">Mis proyectos </a>
+                                        @if ( Auth::user()->rol->nombre != 'Administrador')
+                                        <span class="label label-info">
                                         {{ DB::table('proyectos')
                                         ->where('user_id', Auth::user()->id)
                                         ->count() }}
                                         </span>
+                                        @endif
                                     </td>
                                 </tr>                                
                             </table>
@@ -70,7 +64,15 @@
                     </div>
                 </div>
             @endif
-
+            @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-parent="#accordion" href="{{ route('evaluacion.index') }}"><span class="glyphicon glyphicon-education"></span>Evaluaciones</a>
+                        </h4>
+                    </div>
+                </div>
+            @endif            
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -80,6 +82,7 @@
                     <div id="actividadesEvaluado" class="panel-collapse collapse">
                         <div class="panel-body">
                             <table class="table">
+                                @if ( Auth::user()->rol->nombre === 'Evaluado')
                                 <tr>
                                     <td>
                                         <span class="glyphicon glyphicon-check text-success"></span><a href="{{ route('actividad.ver') }}">Mis actividades </a><span class="label label-info"> {{ DB::table('actividades')
@@ -89,6 +92,7 @@
                                         ->count() }}</span>
                                     </td>
                                 </tr>
+                                @endif
                                 @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
                                 <tr>
                                     <td>
@@ -100,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-
+            
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">

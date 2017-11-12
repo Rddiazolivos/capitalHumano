@@ -19,10 +19,8 @@ class CreateRespuestaEncuestaTable extends Migration
             $table->string('valor');
             $table->integer('pregunta_id')->unsigned()->default(1);
             $table->foreign('pregunta_id')->references('id')->on('preguntas')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('user_id')->unsigned();
-            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('proyecto_id')->unsigned();
-            $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('userRespuesta_id')->unsigned();
+            $table->foreign('userRespuesta_id')->references('id')->on('userRespuesta')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
 

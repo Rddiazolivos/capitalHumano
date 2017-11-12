@@ -4,6 +4,7 @@ namespace sdv\Http\Controllers;
 
 use Illuminate\Http\Request;
 use sdv\etapa;
+use sdv\proyecto;
 
 class EtapaController extends Controller
 {
@@ -61,9 +62,12 @@ class EtapaController extends Controller
      */
     public function show($id)    
     {
-        $id_proyecto = $id;
-        $etapas = etapa::where('proyecto_id', '=', $id)->get();
-        return view('etapas.show', compact('etapas', 'id_proyecto'));
+        $Datos = array(
+            'etapas' => etapa::where('proyecto_id', '=', $id)
+                ->paginate(4),
+            'proyecto' => proyecto::find($id),
+        );
+        return view('etapas.show', $Datos);
     }
 
     /**
