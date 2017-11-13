@@ -89,14 +89,14 @@ class EvaluacionProyectoController extends Controller
      */
     public function edit(userRespuesta $userrespuesta)
     {      
-        $respuestas = respuestas_proyecto::all()->where("userRespuesta_id", $userrespuesta->id);
+        $respuestas = respuestas_proyecto::all()->where("userrespuesta_id", $userrespuesta->id);
         $evaluacion = array(
             'areas'     =>  area::all(),            
             'Usuario'   =>  User::find($userrespuesta->user_id),
             'proyecto' =>   proyecto::find($userrespuesta->proyecto_id),
             'prueba'  => respuestas_proyecto::
                 join('preguntas', 'respuestas_proyectos.pregunta_id', '=', 'preguntas.id')
-                ->where("userRespuesta_id", $userrespuesta->id)
+                ->where("userrespuesta_id", $userrespuesta->id)
                 ->select('*', "respuestas_proyectos.id as id_respuesta")
                 ->get(),
             'respuestas' => $respuestas,
