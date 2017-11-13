@@ -104,7 +104,7 @@
                         </div>
                     </div>
                 </div>
-            
+            @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -129,7 +129,7 @@
                         </div>
                     </div>
                 </div>
-
+            @endif
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">

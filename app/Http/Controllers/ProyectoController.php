@@ -16,8 +16,14 @@ class ProyectoController extends Controller
      */
     public function index()
     {
-        $proyectos = proyecto::paginate(6);
-        return view('proyectos.index', compact('proyectos'));
+        if( Auth::user()->rol->nombre === 'Administrador'){
+            $proyectos = proyecto::paginate(6);
+            return view('proyectos.index', compact('proyectos'));
+        }else{
+            $proyectos = proyecto::where('user_id',  Auth::user()->id)->paginate(6);
+            return view('proyectos.index', compact('proyectos'));
+        }
+            
     }
 
     /**
