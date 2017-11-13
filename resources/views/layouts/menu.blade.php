@@ -115,11 +115,13 @@
                     <div id="collapseFour" class="panel-collapse collapse">
                         <div class="panel-body">
                             <table class="table">
+                                <!--
                                 <tr>
                                     <td>
                                         <span class="glyphicon glyphicon-tasks"></span><a href="{{ route('reporte.trabajador') }}">Reporte por trabajador</a>
                                     </td>
                                 </tr>
+                                -->
                                 <tr>
                                     <td>
                                         <span class="glyphicon glyphicon-print text-primary"></span><a href="{{ route('reporte.actividad') }}">Reporte avance actividades</a>
