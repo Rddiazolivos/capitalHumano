@@ -13,7 +13,7 @@ class CreateUserRespuestaTable extends Migration
      */
     public function up()
     {
-        Schema::create('userRespuesta', function (Blueprint $table) {
+        Schema::create('userrespuesta', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('status')->default(false);
             $table->integer('user_id')->unsigned();
@@ -32,6 +32,6 @@ class CreateUserRespuestaTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('userRespuesta');
+        Schema::dropIfExists('userrespuesta');
     }
 }
