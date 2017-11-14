@@ -5,6 +5,7 @@ namespace sdv\Http\Controllers;
 use sdv\comentario;
 use sdv\estado;
 use sdv\actividad;
+use sdv\responsable;
 use Illuminate\Http\Request;
 
 class ComentarioController extends Controller
@@ -28,7 +29,7 @@ class ComentarioController extends Controller
     {
         $formulario = array(
             'estados' =>  estado::all(),
-            'actividad' => $actividad
+            'actividad' => $actividad,
         );
         return view('Actividades.evaluado.actividadesAsignadasComentar', $formulario);
     }

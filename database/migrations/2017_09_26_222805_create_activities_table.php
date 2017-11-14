@@ -21,8 +21,6 @@ class CreateActivitiesTable extends Migration
             $table->boolean('asignacion')->default(false);            
             $table->integer('prioridad_id')->unsigned();
             $table->foreign('prioridad_id')->references('id')->on('prioridades')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('tipo_id')->unsigned();
-            $table->foreign('tipo_id')->references('id')->on('tipos')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('estado_id')->unsigned();
             $table->foreign('estado_id')->references('id')->on('estados')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('etapa_id')->unsigned();

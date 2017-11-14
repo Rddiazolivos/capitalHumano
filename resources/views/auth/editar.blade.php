@@ -159,14 +159,14 @@
                             </div>
                         </div>
 
-                        <div class="form-group{{ $errors->has('calificacion') ? ' has-error' : '' }}">
-                          <label for="calificacion" class="col-md-4 control-label">Estado</label>
+                        <div class="form-group{{ $errors->has('condicion') ? ' has-error' : '' }}">
+                          <label for="condicion" class="col-md-4 control-label">Estado</label>
 
                             <div class="col-md-6">
-                                <select name="calificacion" id="calificacion" class="form-control" required>
-                                    <option selected hidden value="">Seleccione la calificacion</option>
+                                <select name="condicion" id="condicion" class="form-control" required>
+                                    <option selected hidden value="">Seleccione la condición</option>
                                     <option value="1" @if($User->condicion==1) selected='selected' @endif>Activo</option>
-                                    <option value="2" @if($User->condicion==2) selected='selected' @endif>Desactivado</option>
+                                    <option value="0" @if($User->condicion==0) selected='selected' @endif>Desactivado</option>
                                 </select>
                             </div>
                         </div>

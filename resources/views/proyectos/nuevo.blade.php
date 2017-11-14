@@ -64,6 +64,7 @@
                             </div>
                         </div>
 
+                        @if(Auth::user()->rol->nombre === 'Administrador')                        
                         <div class="form-group{{ $errors->has('user_id') ? ' has-error' : '' }}">
                           <label for="user_id" class="col-md-4 control-label">Encargado</label>
 
@@ -76,6 +77,9 @@
                                 </select>
                             </div>
                         </div>
+                        @else
+                            <input name="user_id" type="hidden" value="{{ Auth::user()->id }}">
+                        @endif
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

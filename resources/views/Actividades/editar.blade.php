@@ -76,20 +76,7 @@
                                   @endforeach
                                 </select>
                             </div>
-                        </div>
-                        
-                        <div class="form-group{{ $errors->has('tipo_id') ? ' has-error' : '' }}">
-                          <label for="tipo_id" class="col-md-4 control-label">Tipo</label>
-
-                            <div class="col-md-6">
-                                <select name="tipo_id" id="tipo_id" class="form-control" required>
-                                    <option selected hidden value="">Seleccione el tipo</option>
-                                  @foreach($tipos as $tipo)
-                                    <option value="{{ $tipo->id }}"  @if($tipo->id==$actividad->tipo_id) selected='selected' @endif >{{ $tipo->nombre }}</option>
-                                  @endforeach
-                                </select>
-                            </div>
-                        </div>
+                        </div>                        
 
                         <div class="form-group{{ $errors->has('estado_id') ? ' has-error' : '' }}">
                           <label for="estado_id" class="col-md-4 control-label">Estado</label>

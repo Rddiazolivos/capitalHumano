@@ -114,17 +114,23 @@ table {
              <tr>
               <th><strong>Proyecto: </strong>{{ $proyecto->nombre }}</th>
             </tr>
+            <tr>
+              <th><strong>Responsable: </strong>{{ $proyecto->user->full_name }}</th>
+            </tr>
           </thead>                
         @foreach($etapas as $etapa)
     <tbody>
         <tr>
           <th><strong>Etapa: </strong>{{ $etapa->nombre }}</th>
-        <?php $actividades = DB::table('actividades')->where('etapa_id', $etapa->id)->get() ?>
-          @foreach($actividades as $actividad)
+          @foreach($etapa->actividades as $actividad)
           <tr>
             <td><strong>Nombre: </strong>{{ $actividad->nombre }}</td>
-            <td><strong>Responsable: </strong>{{ DB::table('responsables')->where('actividad_id', $actividad->id)->pluck('responsable_id') }}</td>
-            <td><strong>Estado: </strong>{{ DB::table('estados')->where('id', $actividad->estado_id)->value('nombre') }}</td>
+            <td><strong>Encargados: </strong>
+                @foreach($actividad->responsables as $responsable)
+                    {{$responsable->usuario->full_name}}     
+                @endforeach
+            </td>
+            <td><strong>Estado: </strong>{{ $actividad->estado->nombre }}</td>
           </tr>
           @endforeach
         </tr>

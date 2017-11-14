@@ -72,7 +72,8 @@
                         </h4>
                     </div>
                 </div>
-            @endif            
+            @endif
+            @if ( Auth::user()->rol->nombre != 'Gerente' )            
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -104,7 +105,8 @@
                         </div>
                     </div>
                 </div>
-            @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
+            @endif
+            @if ( Auth::user()->rol->nombre === 'Gerente' || Auth::user()->rol->nombre === 'Evaluador')
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -115,13 +117,11 @@
                     <div id="collapseFour" class="panel-collapse collapse">
                         <div class="panel-body">
                             <table class="table">
-                                <!--
-                                <tr>
+                            <!-- <tr>
                                     <td>
                                         <span class="glyphicon glyphicon-tasks"></span><a href="{{ route('reporte.trabajador') }}">Reporte por trabajador</a>
                                     </td>
-                                </tr>
-                                -->
+                                </tr> -->
                                 <tr>
                                     <td>
                                         <span class="glyphicon glyphicon-print text-primary"></span><a href="{{ route('reporte.actividad') }}">Reporte avance actividades</a>

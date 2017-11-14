@@ -4,7 +4,6 @@ namespace sdv\Http\Controllers;
 
 use sdv\actividad;
 use sdv\prioridad;
-use sdv\tipo;
 use sdv\estado;
 use sdv\User;
 use sdv\etapa;
@@ -38,8 +37,7 @@ class ActividadController extends Controller
     {
         $formulario = array(
             'prioridades' =>  prioridad::all(),
-            'tipos' =>  tipo::all(),
-            'estados' =>  estado::all(),
+            'estados' =>  estado::all()->where('nombre', '<>', 'Cerrada'),
             'usuarios' =>  User::all()->where("rol_id", "3"),
             'etapas' =>  etapa::all(),
             'id_etapa' =>  $id
@@ -61,7 +59,6 @@ class ActividadController extends Controller
         $actividad->descripcion = $request->descripcion;
         $actividad->fec_entrega = $request->fec_entrega;
         $actividad->prioridad_id = $request->prioridad_id;
-        $actividad->tipo_id = $request->tipo_id;
         $actividad->estado_id = $request->estado_id;
         $actividad->etapa_id = $request->etapa_id;
         $actividad->save();
@@ -101,7 +98,6 @@ class ActividadController extends Controller
     {
         $formulario = array(
             'prioridades' =>  prioridad::all(),
-            'tipos' =>  tipo::all(),
             'estados' =>  estado::all(),
             'usuarios' =>  User::all(),
             'etapas' =>  etapa::all(),

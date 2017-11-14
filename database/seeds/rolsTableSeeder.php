@@ -20,6 +20,9 @@ class rolsTableSeeder extends Seeder
         DB::table('roles')->insert([
             'nombre' => 'Evaluado',
         ]);
+        DB::table('roles')->insert([
+            'nombre' => 'Gerente',
+        ]);
         DB::table('departamentos')->insert([
             [
                 'nombre' => 'Direción',

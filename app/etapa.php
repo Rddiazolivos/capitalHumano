@@ -15,4 +15,9 @@ class etapa extends Model
     public function estado(){
     	return $this->belongsTo('sdv\estado');
     }
+
+    public function actividades()
+    {
+        return $this->hasMany('sdv\actividad');
+    }
 }

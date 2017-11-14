@@ -42,7 +42,6 @@
                     <div class="row">
                         <div class="col-md-4"><strong>Fecha entrega: </strong>{{$actividad->fec_entrega}}</div>
                         <div class="col-md-4"><strong>Prioridad: </strong>{{$actividad->prioridad->nombre}}</div>
-                        <div class="col-md-4"><strong>Tipo: </strong>{{$actividad->tipo->nombre}}</div>
                     </div> 
                 </div>
                 <div class="panel-body">                    

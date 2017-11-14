@@ -30,7 +30,14 @@
                     <div class="row">
                         <div class="col-md-4"><strong>Fecha entrega: </strong>{{$actividad->fec_entrega}}</div>
                         <div class="col-md-4"><strong>Prioridad: </strong>{{$actividad->prioridad->nombre}}</div>
-                        <div class="col-md-4"><strong>Tipo: </strong>{{$actividad->tipo->nombre}}</div>
+                        <div class="col-md-4"><strong>Evaluador: </strong>{{$actividad->etapa->proyecto->user->full_name}}</div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12"><strong>Responsables:</strong>
+                        @foreach($actividad->responsables as $responsable)
+                            {{$responsable->usuario->full_name}}     
+                        @endforeach
+                        </div>
                     </div> 
                 </div>
                 <div class="panel-body">                    
@@ -69,7 +76,7 @@
                         <input name="estadoActividad" id="campoFinalizar" type="hidden" value="{{$actividad->estado_id}}">                       
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
-                                <a href="{{ route('actividad.show', $actividad->etapa_id)}}" class="btn btn-info" role="button">Cancelar</a>
+                                <a href="{{ URL::previous() }}" class="btn btn-info" role="button">Cancelar</a>
                                 <button type="submit" class="btn btn-primary">
                                     Guardar cambios
                                 </button>

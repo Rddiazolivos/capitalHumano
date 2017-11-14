@@ -15,8 +15,10 @@
     <div class="panel-body">
       <h4 class="text-center"> {{$proyecto->nombre}} </h4>
       <p>{{$proyecto->observaciones}}</p>
-      <p><strong>Responsable: </strong>{{$proyecto->user->Full_Name}}</p>
-      <p><strong>Cantidad de etapas: </strong>{{count($etapas)}}</p>
+      <div class="row">
+        <div class="col-md-6"><strong>Responsable: </strong>{{$proyecto->user->Full_Name}}</div> 
+        <div class="col-md-6"><strong>Cantidad de etapas: </strong>{{count($etapas)}}</div>         
+      </div>
       <div style="float: left;">
         <a href="{{ route('proyecto.index') }}"><span class="glyphicon glyphicon-circle-arrow-left"></span> Volver a los proyectos</a>
       </div>

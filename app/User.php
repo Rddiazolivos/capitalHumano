@@ -15,7 +15,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'email', 'password', 'ape_paterno', 'ape_materno', 'rut', 'fec_nacimiento', 'fec_ingreso', 'sexo', 'departamento_id', 'rol_id',
+        'nombre', 'email', 'password', 'ape_paterno', 'ape_materno', 'rut', 'fec_nacimiento', 'fec_ingreso', 'sexo', 'departamento_id', 'rol_id', 'condicion',
     ];
 
     /**
@@ -28,6 +28,9 @@ class User extends Authenticatable
     ];
     public function proyecto(){
         return $this->hasMany('sdv\proyecto');
+    }
+    public function responsable(){
+        return $this->hasMany('sdv\responsable');
     }
     public function rol(){
         return $this->belongsTo('sdv\rol');

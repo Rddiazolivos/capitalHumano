@@ -31,6 +31,9 @@
                 	<div class="row">
                 		<div class="col-md-6"><strong>Perfil de cuenta: </strong>{{ $usuario->rol->nombre }}</div>
                 	</div>
+                    <div class="row">
+                        <div class="col-md-6"><strong>Estado: </strong>{{ $usuario->Condicion_nombre }}</div>
+                    </div>
                 </div>
                 </div>
             </div>
