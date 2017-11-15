@@ -8,14 +8,14 @@
                     ¡Sesión iniciada!
                 </div>
             </div>
-            <div class="col-xs-6 col-md-4 col-lg-4 no-padding">
+            <!--<div class="col-xs-6 col-md-4 col-lg-4 no-padding">
             		<div class="panel panel-default">
             			<div class="panel-body">
             				contenido1
                             
             			</div>
             		</div>
-            	</div>
+            	</div>-->
             	
             </div>
         </div>

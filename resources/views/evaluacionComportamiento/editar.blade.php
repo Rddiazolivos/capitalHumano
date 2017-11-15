@@ -71,7 +71,7 @@
                     <div class="form-group">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary center-block">
-                                Evaluar
+                                Editar evaluación
                             </button>
                         </div>
                     </div>

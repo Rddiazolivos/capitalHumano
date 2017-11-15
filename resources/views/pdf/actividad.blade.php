@@ -126,9 +126,13 @@ table {
           <tr>
             <td><strong>Nombre: </strong>{{ $actividad->nombre }}</td>
             <td><strong>Encargados: </strong>
+            @if(count($actividad->responsables)==0)
+                Sin responsable
+            @else
                 @foreach($actividad->responsables as $responsable)
                     {{$responsable->usuario->full_name}}     
                 @endforeach
+            @endif
             </td>
             <td><strong>Estado: </strong>{{ $actividad->estado->nombre }}</td>
           </tr>

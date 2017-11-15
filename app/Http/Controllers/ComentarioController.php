@@ -7,6 +7,7 @@ use sdv\estado;
 use sdv\actividad;
 use sdv\responsable;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ComentarioController extends Controller
 {
@@ -57,8 +58,12 @@ class ComentarioController extends Controller
                 $comentario = new comentario;
                 $comentario->fill($request->all());
                 $comentario->save();
-            }            
-            return redirect()->route('actividad.show', $actividad->etapa_id);
+            }
+            if(Auth::user()->rol->nombre == "Evaluado"){
+                return redirect()->route('actividad.ver');
+            }else{
+                return redirect()->route('actividad.show', $actividad->etapa_id);
+            }                        
         }
                 
     }

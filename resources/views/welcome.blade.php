@@ -62,7 +62,7 @@
     </nav>
     <header id="first">
         <div class="header-content">
-            <div class="inner">
+            <div class="inner pulse animated">
                 <h1 class="cursive">Sistema de evaluación de desempeño</h1>
                 <h4>Para organizaciones modernas que cuidan el talento.</h4>
                 <hr>
