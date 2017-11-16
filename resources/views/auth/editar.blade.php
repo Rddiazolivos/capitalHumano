@@ -1,17 +1,15 @@
 @extends('layouts.menu')
 
 @section('contenido')
-        <div class="col-md-10 col-md-offset-1">
-            <div class="panel panel-default">
+        <div class="col-md-12">
+            <div class="panel panel-primary">
                 <div class="panel-heading">Editar</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('usuario.update', $User->id) }}">
                         {{ csrf_field() }}
                         {{ method_field('PUT') }}
-                        <?php
-                            //dd($User);
-                        ?>
 
+                    <div class="col-md-6">
                         <div class="form-group{{ $errors->has('rut') ? ' has-error' : '' }}">
                             <label for="rut" class="col-md-4 control-label">Rut</label>
 
@@ -118,6 +116,8 @@
                                 @endif
                             </div>
                         </div>
+                    </div>
+                    <div class="col-md-6">
 
                         <div class="form-group{{ $errors->has('fec_ingreso') ? ' has-error' : '' }}">
                             <label for="fec_ingreso" class="col-md-4 control-label">Fecha Ingreso</label>
@@ -170,10 +170,11 @@
                                 </select>
                             </div>
                         </div>
+                    </div>
 
                         <div class="form-group">
-                            <div class="col-md-6 col-md-offset-4">
-                                <button type="submit" class="btn btn-primary">
+                            <div class="col-md-12">
+                                <button type="submit" class="btn btn-primary center-block">
                                     Actualizar
                                 </button>
                             </div>

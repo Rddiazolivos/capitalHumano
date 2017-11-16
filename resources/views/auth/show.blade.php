@@ -7,33 +7,23 @@
                 <div class="panel-body">
                 <div class="container-fluid">
                 	<div class="row">
-                		<div class="col-md-6"><strong>Nombre: </strong>{{ $usuario->nombre }}</div>
+                		<div class="text-center">{{ $usuario->full_name }}</div>
                 	</div>
                 	<div class="row">
-                		<div class="col-md-6"><strong>Apellido Paterno: </strong>{{ $usuario->ape_paterno }}</div>
-                		<div class="col-md-6"><strong>Apellido Materno: </strong>{{ $usuario->ape_materno }}</div>
+                        <div class="col-md-6"><strong>Rut: </strong>{{ $usuario->rut }}</div>
+                		<div class="col-md-6"><strong>Fecha de nacimiento: </strong>{{ $usuario->fec_nacimiento }}</div>                		
                 	</div>
-                	<div class="row">
-                		<div class="col-md-6"><strong>Fecha de nacimiento: </strong>{{ $usuario->fec_nacimiento }}</div>
-                		<div class="col-md-6"><strong>Rut: </strong>{{ $usuario->rut }}</div>
-                	</div>
-                </div>
-                </div>
-                <div class="panel-body">
-                <div class="container-fluid">
                 	<div class="row">
                 		<div class="col-md-6"><strong>Email: </strong>{{ $usuario->email }}</div>
+                        <div class="col-md-6"><strong>Perfil de cuenta: </strong>{{ $usuario->rol->nombre }}</div>
                 	</div>
                 	<div class="row">
                 		<div class="col-md-6"><strong>Departamento: </strong>{{ $usuario->departamento->nombre }}</div>
                 		<div class="col-md-6"><strong>Fecha de ingreso: </strong>{{ $usuario->fec_ingreso }}</div>
                 	</div>
-                	<div class="row">
-                		<div class="col-md-6"><strong>Perfil de cuenta: </strong>{{ $usuario->rol->nombre }}</div>
-                	</div>
-                    <div class="row">
+                	<div class="row">                		
                         <div class="col-md-6"><strong>Estado: </strong>{{ $usuario->Condicion_nombre }}</div>
-                    </div>
+                	</div>
                 </div>
                 </div>
             </div>

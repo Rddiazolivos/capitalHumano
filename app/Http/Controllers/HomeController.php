@@ -3,6 +3,10 @@
 namespace sdv\Http\Controllers;
 
 use Illuminate\Http\Request;
+use sdv\proyecto;
+use sdv\actividad;
+use sdv\userRespuesta;
+use sdv\User;   
 
 class HomeController extends Controller
 {
@@ -23,6 +27,12 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $datos = array(
+            'numeroProyectos' => proyecto::count(),
+            'numeroActividades' => actividad::count(),
+            'numeroEvaluaciones' => userRespuesta::count(),
+            'numeroUsuarios' => User::count(),
+        );
+        return view('home', $datos);
     }
 }

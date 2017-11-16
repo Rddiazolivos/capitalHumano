@@ -23,7 +23,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('descripcion') ? ' has-error' : '' }}">
-                            <label for="descripcion" class="col-md-4 control-label">Descripcion</label>
+                            <label for="descripcion" class="col-md-4 control-label">Descripción</label>
 
                             <div class="col-md-6">
                                 <textarea rows="4" cols="50" id="descripcion" type="text" class="form-control" name="descripcion" required autofocus>{{ old('descripcion') }}</textarea>

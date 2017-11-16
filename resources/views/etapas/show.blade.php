@@ -54,7 +54,7 @@
                     <p>{{ str_limit( $etapa->observaciones, $limit = 120, $end = ' ...') }}</p>
                     <!--<p>Porcentaje de avance: {{$etapa->porcentaje}}%</p>-->
                     <p><strong>Estado: </strong>{{ $etapa->estado->nombre }}</p>
-                    <p><strong>Fecha de creación: </strong>{{ \Carbon\Carbon::parse($etapa->fec_creacion)->format('d/m/Y') }} - <strong>Fecha de término: </strong>{{ \Carbon\Carbon::parse($etapa->fec_termino)->format('d/m/Y')}}</p>
+                    <p><strong>Fecha de inicio: </strong>{{ \Carbon\Carbon::parse($etapa->fec_creacion)->format('d/m/Y') }} - <strong>Fecha de término: </strong>{{ \Carbon\Carbon::parse($etapa->fec_termino)->format('d/m/Y')}}</p>
                     <a href="{{ route('actividad.show', $etapa->id) }}" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-folder-open text-primary"></span>  Inspeccionar</a>
                 </div>
             </div>

@@ -79,7 +79,7 @@ class ActividadController extends Controller
         $actividades = array(
             'pendientes' =>  actividad::nombre($request->get('scope'))
                 ->where('etapa_id', $id)
-                ->paginate(5),
+                ->paginate(8),
             'scope' => $request->scope,
             'estado_id' => $request->estado_id,
             'estados' =>  estado::all(),
@@ -140,7 +140,7 @@ class ActividadController extends Controller
                 ->join('responsables', 'actividades.id', '=', 'responsables.actividad_id')
                 ->where('responsables.responsable_id', Auth::user()->id)
                 ->select('*','actividades.id as id_acti')
-                ->paginate(5),
+                ->paginate(8),
             'scope' => $request->scope,
             'estado_id' => $request->estado_id,
             'estados' =>  estado::all()
@@ -152,7 +152,7 @@ class ActividadController extends Controller
         $actividades = array(
             'todas' =>  actividad::nombre($request->get('scope'))
                 ->EstadoAll($request->get('estado_id'))
-                ->paginate(5),
+                ->paginate(8),
             'scope' => $request->scope,
             'estado_id' => $request->estado_id,
             'estados' =>  estado::all()

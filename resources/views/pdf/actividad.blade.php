@@ -3,152 +3,50 @@
 <head>
     <meta charset="UTF-8">
     <title>Reporte de avance de actividades</title>
+    <link href="css/bootstrap.min.css" rel="stylesheet">
 <style>
- 
- .col-md-12 {
-    width: 100%;
-} 
-
-.box {
-    position: relative;
-    border-radius: 3px;
-    background: #ffffff;
-    border-top: 3px solid #d2d6de;
-    margin-bottom: 20px;
-    width: 100%;
-    box-shadow: 0 1px 1px rgba(0,0,0,0.1);
-    background-color: #ECF0F5;
-}
-
-.box-header {
-    color: #444;
-    display: block;
-    padding: 10px;
-    position: relative;
-}
-
-.box-header.with-border {
-    border-bottom: 1px solid #f4f4f4;
-}
-
-
-.box-header .box-title {
-    display: inline-block;
-    font-size: 18px;
-    margin: 0;
-    line-height: 1;
-}
-
-.box-body {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    padding: 10px;
-
-}
-
-
-.box-footer {
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    border-bottom-right-radius: 3px;
-    border-bottom-left-radius: 3px;
-    border-top: 1px solid #f4f4f4;
-    padding: 10px;
-    background-color: #fff;
-}
-
-
-.table-bordered {
-    border: 1px solid #f4f4f4;
-}
-
-
-.table {
-    width: 100%;
-    max-width: 100%;
-    margin-bottom: 20px;
-}
-
-table {
-    background-color: transparent;
-}
-
- .table-bordered>tbody>tr>th, .table-bordered>tfoot>tr>th, .table-bordered>thead>tr>td, .table-bordered>tbody>tr>td, .table-bordered>tfoot>tr>td {
-    border: 1px solid #f4f4f4;
-}
-
-
-.badge {
-    display: inline-block;
-    min-width: 10px;
-    padding: 3px 7px;
-    font-size: 12px;
-    font-weight: 700;
-    line-height: 1;
-    color: #fff;
-    text-align: center;
-    white-space: nowrap;
-    vertical-align: middle;
-    background-color: #777;
-    border-radius: 10px;
-}
-
-.bg-red {
-    background-color: #dd4b39 !important;
-}
-
 
 </style>
 </head>
 <body>    
     <div class="col-md-12">
-      <div class="box">
-        <div class="box-header with-border">
-          <h3 class="box-title">Reporte de avance actividades</h3>
-        </div><!-- /.box-header -->
-        <div class="box-body">
-          <table class="table table-bordered">
-          <thead>
-             <tr>
-              <th><strong>Proyecto: </strong>{{ $proyecto->nombre }}</th>
-            </tr>
-            <tr>
-              <th><strong>Responsable: </strong>{{ $proyecto->user->full_name }}</th>
-            </tr>
-          </thead>                
-        @foreach($etapas as $etapa)
-    <tbody>
-        <tr>
-          <th><strong>Etapa: </strong>{{ $etapa->nombre }}</th>
-          @foreach($etapa->actividades as $actividad)
-          <tr>
-            <td><strong>Nombre: </strong>{{ $actividad->nombre }}</td>
-            <td><strong>Encargados: </strong>
-            @if(count($actividad->responsables)==0)
-                Sin responsable
-            @else
-                @foreach($actividad->responsables as $responsable)
-                    {{$responsable->usuario->full_name}}     
-                @endforeach
-            @endif
-            </td>
-            <td><strong>Estado: </strong>{{ $actividad->estado->nombre }}</td>
-          </tr>
-          @endforeach
-        </tr>
-    </tbody>
-        @endforeach
-              
-        </table>                   
-        </div><!-- /.box-body -->
-        <div class="box-footer clearfix">
-          
-        </div>
-      </div><!-- /.box -->
 
-      
+          <div class="page-header">
+            <h1>{{ $proyecto->nombre }}</h1>      
+          </div>
+          <p>{{ $proyecto->user->full_name }}</p>   
+
+        @foreach($etapas as $etapa)
+        <div class="panel panel-info">
+          <div class="panel-heading">{{ $etapa->nombre }}</div>
+          <div class="panel-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Actividad</th>
+                        <th>Responsable</th>
+                        <th>Estado</th>
+                    </tr>
+                </thead>                
+                @foreach($etapa->actividades as $actividad)
+                <tr>
+                    <td>{{ $actividad->nombre }}</td>
+                    @if(count($actividad->responsables)==0)
+                    <td>Sin responsable</td>
+                    @else
+                    <td>
+                        @foreach($actividad->responsables as $responsable)
+                            {{$responsable->usuario->full_name}}
+                        @endforeach
+                    </td>
+                    @endif
+                    <td>{{ $actividad->estado->nombre }}</td>
+                </tr>
+                @endforeach                
+            </table>
+          </div>
+        </div>
+        @endforeach
     </div>
 </body>
 </html>

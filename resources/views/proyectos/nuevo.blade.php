@@ -37,7 +37,7 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('fec_termino') ? ' has-error' : '' }}">
-                            <label for="fec_termino" class="col-md-4 control-label">Fecha termino</label>
+                            <label for="fec_termino" class="col-md-4 control-label">Fecha término</label>
 
                             <div class="col-md-6">
                                 <input id="fec_termino" type="date" class="form-control" name="fec_termino" value="{{ old('fec_termino') }}" required autofocus>

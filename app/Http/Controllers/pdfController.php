@@ -75,7 +75,8 @@ class pdfController extends Controller
             return $pdf->download($request->proyecto_id.'.pdf');
         }else if($request->tipo == 2){
             return $pdf->stream();
-        }        
+        }     
+        //return view('pdf.actividad', $datos);
     }
     public function SeleccionarProyecto()
     {       

@@ -3,7 +3,7 @@
 @section('contenido')
 <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Nueva actividad</div>
+                <div class="panel-heading">Editar actividad</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="post" action="{{ route('actividad.update', $actividad) }}">
                         {{ csrf_field() }}

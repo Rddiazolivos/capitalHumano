@@ -176,7 +176,7 @@
             </div>
         </div>
         </div>
-        <div class="col-sm-9 col-md-9 col-md-offset-3 col-sm-offset-3  col-lg-10 col-lg-offset-2">
+        <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2">
             <div class="container-fluid">
             @yield('contenido')
             </div>
