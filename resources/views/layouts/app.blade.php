@@ -18,6 +18,7 @@
     <link href="{{ asset('css/ionicons.min.css') }}" rel="stylesheet" />
     <link href="{{ asset('css/estiloEtapas.css') }}" rel="stylesheet">
     <link href="{{ asset('css/menu.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/animate.min.css') }}" rel="stylesheet">
     @yield("estiloPersonalisado")
 
 </head>
@@ -139,11 +140,11 @@
         @yield('content')
 
     </div>
-
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('js/select2.js') }}"></script>
     <script src="{{ asset('js/miScript.js') }}"></script>
     <script src="{{ asset('js/evaluaciones.js') }}"></script>
+    @yield("scriptPersonalisado")
 </body>
 </html>

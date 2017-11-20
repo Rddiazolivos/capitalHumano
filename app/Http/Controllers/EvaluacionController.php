@@ -26,7 +26,7 @@ class EvaluacionController extends Controller
      */
     public function create($id)
     {
-        $actividad = actividad::all()->find($id);
+        $actividad = actividad::find($id);
         $metricas = array(
             'actividad' =>  $actividad,
             'encargados' =>  responsable::where('responsables.actividad_id', $actividad->id)
@@ -52,6 +52,7 @@ class EvaluacionController extends Controller
         $evaluacion->save();
 
         $actividad = actividad::find($request->actividad_id);
+        $actividad->estado_id = 3;
         $actividad->evaluacion_id = $evaluacion->id;
         $actividad->save();
         //redirección

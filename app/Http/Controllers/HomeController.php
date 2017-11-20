@@ -27,11 +27,48 @@ class HomeController extends Controller
      */
     public function index()
     {
+        //grafico 1
+        $stocksTable = \Lava::DataTable();  // Lava::DataTable() if using Laravel
+
+        $stocksTable->addDateColumn('Day of Month')
+                    ->addNumberColumn('Projected')
+                    ->addNumberColumn('Official');
+
+        // Random Data For Example
+        for ($a = 1; $a < 30; $a++) {
+            $stocksTable->addRow([
+              '2015-10-' . $a, rand(800,1000), rand(800,1000)
+            ]);
+        }
+
+        //Selecciono el tipo de grafico
+        $chart = \Lava::LineChart('MyStocks', $stocksTable);
+
+        //grafico 2
+        $todas = actividad::count();
+        $pendientes = actividad::where('estado_id', '1')->count();
+        $finalizadas = actividad::where('estado_id', '2')->count();
+        $cerradas = actividad::where('estado_id', '3')->count();
+        $actividadesTable = \Lava::DataTable();  // Lava::DataTable() if using Laravel
+
+        $actividadesTable->addStringColumn('Reasons')
+                ->addNumberColumn('Percent')
+                ->addRow(['Finalizadas', $finalizadas])
+                ->addRow(['Pendientes', $pendientes])
+                ->addRow(['Cerradas', $cerradas]);
+
+        $chart2 = \Lava::PieChart('IMDB', $actividadesTable, [
+            'title'  => 'Actividades',
+            'is3D'   => true,
+        ]);
+
         $datos = array(
             'numeroProyectos' => proyecto::count(),
             'numeroActividades' => actividad::count(),
             'numeroEvaluaciones' => userRespuesta::count(),
             'numeroUsuarios' => User::count(),
+            "lava"=>$chart,
+            "lava2"=>$chart2,
         );
         return view('home', $datos);
     }

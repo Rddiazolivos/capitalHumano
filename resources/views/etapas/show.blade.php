@@ -1,14 +1,6 @@
 @extends('layouts.menu')
 @section('contenido')
 
-@if(count($etapas) == 0)
-<div class="col-md-12">
-  <div class="jumbotron text-center">
-    <h1>No posee etapas.</h1> 
-    <a href="{{route('etapa.crear', $proyecto->id)}}">Agregar Etapa <span class="glyphicon glyphicon-plus"></span></a>
-  </div>
-</div>
-@else
 <div class="row">
 <div class="col-md-offset-2 col-md-8 ">
   <div class="panel panel-primary">    
@@ -28,6 +20,17 @@
     </div>
   </div>
 </div>
+
+@if(count($etapas) == 0)
+<div class="col-md-12">
+  <div class="jumbotron text-center animated zoomInDown">
+    <h1>No posee etapas.</h1>
+    <div class="animated infinite pulse"> 
+      <a href="{{route('etapa.crear', $proyecto->id)}}">Agregar Etapa <span class="glyphicon glyphicon-plus"></span></a>
+    </div>
+  </div>
+</div>
+@else
 <div class='row'>
     <div class="col-md-12">
         <form class='navbar-form ' role='search' method="GET" action="">

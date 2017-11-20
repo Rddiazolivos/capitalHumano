@@ -57,6 +57,7 @@ class ProyectoController extends Controller
         $proyecto->fec_termino = $request->fec_termino;
         $proyecto->observaciones = $request->observaciones;
         $proyecto->user_id = $request->user_id;
+        $proyecto->estado_id = '1';
         $proyecto->save();
         //redirección
         return redirect()->action(

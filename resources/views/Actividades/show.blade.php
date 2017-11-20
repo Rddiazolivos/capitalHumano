@@ -1,16 +1,35 @@
 @extends('layouts.menu')
 @section('contenido')
-<div class="container-fluid">
-  <div class="row">
+<div class="row">
+    <div class="col-md-offset-2 col-md-8 ">
+      <div class="panel panel-primary">    
+        <div class="panel-body">
+          <h4 class="text-center"> {{$etapa->nombre}} </h4>
+          <p>{{$etapa->observaciones}}</p>
+          <div class="row">
+            <div class="col-md-6"><strong>Cantidad de actividades: </strong>{{count($actividades)}}</div>         
+          </div>
+          <div style="float: left;">
+            <a href="{{ route('etapa.show' , $etapa->proyecto->id) }}"><span class="glyphicon glyphicon-circle-arrow-left"></span> Volver a las etapas</a>
+          </div>
+          <div style="float: right;">
+            <a href="{{ route('actividad.crear' , $id_etapa) }}">Agregar Actividad <span class="glyphicon glyphicon-plus"></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+@if(count($actividades) == 0)
+<div class="col-md-12">
+  <div class="jumbotron text-center animated zoomInDown">
+    <h1>No posee Actividades.</h1>
+    <div class="animated infinite pulse">
+        <a href="{{route('actividad.crear', $id_etapa)}}">Agregar Actividad <span class="glyphicon glyphicon-plus"></span></a>
+    </div>     
+  </div>
+</div>
+@else
         <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-heading">Listado de actividades
-                    <div style="float: right;">
-                    <a data-toggle="tooltip" title="Agregar Actividad" href="{{ route('actividad.crear' , $id_etapa) }}"><span style="font-size:1.5em;" class="glyphicon glyphicon-plus-sign text-success"></span></a>
-                  </div>
-                </div>
-            </div>
-                @if(count($pendientes)>0)
+                @if(count($actividades)>0)
                 <div class='row'>
                     <div class="col-md-12">
                         <form class='navbar-form ' role='search' method="GET" action="{{ route('actividad.show', $id_etapa) }}">
@@ -26,7 +45,7 @@
                     </div>
                 </div>
                 @endif
-        @if(count($pendientes)>0)
+        @if(count($actividades)>0)
             <div class='row'>
                 <div class="col-md-12">
                     <div class="panel panel-default">                        
@@ -41,7 +60,7 @@
                                     <th>Acciones</th>
                                 </tr>
                             </thead>                        
-                        @foreach($pendientes as $actividad)
+                        @foreach($actividades as $actividad)
                         <tr class="centrar">
                             <td>{{ $actividad->id }}</td>
                             <td>{{ $actividad->nombre }}</td>
@@ -66,13 +85,13 @@
                         @endforeach
                         </table>
                     </div>
-                        {{ $pendientes->appends(Request::all())->links() }}
+                        {{ $actividades->appends(Request::all())->links() }}
                                   
                     </div>
                 </div> 
             </div>
          @endIf              
         </div>
-    </div>
 </div>
+@endif
 @endsection

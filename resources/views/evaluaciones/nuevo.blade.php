@@ -74,7 +74,7 @@
                             <label for="observacion" class="col-md-4 control-label">Observaciones</label>
 
                     <div class="col-md-6">
-                        <textarea rows="4" cols="50" id="observacion" type="text" class="form-control" name="observacion" value="{{ old('observacion') }}" autofocus></textarea>
+                        <textarea rows="4" cols="50" id="observacion" type="text" class="form-control" name="observacion" value="{{ old('observacion') }}" autofocus required></textarea>
 
                         @if ($errors->has('observacion'))
                             <span class="help-block">

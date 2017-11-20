@@ -30,6 +30,8 @@ class CreateUsersTable extends Migration
             $table->foreign('departamento_id')->references('id')->on('departamentos')->onDelete('cascade')->onUpdate('cascade');            
             $table->integer('rol_id')->unsigned();
             $table->foreign('rol_id')->references('id')->on('roles')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('sucursal_id')->unsigned()->default(1);
+            $table->foreign('sucursal_id')->references('id')->on('sucursales')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

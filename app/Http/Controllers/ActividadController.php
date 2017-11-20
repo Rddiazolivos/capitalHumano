@@ -76,16 +76,17 @@ class ActividadController extends Controller
      */
     public function show(Request $request, $id)
     {        
-        $actividades = array(
-            'pendientes' =>  actividad::nombre($request->get('scope'))
+        $datos = array(
+            'actividades' =>  actividad::nombre($request->get('scope'))
                 ->where('etapa_id', $id)
                 ->paginate(8),
             'scope' => $request->scope,
             'estado_id' => $request->estado_id,
             'estados' =>  estado::all(),
-            'id_etapa' => $id
+            'id_etapa' => $id,
+            'etapa' => etapa::find($id),
         );
-        return view('Actividades.show', $actividades);
+        return view('Actividades.show', $datos);
     }
 
     /**

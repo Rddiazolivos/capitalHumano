@@ -12,16 +12,19 @@ class rolsTableSeeder extends Seeder
     public function run()
     {
         DB::table('roles')->insert([
-            'nombre' => 'Administrador',
-        ]);
-        DB::table('roles')->insert([
-            'nombre' => 'Evaluador',
-        ]);
-        DB::table('roles')->insert([
-            'nombre' => 'Evaluado',
-        ]);
-        DB::table('roles')->insert([
-            'nombre' => 'Gerente',
+            [
+                'nombre' => 'Administrador',
+            ],
+            [
+                'nombre' => 'Evaluador',
+            ],
+            [
+                'nombre' => 'Evaluado',
+            ],
+            [
+                'nombre' => 'Gerente',
+            ]
+            
         ]);
         DB::table('departamentos')->insert([
             [
@@ -54,13 +57,15 @@ class rolsTableSeeder extends Seeder
             ],
         ]);
         DB::table('estados')->insert([
-            'nombre' => 'Pendiente'
-        ]);
-        DB::table('estados')->insert([
-            'nombre' => 'Finalizada'
-        ]);
-        DB::table('estados')->insert([
-            'nombre' => 'Cerrada'
+            [
+                'nombre' => 'Pendiente'
+            ],
+            [
+                'nombre' => 'Finalizada'
+            ],
+            [
+                'nombre' => 'Cerrada'
+            ],            
         ]);
        
     }
