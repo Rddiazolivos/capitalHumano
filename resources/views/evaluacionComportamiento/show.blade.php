@@ -1,6 +1,6 @@
 @extends('layouts.menu')
 @section('contenido')
-@if(count($proyectos) == 0)
+@if(count($usuarioAsociados) == 0)
 <div class="col-md-12">
         <div class="panel panel-info">
             <div class="panel-heading">No posee proyectos para evaluar</div>
@@ -24,21 +24,29 @@
     </div>
 </div>
 <div class="row">
-    @foreach($proyectos as $proyecto)                
+    @foreach($usuarioAsociados as $user)                
         <div class="col-sm-6 col-md-6 col-lg-4">
             <div class="panel panel-success">
-                <div class="panel-heading">{{ $proyecto->nombre }}</div>
                 <div class="panel-body">
-                    <!-- Para contenr el limeite de caractes de comentarios-->
-                    <p>{{ str_limit($proyecto->observaciones, $limit = 40, $end = ' ...') }}</p>
-                    <p>Porcentaje de avance: {{$proyecto->porcentaje}}%</p>
-                    <a href="{{ route('evaluacion.ver', $proyecto->id) }}" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-folder-open text-primary"></span>  Evaluaciones</a>
+                    <div class="media">
+                      <div class="media-left">
+                        <img src="../img/img_avatar1.png" class="media-object" style="width:60px">
+                      </div>
+                      <div class="media-body">
+                        <h4 class="media-heading">{{$user->full_name}}</h4>                        
+                      </div>
+                    </div>
+                    @if($user->status != 1)
+                    <a href="" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-education text-primary"></span>  Evaluar</a>
+                    @else
+                    <a href="" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-education text-primary"></span>  Revisar evaluacion</a>
+                    @endif
                 </div>
             </div>
         </div>                
     @endforeach 
 </div>
-{{$proyectos->links()}}  
+{{$usuarioAsociados->links()}}  
 @endif
 
 @endsection

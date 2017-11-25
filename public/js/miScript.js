@@ -50,6 +50,7 @@ $(window).resize(function() {
 });
 
 //para poder cambiar de color el menú
+/*
 $(document).ready(function() {
     $(".menu .panel").hover(
         function() {
@@ -60,4 +61,4 @@ $(document).ready(function() {
             $(this).removeClass( "panel-primary" ).addClass( "panel-default" );
         }
     );
-});
+});*/

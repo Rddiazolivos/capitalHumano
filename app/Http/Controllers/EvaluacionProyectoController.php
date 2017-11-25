@@ -24,7 +24,7 @@ class EvaluacionProyectoController extends Controller
     public function index()
     {
         $datos = array(
-            'proyectos'     =>  Proyecto::all(),
+            'proyectos'     =>  Proyecto::paginate(6),
         );
         return view('evaluacionComportamiento.index', $datos);
     }
@@ -76,9 +76,38 @@ class EvaluacionProyectoController extends Controller
      * @param  \sdv\evaluacionProyecto  $evaluacionProyecto
      * @return \Illuminate\Http\Response
      */
-    public function show(evaluacionProyecto $evaluacionProyecto)
+    public function show($proyecto_id)
     {
-        //
+        $etapaAsociadas = etapa::where('proyecto_id', $proyecto_id)->get();
+
+        $arregloEtapas[] = 0;
+        foreach($etapaAsociadas as $etapa){
+            $arregloEtapas[] = $etapa->id; 
+        }
+        $actividadAsociadas = actividad::whereIn('etapa_id', $arregloEtapas)->get();
+
+        $arrActividades[] = 0;
+        foreach($actividadAsociadas as $actividad){
+            $arrActividades[] = $actividad->id;
+        }
+        $responsables = responsable::whereIn('actividad_id', $arrActividades)
+            ->select('responsable_id')
+            ->distinct()
+            ->get();
+
+        $arrResponsables[] = 0;
+        foreach($responsables as $responsable){
+            $arrResponsables[] = $responsable->responsable_id;
+        }
+        $usuarioAsociados = User::whereIn('users.id', $arrResponsables)
+            ->leftJoin('userrespuesta', function ($join) use ($proyecto_id){
+                $join->on('users.id', '=', 'userrespuesta.user_id')
+                     ->where('userrespuesta.proyecto_id', $proyecto_id);
+            })
+            ->select('*', "users.id as id_user")
+            ->paginate(12);
+
+        return view("evaluacionComportamiento/show", compact("usuarioAsociados"));
     }
 
     /**
