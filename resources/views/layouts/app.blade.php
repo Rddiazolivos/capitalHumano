@@ -25,7 +25,7 @@
 <body>
     <div class="visible-xs" id="xs-check"></div>
     <div id="app">
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top navbar-fixed-top">
             <div class="container">
                 <div class="navbar-header">
 
