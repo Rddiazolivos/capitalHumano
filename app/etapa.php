@@ -20,4 +20,24 @@ class etapa extends Model
     {
         return $this->hasMany('sdv\actividad');
     }
+
+    public function actividadesPendientes()
+    {
+        $cantidad = $this->actividades->where('estado_id', 1)->count();
+        return $cantidad;
+    }
+
+    public function actividadesEvaRealizadas()
+    {
+        $cantidad = $this->actividades->where('evaluacion_id', "<>", null)->count();
+        return $cantidad;
+    }
+
+    public function actividadesEvaPendientes()
+    {
+        $cantidad = $this->actividades->where('evaluacion_id', null)->count();
+        return $cantidad;
+    }
 }
+
+

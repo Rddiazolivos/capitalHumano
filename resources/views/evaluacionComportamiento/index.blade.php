@@ -31,7 +31,7 @@
                 <div class="panel-body">
                     <!-- Para contenr el limeite de caractes de comentarios-->
                     <p>{{ str_limit($proyecto->observaciones, $limit = 40, $end = ' ...') }}</p>
-                    <p>Porcentaje de avance: {{$proyecto->porcentaje}}%</p>
+                    <p>Evaluaciones realizadas: {{count($proyecto->respuestas)}}</p>
                     <a href="{{ route('evaluacion.ver', $proyecto->id) }}" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-folder-open text-primary"></span>  Evaluaciones</a>
                 </div>
             </div>

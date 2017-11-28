@@ -99,8 +99,26 @@ class EtapaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(etapa $etapa)
     {
-        //
+        $idP = $etapa->proyecto->id;
+        $etapa->delete();
+        return redirect()->action(
+            'EtapaController@show', ['id' => $idP]
+        );
+    }
+
+    public function estado(etapa $etapa)
+    {
+        $actividadesPendientes = $etapa->actividades->where('estado_id', 1)->count();
+        if($etapa->estado_id == 1 && $actividadesPendientes == 0){
+            $etapa->estado_id = 2;
+        }elseif($etapa->estado_id == 2){
+            $etapa->estado_id = 1;
+        }
+        $etapa->save();
+        return redirect()->action(
+            'ActividadController@show', ['id' => $etapa->id]
+        );
     }
 }

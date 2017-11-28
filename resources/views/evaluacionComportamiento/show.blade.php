@@ -3,7 +3,7 @@
 @if(count($usuarioAsociados) == 0)
 <div class="col-md-12">
         <div class="panel panel-info">
-            <div class="panel-heading">No posee proyectos para evaluar</div>
+            <div class="panel-heading">No posee Usuarios para evaluar</div>
         </div>
 </div>
 @else
@@ -37,9 +37,9 @@
                       </div>
                     </div>
                     @if($user->status != 1)
-                    <a href="" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-education text-primary"></span>  Evaluar</a>
+                    <a href="{{ route('evaluacion.ok', [$user->id_user, $proyecto_id])}}" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-education text-primary"></span>  Evaluar</a>
                     @else
-                    <a href="" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-education text-primary"></span>  Revisar evaluacion</a>
+                    <a href="{{ route('evaluacion.editar', $user->id)}}" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-education text-primary"></span>  Revisar evaluación</a>
                     @endif
                 </div>
             </div>
