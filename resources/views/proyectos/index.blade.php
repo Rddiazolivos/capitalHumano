@@ -28,19 +28,12 @@
 <div class="row">
     @foreach($proyectos as $proyecto)                
         <div class="col-sm-6 col-md-6 col-lg-4">
-            @if($proyecto->estado_id == 1)
             <div class="panel panel-primary">
-            @else
-            <div class="panel panel-info">
-            @endif
                 <div class="panel-heading">{{ $proyecto->nombre }}</div>
                 <div class="panel-body">
                     <!-- Para contenr el limeite de caractes de comentarios-->
-                    {{ str_limit($proyecto->observaciones, $limit = 40, $end = ' ...') }}</br>
-                    <strong>Responsable: </strong>{{$proyecto->user->Full_Name}} </br>
-                    <strong>Estado: </strong>{{$proyecto->estado->nombre}}</br>
-                    <strong>Cantidad de etapas: </strong>{{count($proyecto->etapas)}}</br>
-                    <strong>Cantidad de etapas pendientes: </strong>{{$proyecto->etapasPendientes()}}</br>
+                    <p>{{ str_limit($proyecto->observaciones, $limit = 40, $end = ' ...') }}</p>
+                    <p>Porcentaje de avance: {{$proyecto->porcentaje}}%</p>
                     <a href="{{ route('etapa.show', $proyecto->id) }}" class="btn btn-default btn-block" role="button"><span class="glyphicon glyphicon-folder-open text-primary"></span>  Inspeccionar</a>
                 </div>
             </div>

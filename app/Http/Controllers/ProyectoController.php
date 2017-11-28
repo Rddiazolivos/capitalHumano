@@ -106,23 +106,7 @@ class ProyectoController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function destroy(proyecto $proyecto)
-    {        
-        $proyecto->delete();
-        return redirect()->action(
-            'ProyectoController@index'
-        );
-    }
-
-    public function estado(proyecto $proyecto)
     {
-        if($proyecto->estado_id == 1 && $proyecto->etapasPendientes() == 0){
-            $proyecto->estado_id = 2;
-        }elseif($proyecto->estado_id == 2){
-            $proyecto->estado_id = 1;
-        }
-        $proyecto->save();
-        return redirect()->action(
-            'EtapaController@show', ['id' => $proyecto->id]
-        );
+        //
     }
 }

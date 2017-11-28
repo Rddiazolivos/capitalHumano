@@ -20,10 +20,8 @@ class CreateProyectosTable extends Migration
             $table->date('fec_termino');
             $table->text('observaciones')->nullable();
             $table->smallInteger('porcentaje')->default(0);
-            $table->integer('encuAscendente_id')->unsigned()->default(2);
-            $table->foreign('encuAscendente_id')->references('id')->on('encuestas')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('encuDescendente_id')->unsigned()->default(1);
-            $table->foreign('encuDescendente_id')->references('id')->on('encuestas')->onDelete('cascade')->onUpdate('cascade');
+            $table->integer('encuesta_id')->unsigned()->default(1);
+            $table->foreign('encuesta_id')->references('id')->on('encuestas')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('estado_id')->unsigned();
             $table->foreign('estado_id')->references('id')->on('estados')->onDelete('cascade')->onUpdate('cascade');
             $table->integer('user_id')->unsigned();
