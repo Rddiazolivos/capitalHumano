@@ -26,6 +26,9 @@ class actividad extends Model
     {
         return $this->hasMany('sdv\responsable');
     }
+    public function evaluaciones(){
+        return $this->belongsTo('sdv\evaluacion');
+    }
 
     public function scopeNombre($query, $nombre){
         $query->where('nombre','like', "%$nombre%" );

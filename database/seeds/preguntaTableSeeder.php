@@ -12,7 +12,12 @@ class preguntaTableSeeder extends Seeder
     public function run()
     {
         DB::table('encuestas')->insert([
-            'nombre' => 'Defecto'
+            [
+                'nombre' => 'Desendente'
+            ],
+            [
+                'nombre' => 'Ascendente'
+            ],            
         ]);
 
         DB::table('areas')->insert([
@@ -24,7 +29,10 @@ class preguntaTableSeeder extends Seeder
             ],
             [
                 'nombre' => 'Eficacia personal'
-            ],            
+            ], 
+            [
+                'nombre' => 'Competencias personales'
+            ],           
         ]);
 
         DB::table('preguntas')->insert([
@@ -94,6 +102,55 @@ class preguntaTableSeeder extends Seeder
                 'area_id' => '3'
             ],
             
+        ]);
+
+        DB::table('preguntas')->insert([                        
+            //para ascendente
+            [
+                'concepto' => 'Conocimiento relaciondos con su profesión',
+                'area_id' => '1',
+                'encuesta_id' => '2'
+            ],
+            [
+                'concepto' => 'Conocimientos relacionados con sus funciones',
+                'area_id' => '1',
+                'encuesta_id' => '2'
+            ],
+            [
+                'concepto' => 'Liderazgo',
+                'area_id' => '1',
+                'encuesta_id' => '2'
+            ],
+            [
+                'concepto' => 'Elaboración de documentos afines',
+                'area_id' => '1',
+                'encuesta_id' => '2'
+            ],
+            [
+                'concepto' => 'Capacidad de escuchar',
+                'area_id' => '4',
+                'encuesta_id' => '2'
+            ],
+            [
+                'concepto' => 'Capacidad de decidir',
+                'area_id' => '4',
+                'encuesta_id' => '2'
+            ],
+            [
+                'concepto' => 'Autonomía',
+                'area_id' => '4',
+                'encuesta_id' => '2'
+            ],
+            [
+                'concepto' => 'Iniciativa',
+                'area_id' => '4',
+                'encuesta_id' => '2'
+            ],
+            [
+                'concepto' => 'Disponibilidad',
+                'encuesta_id' => '2',
+                'area_id' => '4',                
+            ],
         ]);
     }
 }

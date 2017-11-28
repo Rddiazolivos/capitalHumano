@@ -14,7 +14,7 @@ use sdv\respuestas_proyecto;
 use sdv\userRespuesta;
 use Illuminate\Http\Request;
 
-class EvaluacionProyectoController extends Controller
+class AscendenteController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -26,7 +26,7 @@ class EvaluacionProyectoController extends Controller
         $datos = array(
             'proyectos'     =>  Proyecto::where('estado_id', '<>', '1')->paginate(6),
         );
-        return view('evaluacionComportamiento.index', $datos);
+        return view('evaluacionComAsc.index', $datos);
     }
 
     /**
@@ -53,13 +53,13 @@ class EvaluacionProyectoController extends Controller
             $resultado = $resultado + $elemento;
         }
 
-        //dd($request);
+        //dd($resultado);
         $usuarioR = new userRespuesta;
         $usuarioR->user_id = $request->user_id;
         $usuarioR->evaluador_id = \Auth::user()->id;
         $usuarioR->proyecto_id = $request->proyecto_id;
         $usuarioR->status = true;
-        $usuarioR->nivel = 1;
+        $usuarioR->nivel = 2;
         $usuarioR->resultado = $resultado;
         $usuarioR->save();
 
@@ -75,7 +75,7 @@ class EvaluacionProyectoController extends Controller
         
         //redirección
         return redirect()->action(
-            'EvaluacionProyectoController@show', $request->proyecto_id
+            'AscendenteController@index'
         );
     }
 
@@ -180,50 +180,15 @@ class EvaluacionProyectoController extends Controller
         //
     }
 
-    public function evaluar(User $user, proyecto $proyecto)
+    public function evaluar(proyecto $proyecto)
     {
         $evaluacion = array(
             'areas'     =>  area::all(),
-            'preguntas' =>  pregunta::all()->where('encuesta_id', '==', 1),
-            'Usuario'   =>  $user,
             'proyecto' => $proyecto,
         );
-        //dd($user);
-        return view('evaluacionComportamiento.evaluar', $evaluacion);
+        //dd($evaluacion);
+        return view('evaluacionComAsc.evaluar', $evaluacion);
     }
 
-    public function datos(Request $request)
-    {
-        $etapaAsociadas = etapa::where('proyecto_id', $request->id)->get();
-
-        $arregloEtapas[] = 0;
-        foreach($etapaAsociadas as $etapa){
-            $arregloEtapas[] = $etapa->id; 
-        }
-        $actividadAsociadas = actividad::whereIn('etapa_id', $arregloEtapas)->get();
-
-        $arrActividades[] = 0;
-        foreach($actividadAsociadas as $actividad){
-            $arrActividades[] = $actividad->id;
-        }
-        $responsables = responsable::whereIn('actividad_id', $arrActividades)
-            ->select('responsable_id')
-            ->distinct()
-            ->get();
-
-        $arrResponsables[] = 0;
-        foreach($responsables as $responsable){
-            $arrResponsables[] = $responsable->responsable_id;
-        }
-        $usuarioAsociados = User::whereIn('users.id', $arrResponsables)
-            ->leftJoin('userrespuesta', function ($join) use ($request){
-                $join->on('users.id', '=', 'userrespuesta.user_id')
-                     ->where('userrespuesta.proyecto_id', $request->id);
-            })
-            ->select('*', "users.id as id_user")
-            ->get();
-
-        return response()->json([ 'responsables' => $responsables, 'proyecto_id' => $request->id , 'asoc' => $usuarioAsociados]);
-          
-    }
+    
 }

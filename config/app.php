@@ -169,6 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        
 
         /*
          * Application Service Providers...

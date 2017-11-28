@@ -14,7 +14,7 @@
                     <div class="table-responsive">
                       <table class="table table-hover">
                         @foreach($areas as $area)
-                        @if(count($area->pregunta) > 0)                        
+                        @if(count($area->pregunta->where('encuesta_id', $proyecto->encuDescendente_id)) > 0)                        
                         <thead>
                             <tr>
                                 <th>
@@ -22,7 +22,7 @@
                                 </th>
                             </tr>
                         </thead>                        
-                        @foreach($area->pregunta as $pregunta)
+                        @foreach($area->pregunta->where('encuesta_id', $proyecto->encuDescendente_id) as $pregunta)
                         <tr>
                             <td>
                                 <div class="container-fluid">
