@@ -52,7 +52,7 @@ class usersTableSeeder extends Seeder
                 'departamento_id' => '1',
             ],
             [
-                'nombre' => 'carolina Lisett',
+                'nombre' => 'Carolina Lisett',
                 'email' => 'moralesC@contacto21.cl',
                 'password' => bcrypt('123456'),
                 'ape_paterno' => 'morales',
@@ -65,7 +65,7 @@ class usersTableSeeder extends Seeder
                 'departamento_id' => '1',
             ],
             [
-                'nombre' => 'satcha Belen',
+                'nombre' => 'Satcha Belen',
                 'email' => 'paradaS@contacto21.cl',
                 'password' => bcrypt('123456'),
                 'ape_paterno' => 'parada',
@@ -78,7 +78,7 @@ class usersTableSeeder extends Seeder
                 'departamento_id' => '1',
             ],
             [
-                'nombre' => 'mauricio Esteban',
+                'nombre' => 'Mauricio Esteban',
                 'email' => 'veram@contacto21.cl',
                 'password' => bcrypt('123456'),
                 'ape_paterno' => 'vera',
@@ -91,7 +91,7 @@ class usersTableSeeder extends Seeder
                 'departamento_id' => '2',
             ],
             [
-                'nombre' => 'camila Andrea',
+                'nombre' => 'Camila Andrea',
                 'email' => 'pardoc@contacto21.cl',
                 'password' => bcrypt('123456'),
                 'ape_paterno' => 'pardo',
@@ -104,7 +104,7 @@ class usersTableSeeder extends Seeder
                 'departamento_id' => '2',
             ],
             [
-                'nombre' => 'maria Raquel',
+                'nombre' => 'Maria Raquel',
                 'email' => 'canalesm@contacto21.cl',
                 'password' => bcrypt('123456'),
                 'ape_paterno' => 'canales',

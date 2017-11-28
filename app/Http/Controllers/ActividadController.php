@@ -131,7 +131,12 @@ class ActividadController extends Controller
      */
     public function destroy(actividad $actividad)
     {
-        dd($actividad);    }
+        $idActi = $actividad->etapa->id;
+        $actividad->delete();
+        return redirect()->action(
+            'ActividadController@show', ['id' => $idActi]
+        );   
+    }
 
     public function ver(Request $request)
     {

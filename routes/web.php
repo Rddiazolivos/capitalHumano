@@ -27,8 +27,11 @@ Route::group(['middleware' => ['auth']], function () {
 
 
 	Route::get('/etapa/crear/{etapa}', 'EtapaController@crear')->name('etapa.crear');
+	Route::get('/etapa/estado/{etapa}', 'EtapaController@estado')->name('etapa.estado');
 
 	Route::resource('/departamento', 'DepartamentoController');
+
+	Route::get('/proyecto/estado/{proyecto}', 'ProyectoController@estado')->name('proyecto.estado');
 	Route::resource('/proyecto', 'ProyectoController');
 	Route::resource('/etapa', 'EtapaController');
 
@@ -60,9 +63,17 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::get('evaluacion/datos', 'EvaluacionProyectoController@datos')->name('evaluacion.datos');
 	Route::get('evaluaciones/{userrespuesta}/edit', 'EvaluacionProyectoController@edit')->name('evaluacion.editar');
 	Route::get('evaluacion/{user}/{proyecto}', 'EvaluacionProyectoController@evaluar')->name('evaluacion.ok');
-	Route::get('evaluacion/', 'EvaluacionProyectoController@index')->name('evaluacion.index');	
+	Route::get('evaluacion/', 'EvaluacionProyectoController@index')->name('evaluacion.index');
+	Route::get('evaluacion/{proyecto_id}', 'EvaluacionProyectoController@show')->name('evaluacion.ver');	
 	Route::put('evaluacion/actualizar', 'EvaluacionProyectoController@update')->name('evaluacion.actualizar');
 	Route::resource('/evaluacion', 'EvaluacionProyectoController');	
+
+	//Route::get('ascendente/datos', 'ascendeteController@datos')->name('ascendente.datos');
+	//Route::get('ascendente/{userrespuesta}/edit', 'ascendeteController@edit')->name('ascendente.editar');
+	Route::get('ascendente/{proyecto}', 'AscendenteController@evaluar')->name('ascendente.ok');
+	//Route::get('ascendente/{proyecto_id}', 'ascendeteController@show')->name('ascendente.ver');	
+	//Route::put('ascendente/actualizar', 'ascendeteController@update')->name('ascendente.actualizar');
+	Route::resource('/ascendente', 'AscendenteController');	
 
 
 	Route::get('pruebas', function () {
