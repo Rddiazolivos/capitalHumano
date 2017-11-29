@@ -17,7 +17,7 @@
                     </div>
                     <div class="col-xs-9 text-right">
                         <div class="huge">{{$numeroActividades}}</div>
-                        <div>Actividades</div>
+                        <div>Actividades pendientes</div>
                     </div>
                 </div>
             </div>

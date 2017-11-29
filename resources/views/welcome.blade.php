@@ -134,8 +134,8 @@
         <div class="container-fluid">
             <div class="row no-gutter">
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/deer.jpg">
-                        <img src="./img/deer.jpg" class="img-responsive" alt="Image 1">
+                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/sdv4.jpg">
+                        <img src="./img/sdv4.jpg" class="img-responsive" alt="Image 1">
                         <div class="gallery-box-caption">
                             <div class="gallery-box-content">
                                 <div>
@@ -146,33 +146,8 @@
                     </a>
                 </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/beach.jpg">
-                        <img src="./img/beach.jpg" class="img-responsive" alt="Image 2">
-                        <div class="gallery-box-caption">
-                            <div class="gallery-box-content">
-                                <div>
-                                    <i class="icon-lg ion-ios-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="clearfix hidden-lg"> </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/lake.jpg">
-                        <img src="./img/lake.jpg" class="img-responsive" alt="Image 3">
-                        <div class="gallery-box-caption">
-                            <div class="gallery-box-content">
-                                <div>
-                                    <i class="icon-lg ion-ios-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/bike.jpg">
-                        <img src="./img/bike.jpg" class="img-responsive" alt="Image 4">
+                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/sdv2.jpg">
+                        <img src="./img/sdv2.jpg" class="img-responsive" alt="Image 2">
                         <div class="gallery-box-caption">
                             <div class="gallery-box-content">
                                 <div>
@@ -184,20 +159,8 @@
                 </div>
                 <div class="clearfix hidden-lg"> </div>
                 <div class="col-lg-4 col-sm-6">
-                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/city.jpg">
-                        <img src="./img/city.jpg" class="img-responsive" alt="Image 5">
-                        <div class="gallery-box-caption">
-                            <div class="gallery-box-content">
-                                <div>
-                                    <i class="icon-lg ion-ios-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/colors.jpg">
-                        <img src="./img/colors.jpg" class="img-responsive" alt="Image 6">
+                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/sdv3.jpg">
+                        <img src="./img/sdv3.jpg" class="img-responsive" alt="Image 3">
                         <div class="gallery-box-caption">
                             <div class="gallery-box-content">
                                 <div>
