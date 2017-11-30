@@ -11,6 +11,7 @@ use sdv\comentario;
 use sdv\responsable;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+//use Notification;
 
 class ActividadController extends Controller
 {
@@ -63,6 +64,9 @@ class ActividadController extends Controller
         $actividad->etapa_id = $request->etapa_id;
         $actividad->save();
         //redirección
+
+        //para la notificación
+        //Auth::user()->notify(new actividadThread());
         return redirect()->action(
             'ActividadController@show', ['id' => $request->etapa_id]
         );

@@ -177,8 +177,7 @@
 
                             <div class="col-md-6">
                                 <select name="condicion" id="condicion" class="form-control" required>
-                                    <option selected hidden value="">Seleccione la condición</option>
-                                    <option value="1" @if(old('condicion') ==  '1') selected='selected' @endif>Activo</option>
+                                    <option value="1" selected >Activo</option>
                                     <option value="0" @if(old('condicion') == '0' ) selected='selected' @endif>Inactivo</option>
                                 </select>
                             </div>
