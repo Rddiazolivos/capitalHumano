@@ -52,6 +52,7 @@ class AscendenteController extends Controller
         foreach($request->MiArray as $clave => $elemento){
             $resultado = $resultado + $elemento;
         }
+        $resultado = round($resultado / count($request->MiArray), 2);
 
         //dd($resultado);
         $usuarioR = new userRespuesta;
@@ -152,7 +153,7 @@ class AscendenteController extends Controller
      */
     public function update(Request $request)
     {
-        //dd($request);
+        dd($request);
 
         foreach($request->MiArray as $clave => $elemento){
             $idRespuesta = $request->MiArray3[$clave];

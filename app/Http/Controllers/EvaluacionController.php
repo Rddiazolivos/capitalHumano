@@ -56,7 +56,11 @@ class EvaluacionController extends Controller
         $actividad->evaluacion_id = $evaluacion->id;
         $actividad->save();
         //redirección
-        return redirect()->route('actividad.show', $actividad->etapa_id);
+        return ($url = \Session::get('backUrl')) 
+           ? \Redirect::to($url) 
+           : \Redirect::route('actividad.show', $actividad->etapa_id);
+
+        //return redirect()->route('actividad.show', $actividad->etapa_id);
     }
 
     /**

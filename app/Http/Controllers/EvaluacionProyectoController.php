@@ -52,7 +52,7 @@ class EvaluacionProyectoController extends Controller
         foreach($request->MiArray as $clave => $elemento){
             $resultado = $resultado + ($elemento * 2);
         }
-        $resultado = $resultado / count($request->MiArray);
+        $resultado = round($resultado / count($request->MiArray), 2);
 
         //dd($request);
         $usuarioR = new userRespuesta;
@@ -155,10 +155,18 @@ class EvaluacionProyectoController extends Controller
     public function update(Request $request)
     {
         //dd($request);
+        //para calcular el resultado
+        $resultado = 0;
+        foreach($request->MiArray as $clave => $elemento){
+            $resultado = $resultado + ($elemento * 2);
+        }
+        $resultado = round($resultado / count($request->MiArray), 2);
         //Para quitar el campo de edición.
         $userRespuesta = userRespuesta::find($request->id_userRes);
         $userRespuesta->editable = false;
+        $userRespuesta->resultado = $resultado;
         $userRespuesta->save();
+        
         //Para guardar las evaluaciones
         foreach($request->MiArray as $clave => $elemento){
             $idRespuesta = $request->MiArray3[$clave];

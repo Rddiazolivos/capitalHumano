@@ -10,7 +10,8 @@
         "illuminate/html": "^5.0",
         "khill/lavacharts": "3.0.*",
         "laravel/framework": "5.4.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "malahierba-lab/chile-rut": "5.1.*"
     },
     "require-dev": {
         "fzaninotto/faker": "~1.4",
