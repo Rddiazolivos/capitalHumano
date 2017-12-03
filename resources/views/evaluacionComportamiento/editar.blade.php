@@ -5,7 +5,7 @@
 <div class="col-md-10 col-md-offset-1">
             <div class="panel panel-primary">                
                 <div class="panel-body">
-                    Evaluación a {{$Usuario->full_name}}
+                    Evaluación a {{$Usuario->full_name}}                    
                 </div>
             </div>
             <div class="panel panel-default">    
@@ -67,7 +67,8 @@
                     <!-- el campo oculto -->
                     <input name="proyecto_id" type="hidden" value="{{$proyecto->id}}">
                     <input name="user_id" type="hidden" value="{{$Usuario->id}}">
-
+                    <input name="id_userRes" type="hidden" value="{{$userRespuesta->id}}">
+                    @if($userRespuesta->editable == true && Auth::user()->rol->nombre === 'Evaluador')
                     <div class="form-group">
                         <div class="col-md-12">
                             <button type="submit" class="btn btn-primary center-block">
@@ -75,7 +76,33 @@
                             </button>
                         </div>
                     </div>
+                    @endif
                 </form>
+                @if($userRespuesta->editable && Auth::user()->rol->nombre === 'Administrador')
+                <div>
+                    <form class="form-horizontal" method="POST" action="{{ route('userRes.habilitar') }}">
+                    {{ csrf_field() }} 
+                    {{ method_field('PUT') }}
+                    <input name="id_userRes" type="hidden" value="{{$userRespuesta->id}}">
+                    <input name="habilitar" type="hidden" value="0">
+                    <button type="submit" class="btn btn-primary center-block">
+                            Desabilitar edición
+                        </button>
+                    </form>
+                </div>
+                @elseif($userRespuesta->editable == false && Auth::user()->rol->nombre === 'Administrador')
+                <div>
+                    <form class="form-horizontal" method="POST" action="{{ route('userRes.habilitar') }}">
+                    {{ csrf_field() }} 
+                    {{ method_field('PUT') }}
+                    <input name="id_userRes" type="hidden" value="{{$userRespuesta->id}}">
+                    <input name="habilitar" type="hidden" value="1">
+                    <button type="submit" class="btn btn-primary center-block">
+                            Habilitar edición
+                        </button>
+                    </form>
+                </div>
+                @endif
             </div>
 </div>
 @endsection

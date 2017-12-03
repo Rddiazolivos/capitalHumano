@@ -16,6 +16,7 @@ class CreateUserRespuestaTable extends Migration
         Schema::create('userrespuesta', function (Blueprint $table) {
             $table->increments('id');
             $table->boolean('status')->default(false);
+            $table->boolean('editable')->default(false);
             $table->string('nivel')->nullable();
             $table->string('resultado')->nullable();
             $table->integer('user_id')->unsigned();
@@ -26,7 +27,6 @@ class CreateUserRespuestaTable extends Migration
             $table->foreign('proyecto_id')->references('id')->on('proyectos')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
-
     }
 
     /**

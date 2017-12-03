@@ -63,7 +63,7 @@
                         <div class="form-group{{ $errors->has('nombre') ? ' has-error' : '' }}">
                             <label for="nombre" class="control-label">Comentar</label>
 
-                                <textarea rows="4" cols="50" id="nombre" type="text" class="form-control" name="nombre" autofocus>{{ old('nombre') }}</textarea>
+                                <textarea rows="4" cols="50" id="nombre" type="text" class="form-control" name="nombre"  @if($actividad->estado_id <> 1) disabled @else autofocus @endif>{{ old('nombre') }}</textarea>
 
                                 @if ($errors->has('nombre'))
                                     <span class="help-block">

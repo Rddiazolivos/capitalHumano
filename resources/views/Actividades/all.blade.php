@@ -45,7 +45,16 @@
                         <td>{{ $actividad->nombre }}</td>
                         <td>{{ $actividad->prioridad->nombre }}</td>
                         <td>{{ $actividad->estado->nombre }}</td>
-                        <td><a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a></td>                        
+                        <td>
+                            @if($actividad->estado_id == 2 && $actividad->asignacion)
+                                @if($actividad->evaluacion_id == null)
+                                <a data-toggle="tooltip" title="Evaluar Actividad" href="{{ route('evaluar.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-education text-danger"></span></a>
+                                @else
+                                <a data-toggle="tooltip" title="Editar evaluación" href="{{ route('evaluar.editar' , [$actividad->id , $actividad->evaluacion_id]) }}"><span class="glyphicon glyphicon-education text-primary"></span></a>
+                                @endif
+                            @endif
+                            <a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a>
+                        </td>                        
                     </tr>
                     @endforeach
                 </table>

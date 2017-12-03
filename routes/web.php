@@ -75,6 +75,9 @@ Route::group(['middleware' => ['auth']], function () {
 	//Route::put('ascendente/actualizar', 'ascendeteController@update')->name('ascendente.actualizar');
 	Route::resource('/ascendente', 'AscendenteController');	
 
+	//Para habilitar la edicion
+	Route::put('userRes/habilitar', 'EvaluacionProyectoController@HabilitarEdición')->name('userRes.habilitar');
+
 
 	Route::get('pruebas', function () {
     return view('pruebas.1');

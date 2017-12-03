@@ -50,8 +50,9 @@ class EvaluacionProyectoController extends Controller
         //para calcular el resultado
         $resultado = 0;
         foreach($request->MiArray as $clave => $elemento){
-            $resultado = $resultado + $elemento;
+            $resultado = $resultado + ($elemento * 2);
         }
+        $resultado = $resultado / count($request->MiArray);
 
         //dd($request);
         $usuarioR = new userRespuesta;
@@ -138,6 +139,7 @@ class EvaluacionProyectoController extends Controller
                 ->select('*', "respuestas_proyectos.id as id_respuesta")
                 ->get(),
             'respuestas' => $respuestas,
+            'userRespuesta' => $userrespuesta,
         );
         //dd($evaluacion);
         return view('evaluacionComportamiento.editar', $evaluacion);
@@ -153,7 +155,11 @@ class EvaluacionProyectoController extends Controller
     public function update(Request $request)
     {
         //dd($request);
-
+        //Para quitar el campo de edición.
+        $userRespuesta = userRespuesta::find($request->id_userRes);
+        $userRespuesta->editable = false;
+        $userRespuesta->save();
+        //Para guardar las evaluaciones
         foreach($request->MiArray as $clave => $elemento){
             $idRespuesta = $request->MiArray3[$clave];
             $respuesta = respuestas_proyecto::find($idRespuesta);
@@ -226,4 +232,17 @@ class EvaluacionProyectoController extends Controller
         return response()->json([ 'responsables' => $responsables, 'proyecto_id' => $request->id , 'asoc' => $usuarioAsociados]);
           
     }
+
+    //Para habilitar la edición de una evaluación
+    public function HabilitarEdición(Request $request)
+    {
+        //dd($request);
+        $userRespuesta = userRespuesta::find($request->id_userRes);
+        $userRespuesta->editable = $request->habilitar;
+        $userRespuesta->save();
+           
+        //redirección
+        return back();
+    }
+
 }

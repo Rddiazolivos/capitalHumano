@@ -33,7 +33,13 @@
                         <img src="../img/img_avatar1.png" class="media-object" style="width:60px">
                       </div>
                       <div class="media-body">
-                        <h4 class="media-heading">{{$user->full_name}}</h4>                        
+                        <h4 class="media-heading">{{$user->full_name}}</h4>
+                        @if($user->status == 1)
+                            <p>Nota: {{$user->resultado}}</p>
+                        @else
+                            <p>&nbsp;</p>
+                        @endif
+                        </br>                  
                       </div>
                     </div>
                     @if($user->status != 1)

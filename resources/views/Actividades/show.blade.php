@@ -101,16 +101,19 @@
                             <td>{{ $actividad->nombre }}</td>
                             <td>{{ $actividad->prioridad->nombre }}</td>
                             <td>{{ $actividad->estado->nombre }}</td>
-                            <td>                            
-                                <a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-edit text-success"></span></a>
-                                @if($actividad->estado_id == 2 && $actividad->asignacion)
-                                    @if($actividad->evaluacion_id == null)
-                                    <a data-toggle="tooltip" title="Evaluar Actividad" href="{{ route('evaluar.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-education text-danger"></span></a>
-                                    @else
-                                    <a data-toggle="tooltip" title="Editar evaluación" href="{{ route('evaluar.editar' , [$actividad->id , $actividad->evaluacion_id]) }}"><span class="glyphicon glyphicon-education text-primary"></span></a>
-                                    @endif
+                            <td>                                                            
+                                @if($actividad->asignacion)
+                                    <!-- Para comentar -->
+                                    <a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-edit text-success"></span></a>
+                                @endif
+                                <!--Evaluar  -->
+                                @if($actividad->evaluacion_id == null && $actividad->estado_id == 2)
+                                <a data-toggle="tooltip" title="Evaluar Actividad" href="{{ route('evaluar.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-education text-danger"></span></a>
+                                @elseif($actividad->evaluacion_id && $actividad->estado_id == 2)
+                                <a data-toggle="tooltip" title="Editar evaluación" href="{{ route('evaluar.editar' , [$actividad->id , $actividad->evaluacion_id]) }}"><span class="glyphicon glyphicon-education text-primary"></span></a>
                                 @endif
                                 @if($actividad->asignacion == 0 && $actividad->estado_id == 1)
+                                <!-- asignar responsable -->
                                 <a data-toggle="tooltip" title="Asignar responsable" href="{{ route('responsable.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-check text-danger"></span></a>
                                 @elseif($actividad->asignacion == 1 && $actividad->estado_id == 1)
                                 <a data-toggle="tooltip" title="Editar responsable" href="{{ route('responsable.editar' , $actividad->id) }}"><span class="glyphicon glyphicon-check glyphicon-check text-primary"></span></a>
