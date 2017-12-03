@@ -9,15 +9,21 @@
                 <div class="container-fluid">
                     <div class='row'>
                         <form class='form-inline' role='search' method="GET" action="{{ route('actividad.all') }}">
-                            <div class="col-md-6 form-group">
+                            <div class="col-md-8 form-group">
                                 <select name="estado_id" id="estado_id" class="form-control">
                                     <option value="10" @if(10==old('estado_id', $estado_id)) selected='selected' @endif > Todas</option>         
                                   @foreach($estados as $estado)
                                     <option value="{{ $estado->id }}" @if($estado->id==old('estado_id', $estado_id)) selected='selected' @endif > {{ "Actividades ". $estado->nombre ."s"}}</option>
                                   @endforeach
                                 </select>
+                                <select name="proyecto_id" id="proyecto_id" class="form-control">
+                                    <option value="all" @if(10==old('proyecto_id', $proyecto_id)) selected='selected' @endif > -Proyectos- </option>         
+                                  @foreach($proyectos as $proyecto)
+                                    <option value="{{ $estado->id }}" @if($estado->id==old('proyecto_id', $proyecto_id)) selected='selected' @endif > {{ "Actividades ". $proyecto->nombre }}</option>
+                                  @endforeach
+                                </select>
                             </div>
-                            <div class="col-md-6 input-group form-group">
+                            <div class="col-md-4 input-group form-group">
                                 <input type='text' class='form-control' placeholder='Buscar' name="scope" value="{{ old('scope', $scope) }}">
                                 <div class="input-group-btn">
                                     <button type='submit' class='btn btn-default' id='botonFiltro'><i class="glyphicon glyphicon-search"></i></button>

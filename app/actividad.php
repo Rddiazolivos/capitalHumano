@@ -34,6 +34,10 @@ class actividad extends Model
         $query->where('nombre','like', "%$nombre%" );
 
     }
+    public function scopeProyecto($query, $pro_id){
+        $query->where('nombre', "$pro_id" );
+
+    }
     public function scopeEstado($query, $estado_id){
         if($estado_id==null){
             $query->where('estado_id', "1" );

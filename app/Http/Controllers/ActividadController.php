@@ -7,6 +7,7 @@ use sdv\prioridad;
 use sdv\estado;
 use sdv\User;
 use sdv\etapa;
+use sdv\proyecto;
 use sdv\comentario;
 use sdv\responsable;
 use Illuminate\Http\Request;
@@ -165,7 +166,9 @@ class ActividadController extends Controller
                 ->paginate(8),
             'scope' => $request->scope,
             'estado_id' => $request->estado_id,
-            'estados' =>  estado::all()
+            'estados' =>  estado::all(),
+            'proyecto_id' => $request->proyecto_id,
+            'proyectos' =>  proyecto::all(),
         );
         return view('Actividades.all',$actividades);
     }

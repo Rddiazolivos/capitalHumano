@@ -65,6 +65,7 @@ class HomeController extends Controller
                 'is3D'   => true,
             ]);
 
+            //para el numero de proyecto
             $datos = array(
                 'numeroProyectos' => proyecto::count(),
                 'numeroActividades' => actividad::count(),
@@ -94,7 +95,7 @@ class HomeController extends Controller
             ]);
 
             $datos = array(
-                'numeroProyectos' => proyecto::count(),
+                'numeroProyectos' => proyecto::where('user_id', \Auth::user()->id)->count(),
                 'numeroActividades' => actividad::count(),
                 'numeroEvaluaciones' => userRespuesta::count(),
                 "lava2"=>$chart2,

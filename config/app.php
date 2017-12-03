@@ -169,6 +169,7 @@ return [
         Laravel\Tinker\TinkerServiceProvider::class,
         Barryvdh\DomPDF\ServiceProvider::class,
         Khill\Lavacharts\Laravel\LavachartsServiceProvider::class,
+        Malahierba\ChileRut\ChileRutServiceProvider::class,
         
 
         /*
@@ -230,6 +231,7 @@ return [
         'View' => Illuminate\Support\Facades\View::class,
         'PDF' => Barryvdh\DomPDF\Facade::class,
         'Lava' => Khill\Lavacharts\Laravel\LavachartsFacade::class,
+        'RUT' => Malahierba\ChileRut\Facades\ChileRut::class,
 
     ],
 
