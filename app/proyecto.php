@@ -11,6 +11,19 @@ class proyecto extends Model
     //Campos asignables masivamente
     protected $fillable = ['nombre', 'fec_creacion', 'fec_termino', 'observaciones', 'user_id'];
 
+    public function actividades()
+    {
+        return $this->hasManyThrough('sdv\actividad', 'sdv\etapa');
+    }
+
+    public function responsables()
+    {
+        return $this->hasManyThrough('sdv\actividad', 'sdv\etapa')
+        ->join('responsables','actividades.id','=','responsables.actividad_id')
+        ->join('users','responsables.responsable_id','=','users.id')
+        ->select('users.*');
+    }
+
     public function user(){
     	return $this->belongsTo('sdv\User');
     }

@@ -98,15 +98,10 @@
             </a> 
         </div>
     </div>
-        <div class='col-xs-12 col-sm-12 col-md-6'>
-            <div id="chart-div2"></div>            
-        </div>
-        <hr>
-        <div class='col-xs-12 col-sm-12 col-md-6'>
+        <div class='col-xs-12 col-sm-12 col-md-8 col-md-offset-2'>
             <div id="chart-div"></div>
             
         </div>  
 @endsection
 
-@linechart('MyStocks', 'chart-div2')
 @piechart('IMDB', 'chart-div')

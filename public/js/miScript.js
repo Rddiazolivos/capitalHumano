@@ -21,6 +21,9 @@ $(document).ready(function(){
     $("#estado_id").change(function(){
         $("#botonFiltro").click();
     });
+    $("#proyecto_id").change(function(){
+        $("#botonFiltro").click();
+    });
 });
 
 $(document).ready(function() {
@@ -62,3 +65,18 @@ $(document).ready(function() {
         }
     );
 });*/
+
+
+//Para el cambio de los usuruario en el informe de desempeño
+$(document).ready(function(){
+    $('#proyecto_id_des').change(function(){
+        $.get("/dropdown",
+        { option: $(this).val() },
+        function(data) {
+            $('#user_id_des').empty();
+            $.each(data, function(key, element) {
+                $('#user_id_des').append("<option value='" + key + "'>" + element + "</option>");
+            });
+        });
+    });
+});

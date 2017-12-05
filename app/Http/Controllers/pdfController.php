@@ -7,7 +7,7 @@ use sdv\User;
 use sdv\responsable;
 use sdv\proyecto;
 use sdv\etapa;
-
+use sdv\userRespuesta;
 
 class pdfController extends Controller
 {
@@ -84,5 +84,34 @@ class pdfController extends Controller
             "proyectos" => proyecto::all(),
         );
         return view('pdf.vistaActividad', $datos);
+    }
+
+    public function vistaDesempeno()
+    {       
+        $datos = array(
+            "proyectos" => proyecto::all(),
+            "usuarios" => User::all(),
+        );
+        return view('pdf.vista.desempeno', $datos);
+    }
+    public function archivoDesempeno(Request $request)
+    {        
+        //dd($request);
+        $datos =array(
+            "proyecto" => proyecto::find($request->proyecto_id),
+            "usuario" => User::find($request->user_id),
+            "resultado" => userRespuesta::where('proyecto_id', $request->proyecto_id)
+                ->where('user_id', $request->user_id)->first(),
+        );
+        
+        $view =  \View::make('pdf.archivo.desempeno', $datos)->render();  
+        $pdf = \App::make('dompdf.wrapper');      
+        $pdf->loadHTML($view);
+        if($request->tipo == 1){
+            return $pdf->download($request->proyecto_id.'.pdf');
+        }else if($request->tipo == 2){
+            return $pdf->stream();
+        }     
+        //return view('pdf.actividad', $datos);
     }
 }

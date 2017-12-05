@@ -14,4 +14,5 @@ class estado extends Model
     {
         return $this->hasOne('sdv\actividad');
     }
+    
 }

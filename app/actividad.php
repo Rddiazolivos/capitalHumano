@@ -12,6 +12,7 @@ class actividad extends Model
     public function etapa(){
         return $this->belongsTo('sdv\etapa');
     }
+    
     public function prioridad(){
     	return $this->belongsTo('sdv\prioridad');
     }    
@@ -35,8 +36,14 @@ class actividad extends Model
 
     }
     public function scopeProyecto($query, $pro_id){
-        $query->where('nombre', "$pro_id" );
+        if($pro_id == null || $pro_id == "all"){
 
+        }else{
+            $query->whereHas('etapa.proyecto', function($q) use ($pro_id) {
+                return $q->where('id', $pro_id);
+            });
+        }
+        
     }
     public function scopeEstado($query, $estado_id){
         if($estado_id==null){

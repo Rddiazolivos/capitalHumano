@@ -19,7 +19,7 @@
                                 <select name="proyecto_id" id="proyecto_id" class="form-control">
                                     <option value="all" @if(10==old('proyecto_id', $proyecto_id)) selected='selected' @endif > -Proyectos- </option>         
                                   @foreach($proyectos as $proyecto)
-                                    <option value="{{ $estado->id }}" @if($estado->id==old('proyecto_id', $proyecto_id)) selected='selected' @endif > {{ "Actividades ". $proyecto->nombre }}</option>
+                                    <option value="{{ $proyecto->id }}" @if($proyecto->id==old('proyecto_id', $proyecto_id)) selected='selected' @endif > {{  $proyecto->nombre }}</option>
                                   @endforeach
                                 </select>
                             </div>

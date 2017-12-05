@@ -1,5 +1,5 @@
 <?php
-
+use Illuminate\Support\Facades\Input;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -59,6 +59,9 @@ Route::group(['middleware' => ['auth']], function () {
 
 	Route::post('pdf2', 'pdfController@actividad')->name('pdf.actividad');
 	Route::get('reporteActividad', 'pdfController@SeleccionarProyecto')->name('reporte.actividad');
+	//Para reporte de desempeño
+	Route::post('pdf3', 'pdfController@archivoDesempeno')->name('pdf.desempeno');
+	Route::get('reporteDesempeno', 'pdfController@vistaDesempeno')->name('reporte.desempeno');
 
 	Route::get('evaluacion/datos', 'EvaluacionProyectoController@datos')->name('evaluacion.datos');
 	Route::get('evaluaciones/{userrespuesta}/edit', 'EvaluacionProyectoController@edit')->name('evaluacion.editar');
@@ -78,10 +81,17 @@ Route::group(['middleware' => ['auth']], function () {
 	//Para habilitar la edicion
 	Route::put('userRes/habilitar', 'EvaluacionProyectoController@HabilitarEdición')->name('userRes.habilitar');
 
+	//Para recuperar os usuario dentor del informe de resultados
+	Route::get('dropdown', function(){
+		$id = Input::get('option');
+		$procesos = \sdv\proyecto::find($id)->responsables;
+		return $procesos->pluck('nombre', 'id');
+	});
+
 
 	Route::get('pruebas', function () {
-    return view('pruebas.1');
-});
+	    return view('pruebas.1');
+	});
 });
 
 

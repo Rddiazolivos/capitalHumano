@@ -11,16 +11,24 @@
                     <div class="col-md-12">
                         <form class='navbar-form ' role='search' method="GET" action="{{ route('actividad.ver') }}">
                             <div class="row">
-                                <div class="col-md-6">
+                                <div class="col-md-8">
                                     <select name="estado_id" id="estado_id" class="form-control">         
                                       @foreach($estados as $estado)
                                         <option value="{{ $estado->id }}" @if($estado->id==old('estado_id', $estado_id)) selected='selected' @endif > {{ "Actividades ". $estado->nombre ."s"}}</option>
                                       @endforeach
                                     </select>
+                                    <select name="proyecto_id" id="proyecto_id" class="form-control">
+                                        <option value="all" @if(10==old('proyecto_id', $proyecto_id)) selected='selected' @endif > -Proyectos- </option>         
+                                      @foreach($proyectos as $proyecto)
+                                        <option value="{{ $proyecto->id }}" @if($proyecto->id==old('proyecto_id', $proyecto_id)) selected='selected' @endif > {{  $proyecto->nombre }}</option>
+                                      @endforeach
+                                    </select>
                                 </div>
-                                <div class="col-md-6 form-group">
+                                <div class="col-md-4 input-group form-group">
                                     <input type='text' class='form-control' placeholder='Buscar' name="scope" value="{{ old('scope', $scope) }}">
-                                    <button type='submit' class='btn btn-default' id='botonFiltro'>Buscar</button>
+                                    <div class="input-group-btn">
+                                        <button type='submit' class='btn btn-default' id='botonFiltro'><i class="glyphicon glyphicon-search"></i></button>
+                                    </div>
                                 </div>
                             </div>                         
                         </form>

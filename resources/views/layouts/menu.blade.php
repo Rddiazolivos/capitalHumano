@@ -135,6 +135,11 @@
                                         <span class="glyphicon glyphicon-print text-primary"></span><a href="{{ route('reporte.actividad') }}">Reporte avance actividades</a>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-tasks"></span><a href="{{ route('reporte.desempeno') }}">Reporte por desempeño</a>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     </div>
