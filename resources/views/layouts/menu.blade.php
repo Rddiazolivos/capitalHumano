@@ -189,7 +189,7 @@
             </div>
         </div>
         <div class="text-center" style="position:relative;">
-            <img src="{{ asset('img/SDV_icono.png') }}" class="img-responsive media-center" style="position:absolute; top: 250px; width: 120px;">
+            <img src="{{ asset('img/SDV_icono.png') }}" class="img-responsive media-center" style="position:fixed; bottom: 20px; width: 120px;">
         </div>
         </div>
         <div class="col-sm-9 col-sm-offset-3 col-md-9 col-md-offset-3 col-lg-10 col-lg-offset-2">

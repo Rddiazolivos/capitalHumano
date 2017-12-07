@@ -32,13 +32,14 @@
             </div>
         </div>
         <div class="panel-body">
-            <form class="form-horizontal" method="POST" action="{{ route('evaluar.store') }}">
+            <form class="form-horizontal" method="POST" action="{{ route('evaluar.update' , $evaluacion) }}">
                         {{ csrf_field() }}
+                        {{ method_field('PUT') }}
                 <div class="form-group{{ $errors->has('conforme') ? ' has-error' : '' }}">
                     <label for="conforme" class="col-md-4 control-label">Conformidad</label>
 
                     <div class="col-md-6">                        
-                        <label class="radio-inline"><input type="radio" name="conforme" value="1" @if($evaluacion->conforme ==  '1') checked="checked" @endif required>Conforme</label>
+                        <label class="radio-inline"><input type="radio" name="conforme" value="1" @if($evaluacion->conforme ==  '1') checked="checked" @endif required autofocus>Conforme</label>
                         <label class="radio-inline"><input type="radio" name="conforme" value="0" @if($evaluacion->conforme ==  '0') checked="checked" @endif>Disconforme</label>
 
                         @if ($errors->has('conforme'))
@@ -74,7 +75,7 @@
                             <label for="observacion" class="col-md-4 control-label">Observaciones</label>
 
                     <div class="col-md-6">
-                        <textarea rows="4" cols="50" id="observacion" type="text" class="form-control" name="observacion" autofocus>{{ old('observacion', $evaluacion->observacion) }}</textarea>
+                        <textarea rows="4" cols="50" id="observacion" type="text" class="form-control" name="observacion" >{{ old('observacion', $evaluacion->observacion) }}</textarea>
 
                         @if ($errors->has('observacion'))
                             <span class="help-block">

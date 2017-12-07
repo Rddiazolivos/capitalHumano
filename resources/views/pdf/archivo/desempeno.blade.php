@@ -17,7 +17,11 @@
 
           <div>
             <h4>Proyecto: {{$proyecto->nombre}}</h4>
+            @if($resultado <> null)
             <h4>Calificación evaluación comportamiento: {{$resultado->resultado}}</h4>
+            @else
+            <h4>Calificación evaluación comportamiento: Sin evaluar</h4>
+            @endif
           </div>        
     </div>
     <div>
@@ -33,8 +37,18 @@
             @foreach($proyecto->actividades as $actividad)
               <tr>
                 <td>{{$actividad->nombre}}</td>
-                <td>Doe</td>
-                <td>john@example.com</td>
+                <!-- nota-->
+                @if($actividad->evaluacion <> null)
+                <td>{{$actividad->evaluacion->calificacion}}</td>
+                @else
+                <td>Sin evaluar</td>
+                @endif
+                <!-- Observación-->
+                @if($actividad->evaluacion <> null)
+                <td>{{$actividad->evaluacion->observacion}}</td>
+                @else
+                <td></td>
+                @endif                  
               </tr>
             @endforeach
             </tbody>

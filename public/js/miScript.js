@@ -80,3 +80,15 @@ $(document).ready(function(){
         });
     });
 });
+
+//Para el manejo de las fecha al crear nuevo registros de proyecto
+$(document).ready(function(){
+    $('#fec_creacion').change(function(){
+        var fecha = $(this).val();
+        $('#fec_termino').attr({
+                           "min" : fecha,
+                        });
+        $('#fec_termino').prop("disabled", false);
+        $('#fec_termino').removeAttr("title");
+    });
+});

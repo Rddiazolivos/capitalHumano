@@ -107,10 +107,10 @@
                                     <a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-edit text-success"></span></a>
                                 @endif
                                 <!--Evaluar  -->
-                                @if($actividad->evaluacion_id == null && $actividad->estado_id == 2)
+                                @if($actividad->evaluacion == null && $actividad->estado_id == 2)
                                 <a data-toggle="tooltip" title="Evaluar Actividad" href="{{ route('evaluar.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-education text-danger"></span></a>
-                                @elseif($actividad->evaluacion_id && $actividad->estado_id == 2)
-                                <a data-toggle="tooltip" title="Editar evaluación" href="{{ route('evaluar.editar' , [$actividad->id , $actividad->evaluacion_id]) }}"><span class="glyphicon glyphicon-education text-primary"></span></a>
+                                @elseif($actividad->evaluacion <> null && $actividad->estado_id == 2)
+                                <a data-toggle="tooltip" title="Editar evaluación" href="{{ route('evaluar.edit' ,  $actividad->evaluacion->id) }}"><span class="glyphicon glyphicon-education text-primary"></span></a>
                                 @endif
                                 @if($actividad->asignacion == 0 && $actividad->estado_id == 1)
                                 <!-- asignar responsable -->

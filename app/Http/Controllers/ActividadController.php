@@ -42,7 +42,7 @@ class ActividadController extends Controller
             'estados' =>  estado::all()->where('nombre', '<>', 'Cerrada'),
             'usuarios' =>  User::all()->where("rol_id", "3"),
             'etapas' =>  etapa::all(),
-            'id_etapa' =>  $id
+            'etapa' =>  etapa::find($id),
         );
         return view('Actividades.nuevo', $formulario);
     }

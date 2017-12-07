@@ -38,7 +38,7 @@
                     <label for="conforme" class="col-md-4 control-label">Conformidad</label>
 
                     <div class="col-md-6">                        
-                        <label class="radio-inline"><input type="radio" name="conforme" value="1" required>Conforme</label>
+                        <label class="radio-inline"><input type="radio" name="conforme" value="1" required autofocus>Conforme</label>
                         <label class="radio-inline"><input type="radio" name="conforme" value="0">Disconforme</label>
 
                         @if ($errors->has('conforme'))

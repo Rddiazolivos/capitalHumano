@@ -29,13 +29,25 @@ class etapa extends Model
 
     public function actividadesEvaRealizadas()
     {
-        $cantidad = $this->actividades->where('evaluacion_id', "<>", null)->count();
+        $cantidad = 0;
+        $actividades = $this->actividades;
+        foreach($actividades as $actividad){
+            if($actividad->evaluacion <> null){
+                $cantidad = $cantidad + 1;
+            }
+        }
         return $cantidad;
     }
 
     public function actividadesEvaPendientes()
     {
-        $cantidad = $this->actividades->where('evaluacion_id', null)->count();
+        $cantidad = 0;
+        $actividades = $this->actividades;
+        foreach($actividades as $actividad){
+            if($actividad->evaluacion == null){
+                $cantidad = $cantidad + 1;
+            }
+        }
         return $cantidad;
     }
 }

@@ -35,3 +35,119 @@
 |        | POST      | register                         |                      | sdv\Http\Controllers\Auth\RegisterController@register                  | web,auth     |
 |        | GET|HEAD  | register                         | register             | sdv\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web,auth     |
 +--------+-----------+----------------------------------+----------------------+------------------------------------------------------------------------+--------------+
++--------+-----------+-----------------------------------+------------------------+------------------------------------------------------------------------+--------------+
+| Domain | Method    | URI                               | Name                   | Action                                                                 | Middleware   |
++--------+-----------+-----------------------------------+------------------------+------------------------------------------------------------------------+--------------+
+|        | GET|HEAD  | /                                 |                        | Closure                                                                | web          |
+|        | POST      | actividad                         | actividad.store        | sdv\Http\Controllers\ActividadController@store                         | web,auth     |
+|        | GET|HEAD  | actividad                         | actividad.index        | sdv\Http\Controllers\ActividadController@index                         | web,auth     |
+|        | GET|HEAD  | actividad/all                     | actividad.all          | sdv\Http\Controllers\ActividadController@all                           | web,auth     |
+|        | GET|HEAD  | actividad/create                  | actividad.create       | sdv\Http\Controllers\ActividadController@create                        | web,auth     |
+|        | GET|HEAD  | actividad/create/{actividad}      | actividad.crear        | sdv\Http\Controllers\ActividadController@create                        | web,auth     |
+|        | GET|HEAD  | actividad/ver                     | actividad.ver          | sdv\Http\Controllers\ActividadController@ver                           | web,auth     |
+|        | GET|HEAD  | actividad/{actividad}             | actividad.show         | sdv\Http\Controllers\ActividadController@show                          | web,auth     |
+|        | PUT|PATCH | actividad/{actividad}             | actividad.update       | sdv\Http\Controllers\ActividadController@update                        | web,auth     |
+|        | DELETE    | actividad/{actividad}             | actividad.destroy      | sdv\Http\Controllers\ActividadController@destroy                       | web,auth     |
+|        | GET|HEAD  | actividad/{actividad}/comentar    | actividad.comentar     | sdv\Http\Controllers\ActividadController@comentar                      | web,auth     |
+|        | GET|HEAD  | actividad/{actividad}/edit        | actividad.edit         | sdv\Http\Controllers\ActividadController@edit                          | web,auth     |
+|        | GET|HEAD  | api/user                          |                        | Closure                                                                | api,auth:api |
+|        | GET|HEAD  | ascendente                        | ascendente.index       | sdv\Http\Controllers\AscendenteController@index                        | web,auth     |
+|        | POST      | ascendente                        | ascendente.store       | sdv\Http\Controllers\AscendenteController@store                        | web,auth     |
+|        | GET|HEAD  | ascendente/create                 | ascendente.create      | sdv\Http\Controllers\AscendenteController@create                       | web,auth     |
+|        | GET|HEAD  | ascendente/{ascendente}           | ascendente.show        | sdv\Http\Controllers\AscendenteController@show                         | web,auth     |
+|        | PUT|PATCH | ascendente/{ascendente}           | ascendente.update      | sdv\Http\Controllers\AscendenteController@update                       | web,auth     |
+|        | DELETE    | ascendente/{ascendente}           | ascendente.destroy     | sdv\Http\Controllers\AscendenteController@destroy                      | web,auth     |
+|        | GET|HEAD  | ascendente/{ascendente}/edit      | ascendente.edit        | sdv\Http\Controllers\AscendenteController@edit                         | web,auth     |
+|        | GET|HEAD  | ascendente/{proyecto}             | ascendente.ok          | sdv\Http\Controllers\AscendenteController@evaluar                      | web,auth     |
+|        | POST      | comentario                        | comentario.store       | sdv\Http\Controllers\ComentarioController@store                        | web,auth     |
+|        | GET|HEAD  | comentario                        | comentario.index       | sdv\Http\Controllers\ComentarioController@index                        | web,auth     |
+|        | GET|HEAD  | comentario/create                 | comentario.create      | sdv\Http\Controllers\ComentarioController@create                       | web,auth     |
+|        | GET|HEAD  | comentario/create/{actividad}     | comentario.crear       | sdv\Http\Controllers\ComentarioController@create                       | web,auth     |
+|        | PUT|PATCH | comentario/{comentario}           | comentario.update      | sdv\Http\Controllers\ComentarioController@update                       | web,auth     |
+|        | GET|HEAD  | comentario/{comentario}           | comentario.show        | sdv\Http\Controllers\ComentarioController@show                         | web,auth     |
+|        | DELETE    | comentario/{comentario}           | comentario.destroy     | sdv\Http\Controllers\ComentarioController@destroy                      | web,auth     |
+|        | GET|HEAD  | comentario/{comentario}/edit      | comentario.edit        | sdv\Http\Controllers\ComentarioController@edit                         | web,auth     |
+|        | GET|HEAD  | departamento                      | departamento.index     | sdv\Http\Controllers\DepartamentoController@index                      | web,auth     |
+|        | POST      | departamento                      | departamento.store     | sdv\Http\Controllers\DepartamentoController@store                      | web,auth     |
+|        | GET|HEAD  | departamento/create               | departamento.create    | sdv\Http\Controllers\DepartamentoController@create                     | web,auth     |
+|        | DELETE    | departamento/{departamento}       | departamento.destroy   | sdv\Http\Controllers\DepartamentoController@destroy                    | web,auth     |
+|        | PUT|PATCH | departamento/{departamento}       | departamento.update    | sdv\Http\Controllers\DepartamentoController@update                     | web,auth     |
+|        | GET|HEAD  | departamento/{departamento}       | departamento.show      | sdv\Http\Controllers\DepartamentoController@show                       | web,auth     |
+|        | GET|HEAD  | departamento/{departamento}/edit  | departamento.edit      | sdv\Http\Controllers\DepartamentoController@edit                       | web,auth     |
+|        | GET|HEAD  | dropdown                          |                        | Closure                                                                | web,auth     |
+|        | GET|HEAD  | etapa                             | etapa.index            | sdv\Http\Controllers\EtapaController@index                             | web,auth     |
+|        | POST      | etapa                             | etapa.store            | sdv\Http\Controllers\EtapaController@store                             | web,auth     |
+|        | GET|HEAD  | etapa/crear/{etapa}               | etapa.crear            | sdv\Http\Controllers\EtapaController@crear                             | web,auth     |
+|        | GET|HEAD  | etapa/create                      | etapa.create           | sdv\Http\Controllers\EtapaController@create                            | web,auth     |
+|        | GET|HEAD  | etapa/estado/{etapa}              | etapa.estado           | sdv\Http\Controllers\EtapaController@estado                            | web,auth     |
+|        | GET|HEAD  | etapa/{etapa}                     | etapa.show             | sdv\Http\Controllers\EtapaController@show                              | web,auth     |
+|        | PUT|PATCH | etapa/{etapa}                     | etapa.update           | sdv\Http\Controllers\EtapaController@update                            | web,auth     |
+|        | DELETE    | etapa/{etapa}                     | etapa.destroy          | sdv\Http\Controllers\EtapaController@destroy                           | web,auth     |
+|        | GET|HEAD  | etapa/{etapa}/edit                | etapa.edit             | sdv\Http\Controllers\EtapaController@edit                              | web,auth     |
+|        | POST      | evaluacion                        | evaluacion.store       | sdv\Http\Controllers\EvaluacionProyectoController@store                | web,auth     |
+|        | GET|HEAD  | evaluacion                        | evaluacion.index       | sdv\Http\Controllers\EvaluacionProyectoController@index                | web,auth     |
+|        | PUT       | evaluacion/actualizar             | evaluacion.actualizar  | sdv\Http\Controllers\EvaluacionProyectoController@update               | web,auth     |
+|        | GET|HEAD  | evaluacion/create                 | evaluacion.create      | sdv\Http\Controllers\EvaluacionProyectoController@create               | web,auth     |
+|        | GET|HEAD  | evaluacion/datos                  | evaluacion.datos       | sdv\Http\Controllers\EvaluacionProyectoController@datos                | web,auth     |
+|        | PUT|PATCH | evaluacion/{evaluacion}           | evaluacion.update      | sdv\Http\Controllers\EvaluacionProyectoController@update               | web,auth     |
+|        | GET|HEAD  | evaluacion/{evaluacion}           | evaluacion.show        | sdv\Http\Controllers\EvaluacionProyectoController@show                 | web,auth     |
+|        | DELETE    | evaluacion/{evaluacion}           | evaluacion.destroy     | sdv\Http\Controllers\EvaluacionProyectoController@destroy              | web,auth     |
+|        | GET|HEAD  | evaluacion/{evaluacion}/edit      | evaluacion.edit        | sdv\Http\Controllers\EvaluacionProyectoController@edit                 | web,auth     |
+|        | GET|HEAD  | evaluacion/{proyecto_id}          | evaluacion.ver         | sdv\Http\Controllers\EvaluacionProyectoController@show                 | web,auth     |
+|        | GET|HEAD  | evaluacion/{user}/{proyecto}      | evaluacion.ok          | sdv\Http\Controllers\EvaluacionProyectoController@evaluar              | web,auth     |
+|        | GET|HEAD  | evaluaciones/{userrespuesta}/edit | evaluacion.editar      | sdv\Http\Controllers\EvaluacionProyectoController@edit                 | web,auth     |
+|        | GET|HEAD  | evaluar                           | evaluar.index          | sdv\Http\Controllers\EvaluacionController@index                        | web,auth     |
+|        | POST      | evaluar                           | evaluar.store          | sdv\Http\Controllers\EvaluacionController@store                        | web,auth     |
+|        | GET|HEAD  | evaluar/create                    | evaluar.create         | sdv\Http\Controllers\EvaluacionController@create                       | web,auth     |
+|        | GET|HEAD  | evaluar/create/{id}               | evaluar.crear          | sdv\Http\Controllers\EvaluacionController@create                       | web,auth     |
+|        | GET|HEAD  | evaluar/{evaluacion}              | evaluar.show           | sdv\Http\Controllers\EvaluacionController@show                         | web,auth     |
+|        | PUT|PATCH | evaluar/{evaluacion}              | evaluar.update         | sdv\Http\Controllers\EvaluacionController@update                       | web,auth     |
+|        | DELETE    | evaluar/{evaluacion}              | evaluar.destroy        | sdv\Http\Controllers\EvaluacionController@destroy                      | web,auth     |
+|        | GET|HEAD  | evaluar/{evaluacion}/edit         | evaluar.edit           | sdv\Http\Controllers\EvaluacionController@edit                         | web,auth     |
+|        | GET|HEAD  | grafico                           | pdf.show               | sdv\Http\Controllers\pdfController@show                                | web,auth     |
+|        | GET|HEAD  | home                              | home                   | sdv\Http\Controllers\HomeController@index                              | web,auth     |
+|        | GET|HEAD  | login                             | login                  | sdv\Http\Controllers\Auth\LoginController@showLoginForm                | web,guest    |
+|        | POST      | login                             |                        | sdv\Http\Controllers\Auth\LoginController@login                        | web,guest    |
+|        | POST      | logout                            | logout                 | sdv\Http\Controllers\Auth\LoginController@logout                       | web          |
+|        | POST      | password/email                    | password.email         | sdv\Http\Controllers\Auth\ForgotPasswordController@sendResetLinkEmail  | web,guest    |
+|        | POST      | password/reset                    |                        | sdv\Http\Controllers\Auth\ResetPasswordController@reset                | web,guest    |
+|        | GET|HEAD  | password/reset                    | password.request       | sdv\Http\Controllers\Auth\ForgotPasswordController@showLinkRequestForm | web,guest    |
+|        | GET|HEAD  | password/reset/{token}            | password.reset         | sdv\Http\Controllers\Auth\ResetPasswordController@showResetForm        | web,guest    |
+|        | POST      | pdf                               | pdf.trabajador         | sdv\Http\Controllers\pdfController@trabajador                          | web,auth     |
+|        | POST      | pdf2                              | pdf.actividad          | sdv\Http\Controllers\pdfController@actividad                           | web,auth     |
+|        | POST      | pdf3                              | pdf.desempeno          | sdv\Http\Controllers\pdfController@archivoDesempeno                    | web,auth     |
+|        | GET|HEAD  | proyecto                          | proyecto.index         | sdv\Http\Controllers\ProyectoController@index                          | web,auth     |
+|        | POST      | proyecto                          | proyecto.store         | sdv\Http\Controllers\ProyectoController@store                          | web,auth     |
+|        | GET|HEAD  | proyecto/create                   | proyecto.create        | sdv\Http\Controllers\ProyectoController@create                         | web,auth     |
+|        | GET|HEAD  | proyecto/estado/{proyecto}        | proyecto.estado        | sdv\Http\Controllers\ProyectoController@estado                         | web,auth     |
+|        | GET|HEAD  | proyecto/{proyecto}               | proyecto.show          | sdv\Http\Controllers\ProyectoController@show                           | web,auth     |
+|        | PUT|PATCH | proyecto/{proyecto}               | proyecto.update        | sdv\Http\Controllers\ProyectoController@update                         | web,auth     |
+|        | DELETE    | proyecto/{proyecto}               | proyecto.destroy       | sdv\Http\Controllers\ProyectoController@destroy                        | web,auth     |
+|        | GET|HEAD  | proyecto/{proyecto}/edit          | proyecto.edit          | sdv\Http\Controllers\ProyectoController@edit                           | web,auth     |
+|        | GET|HEAD  | pruebas                           |                        | Closure                                                                | web,auth     |
+|        | GET|HEAD  | register                          | register               | sdv\Http\Controllers\Auth\RegisterController@showRegistrationForm      | web          |
+|        | POST      | register                          |                        | sdv\Http\Controllers\Auth\RegisterController@register                  | web          |
+|        | GET|HEAD  | reporteActividad                  | reporte.actividad      | sdv\Http\Controllers\pdfController@SeleccionarProyecto                 | web,auth     |
+|        | GET|HEAD  | reporteDesempeno                  | reporte.desempeno      | sdv\Http\Controllers\pdfController@vistaDesempeno                      | web,auth     |
+|        | GET|HEAD  | reporteTrabajador                 | reporte.trabajador     | sdv\Http\Controllers\pdfController@SeleccionarTrabajador               | web,auth     |
+|        | POST      | responsable                       | responsable.store      | sdv\Http\Controllers\ResponsableController@store                       | web,auth     |
+|        | GET|HEAD  | responsable                       | responsable.index      | sdv\Http\Controllers\ResponsableController@index                       | web,auth     |
+|        | PUT       | responsable/actualizar            | responsable.actualizar | sdv\Http\Controllers\ResponsableController@update                      | web,auth     |
+|        | GET|HEAD  | responsable/create                | responsable.create     | sdv\Http\Controllers\ResponsableController@create                      | web,auth     |
+|        | GET|HEAD  | responsable/create/{actividad}    | responsable.crear      | sdv\Http\Controllers\ResponsableController@create                      | web,auth     |
+|        | GET|HEAD  | responsable/{actividad}/edit      | responsable.editar     | sdv\Http\Controllers\ResponsableController@edit                        | web,auth     |
+|        | GET|HEAD  | responsable/{responsable}         | responsable.show       | sdv\Http\Controllers\ResponsableController@show                        | web,auth     |
+|        | PUT|PATCH | responsable/{responsable}         | responsable.update     | sdv\Http\Controllers\ResponsableController@update                      | web,auth     |
+|        | DELETE    | responsable/{responsable}         | responsable.destroy    | sdv\Http\Controllers\ResponsableController@destroy                     | web,auth     |
+|        | GET|HEAD  | responsable/{responsable}/edit    | responsable.edit       | sdv\Http\Controllers\ResponsableController@edit                        | web,auth     |
+|        | PUT       | userRes/habilitar                 | userRes.habilitar      | sdv\Http\Controllers\EvaluacionProyectoController@HabilitarEdición     | web,auth     |
+|        | POST      | usuario                           | usuario.store          | sdv\Http\Controllers\UserController@store                              | web,auth     |
+|        | GET|HEAD  | usuario                           | usuario                | sdv\Http\Controllers\UserController@index                              | web,auth     |
+|        | GET|HEAD  | usuario/create                    | usuario.create         | sdv\Http\Controllers\UserController@create                             | web,auth     |
+|        | GET|HEAD  | usuario/cuenta                    | usuario.show           | sdv\Http\Controllers\UserController@show                               | web,auth     |
+|        | GET|HEAD  | usuario/detalles/{user}           | usuario.detalle        | sdv\Http\Controllers\UserController@detalle                            | web,auth     |
+|        | DELETE    | usuario/{usuario}                 | usuario.destroy        | sdv\Http\Controllers\UserController@destroy                            | web,auth     |
+|        | PUT|PATCH | usuario/{usuario}                 | usuario.update         | sdv\Http\Controllers\UserController@update                             | web,auth     |
+|        | GET|HEAD  | usuario/{usuario}                 | usuario.show           | sdv\Http\Controllers\UserController@show                               | web,auth     |
+|        | GET|HEAD  | usuario/{usuario}/edit            | usuario.edit           | sdv\Http\Controllers\UserController@edit                               | web,auth     |
++--------+-----------+-----------------------------------+------------------------+------------------------------------------------------------------------+--------------+

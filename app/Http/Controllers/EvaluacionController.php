@@ -49,12 +49,11 @@ class EvaluacionController extends Controller
         $evaluacion->conforme = $request->conforme;
         $evaluacion->calificacion = $request->calificacion;
         $evaluacion->observacion = $request->observacion;
+        $evaluacion->actividad_id = $request->actividad_id;
         $evaluacion->save();
 
         $actividad = actividad::find($request->actividad_id);
-        $actividad->estado_id = 3;
-        $actividad->evaluacion_id = $evaluacion->id;
-        $actividad->save();
+
         //redirección
         return ($url = \Session::get('backUrl')) 
            ? \Redirect::to($url) 
@@ -80,12 +79,12 @@ class EvaluacionController extends Controller
      * @param  \sdv\evaluacion  $evaluacion
      * @return \Illuminate\Http\Response
      */
-    public function edit(actividad $actividad, evaluacion $evaluacion)
+    public function edit(evaluacion $evaluacion)
     {
         $formulario = array(
-            'actividad' =>  $actividad,
+            'actividad' => actividad::find($evaluacion->actividad_id),
             'evaluacion' =>  $evaluacion,
-            'encargados' =>  responsable::where('responsables.actividad_id', $actividad->id)
+            'encargados' =>  responsable::where('responsables.actividad_id', $evaluacion->actividad_id)
             ->join('users', 'responsables.responsable_id', '=', 'users.id')
             ->where('users.rol_id', 3)->get(),
         );
@@ -101,9 +100,13 @@ class EvaluacionController extends Controller
      */
     public function update(Request $request, evaluacion $evaluacion)
     {
-        $evaluacion->fill($request->all());
+        $evaluacion->conforme = $request->conforme;
+        $evaluacion->calificacion = $request->calificacion;
+        $evaluacion->observacion = $request->observacion;
         $evaluacion->save();
-        return redirect()->route('actividad.show', $request->actividad_id);
+
+        $actividad = actividad::find( $request->actividad_id);
+        return redirect()->route('actividad.show', $actividad->etapa_id);
     }
 
     /**

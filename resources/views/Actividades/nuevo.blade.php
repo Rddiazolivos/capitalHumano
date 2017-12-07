@@ -40,7 +40,7 @@
                             <label for="fec_entrega" class="col-md-4 control-label">Fecha entrega</label>
 
                             <div class="col-md-6">
-                                <input id="fec_entrega" type="date" class="form-control" name="fec_entrega" value="{{ old('fec_entrega') }}" required autofocus>
+                                <input id="fec_entrega" type="date" class="form-control" name="fec_entrega" value="{{ old('fec_entrega') }}" required autofocus min="{{$etapa->fec_creacion}}" max="{{$etapa->fec_termino}}">
 
                                 @if ($errors->has('fec_entrega'))
                                     <span class="help-block">
@@ -65,7 +65,7 @@
                                           
                         <!-- el campo oculto -->
                         <input name="estado_id" type="hidden" value="1">
-                        <input name="etapa_id" type="hidden" value="{{$id_etapa}}">
+                        <input name="etapa_id" type="hidden" value="{{$etapa->id}}">
 
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">

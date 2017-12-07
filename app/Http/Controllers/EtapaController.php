@@ -30,7 +30,8 @@ class EtapaController extends Controller
     //creacion desde proyecto
     public function crear($id)
     {
-        return view('etapas.nuevo',  compact('id'));
+        $proyecto = proyecto::find($id);
+        return view('etapas.nuevo',  compact('proyecto'));
     }
     /**
      * Store a newly created resource in storage.

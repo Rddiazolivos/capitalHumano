@@ -3,7 +3,7 @@
 @section('contenido')
 <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Nuevo proyecto</div>
+                <div class="panel-heading">Registro de proyecto</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('proyecto.store') }}">
                         {{ csrf_field() }}
@@ -40,7 +40,7 @@
                             <label for="fec_termino" class="col-md-4 control-label">Fecha término</label>
 
                             <div class="col-md-6">
-                                <input id="fec_termino" type="date" class="form-control" name="fec_termino" value="{{ old('fec_termino') }}" required autofocus>
+                                <input id="fec_termino" type="date" class="form-control" name="fec_termino" value="{{ old('fec_termino') }}" required autofocus disabled data-toggle="tooltip" title="Seleccione una fecha de inicio">
 
                                 @if ($errors->has('fec_termino'))
                                     <span class="help-block">

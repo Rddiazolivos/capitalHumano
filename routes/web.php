@@ -45,8 +45,9 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::resource('comentario', 'ComentarioController');
 
 	Route::get('evaluar/create/{id}', 'EvaluacionController@create')->name('evaluar.crear');
-	Route::get('evaluar/{actividad}/{evaluacion}/edit', 'EvaluacionController@edit')->name('evaluar.editar');
-	Route::resource('evaluar', 'EvaluacionController');
+	Route::resource('evaluar', 'EvaluacionController', ['parameters' => [
+	    'evaluar' => 'evaluacion'
+	]]);
 
 	Route::get('responsable/create/{actividad}', 'ResponsableController@create')->name('responsable.crear');
 	Route::get('responsable/{actividad}/edit', 'ResponsableController@edit')->name('responsable.editar');

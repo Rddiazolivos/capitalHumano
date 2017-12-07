@@ -27,8 +27,8 @@ class actividad extends Model
     {
         return $this->hasMany('sdv\responsable');
     }
-    public function evaluaciones(){
-        return $this->belongsTo('sdv\evaluacion');
+    public function evaluacion(){
+        return $this->hasOne('sdv\evaluacion');
     }
 
     public function scopeNombre($query, $nombre){

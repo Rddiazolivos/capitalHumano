@@ -13,9 +13,9 @@ class AddEvaluacionToActividadesTable extends Migration
      */
     public function up()
     {
-        Schema::table('actividades', function (Blueprint $table) {
-            $table->integer('evaluacion_id')->unsigned()->nullable();
-            $table->foreign('evaluacion_id')->references('id')->on('evaluacion');
+        Schema::table('evaluacion', function (Blueprint $table) {
+            $table->integer('actividad_id')->unsigned()->nullable();
+            $table->foreign('actividad_id')->references('id')->on('actividades');
         });
     }
 
@@ -26,8 +26,8 @@ class AddEvaluacionToActividadesTable extends Migration
      */
     public function down()
     {
-        Schema::table('actividades', function (Blueprint $table) {
-            $table->dropForeign('actividades_evaluacion_id_foreign');
+        Schema::table('evaluacion', function (Blueprint $table) {
+            $table->dropForeign('evaluacion_actividades_id_foreign');
         });
     }
 }

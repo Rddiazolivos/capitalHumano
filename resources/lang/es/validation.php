@@ -13,6 +13,7 @@ return [
     |
     */
 
+    'rut_chileno'             => 'El :attribute no es valido.',
     'accepted'             => ':attribute debe ser aceptado.',
     'active_url'           => ':attribute no es una URL válida.',
     'after'                => ':attribute debe ser una fecha posterior a :date.',

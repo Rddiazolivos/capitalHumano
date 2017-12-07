@@ -3,7 +3,7 @@
 @section('contenido')
 <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading">Nueva etapa</div>
+                <div class="panel-heading">Registro de etapa</div>
                 <div class="panel-body">
                     <form class="form-horizontal" method="POST" action="{{ route('etapa.store') }}">
                         {{ csrf_field() }}
@@ -26,7 +26,7 @@
                             <label for="fec_creacion" class="col-md-4 control-label">Fecha inicio</label>
 
                             <div class="col-md-6">
-                                <input id="fec_creacion" type="date" class="form-control" name="fec_creacion" value="{{ old('fec_creacion') }}" required autofocus>
+                                <input id="fec_creacion" type="date" class="form-control" name="fec_creacion" value="{{ old('fec_creacion') }}" required autofocus min="{{$proyecto->fec_creacion}}" max="{{$proyecto->fec_termino}}">
 
                                 @if ($errors->has('fec_creacion'))
                                     <span class="help-block">
@@ -40,7 +40,7 @@
                             <label for="fec_termino" class="col-md-4 control-label">Fecha término</label>
 
                             <div class="col-md-6">
-                                <input id="fec_termino" type="date" class="form-control" name="fec_termino" value="{{ old('fec_termino') }}" required autofocus>
+                                <input id="fec_termino" type="date" class="form-control" name="fec_termino" value="{{ old('fec_termino') }}" required autofocus disabled data-toggle="tooltip" title="Seleccione una fecha de inicio" max="{{$proyecto->fec_termino}}">
 
                                 @if ($errors->has('fec_termino'))
                                     <span class="help-block">
@@ -65,7 +65,7 @@
                         </div>
                         <!--id del proyecto-->
                         <div class="invisible">
-                                <input id="proyecto_id" type="text" class="form-control" name="proyecto_id" value="{{ $id }}">
+                                <input id="proyecto_id" type="text" class="form-control" name="proyecto_id" value="{{ $proyecto->id }}">
                         </div>
                         
 
