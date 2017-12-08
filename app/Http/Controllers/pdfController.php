@@ -218,3 +218,4 @@ class pdfController extends Controller
         return view('pdf.pagina.usuario', $datos);
     }
 }
+    
