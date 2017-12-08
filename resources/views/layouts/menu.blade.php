@@ -140,6 +140,11 @@
                                         <span class="glyphicon glyphicon-tasks"></span><a href="{{ route('reporte.desempeno') }}">Reporte por desempeño</a>
                                     </td>
                                 </tr>
+                                <tr>
+                                    <td>
+                                        <span class="glyphicon glyphicon-tasks"></span><a href="{{ route('reporte.Usuario') }}">Reporte por trabajador</a>
+                                    </td>
+                                </tr>
                             </table>
                         </div>
                     </div>

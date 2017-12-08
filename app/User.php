@@ -38,6 +38,9 @@ class User extends Authenticatable
     public function departamento(){
         return $this->belongsTo('sdv\departamento');
     }
+    public function evaluaciones(){
+        return $this->hasMany('sdv\userRespuesta');
+    }
 
     public function getFullNameAttribute() {
         return ucfirst($this->nombre) . ' ' . ucfirst($this->ape_paterno);

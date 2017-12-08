@@ -63,6 +63,10 @@ Route::group(['middleware' => ['auth']], function () {
 	//Para reporte de desempeño
 	Route::post('pdf3', 'pdfController@archivoDesempeno')->name('pdf.desempeno');
 	Route::get('reporteDesempeno', 'pdfController@vistaDesempeno')->name('reporte.desempeno');
+	//Para reporte por trabajador
+	Route::post('pdf4', 'pdfController@archivoUsuario')->name('pdf.Usuario');
+	Route::get('reporteUsuario', 'pdfController@vistaUsuario')->name('reporte.Usuario');
+	Route::post('archivo4', 'pdfController@paginaUsuario')->name('pagina.Usuario');
 
 	Route::get('evaluacion/datos', 'EvaluacionProyectoController@datos')->name('evaluacion.datos');
 	Route::get('evaluaciones/{userrespuesta}/edit', 'EvaluacionProyectoController@edit')->name('evaluacion.editar');
