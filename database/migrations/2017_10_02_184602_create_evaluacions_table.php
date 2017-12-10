@@ -18,6 +18,8 @@ class CreateEvaluacionsTable extends Migration
             $table->boolean('conforme');            
             $table->integer('calificacion');
             $table->string('observacion');
+            $table->integer('actividad_id')->unsigned()->nullable();
+            $table->foreign('actividad_id')->references('id')->on('actividades');
             $table->timestamps();
         });
     }
