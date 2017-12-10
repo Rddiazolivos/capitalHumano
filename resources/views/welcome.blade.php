@@ -85,7 +85,7 @@
                     <h2 class="margin-top-0 text-primary">SDV</h2>
                     <br>
                     <p class="text-faded">
-                        El sistema SED, por sus siglas Sistema de Evaluación de Desempeño, tiene por principal finalidad automatizar, normalizar y agilizar las entrevistas de evaluación de desempeño realizadas a los trabajadores dentro de una organización.
+                        Nuestro sistema, tiene por principal finalidad automatizar, normalizar y agilizar las evaluaciones de desempeño realizadas a los trabajadores dentro de una organización.
 
                         Para lograr estos objetivos el sistema cuenta con tecnología de punta para crear una interfaz amigable y adaptable, fácil de usar.
                         Finalmente, el sistema genera reportes y documentos formales.
