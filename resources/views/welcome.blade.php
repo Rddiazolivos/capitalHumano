@@ -201,7 +201,7 @@
                 <div class="media wow fadeInRight">
                     <h3>Probado</h3>
                     <div class="media-body media-middle">
-                        <p>El sistema cumple con altos estabdares de calidad.</p>
+                        <p>El sistema cumple con altos estándares de calidad.</p>
                     </div>
                     <div class="media-right">
                         <i class="icon-lg ion-ios-flask-outline"></i>

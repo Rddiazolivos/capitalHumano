@@ -8,7 +8,7 @@
 
             <div class="panel-group menu-desktop hidden-xs" id="accordion">
             @if ( Auth::user()->rol->nombre === 'Administrador')
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-empty">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne"><i class="glyphicon ion-person-stalker"></i> Usuarios</a>
@@ -33,7 +33,7 @@
                 </div>
             @endif            
             @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-empty">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo"><span class="glyphicon glyphicon-th"></span>Proyectos</a>
@@ -65,7 +65,7 @@
                 </div>
             @endif            
             @if ( Auth::user()->rol->nombre != 'Gerente' )            
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-empty">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#actividadesEvaluado"><span class="glyphicon glyphicon-list-alt"></span>Actividades</a>
@@ -98,7 +98,7 @@
                 </div>
             @endif
             @if (Auth::user()->rol->nombre === 'Evaluador' || Auth::user()->rol->nombre === 'Administrador')
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-empty">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-parent="#accordion" href="{{ route('evaluacion.index') }}"><span class="glyphicon glyphicon-education"></span>Evaluaciones</a>
@@ -106,7 +106,7 @@
                     </div>
                 </div>
             @elseif( Auth::user()->rol->nombre === 'Evaluado')
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-empty">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-parent="#accordion" href="{{ route('ascendente.index') }}"><span class="glyphicon glyphicon-education"></span>Evaluaciones</a>
@@ -115,7 +115,7 @@
                 </div>
             @endif
             @if ( Auth::user()->rol->nombre === 'Gerente' || Auth::user()->rol->nombre === 'Evaluador')
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-empty">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseFour"><span class="glyphicon glyphicon-file">
@@ -150,7 +150,7 @@
                     </div>
                 </div>
             @endif
-                <div class="panel panel-default">
+                <div class="panel panel-default panel-empty">
                     <div class="panel-heading">
                         <h4 class="panel-title">
                             <a data-toggle="collapse" data-parent="#accordion" href="#collapseThree"><span class="glyphicon glyphicon-user">

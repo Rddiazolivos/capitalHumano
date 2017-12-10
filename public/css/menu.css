@@ -34,3 +34,13 @@
 	font-weight: bold;
 	font-size: 17px;
 }
+
+.panel-empty{
+    border:0px;
+    -webkit-box-shadow: 0 ;
+     box-shadow: 0 ;
+}
+
+.panel-empty .panel-heading{
+    border: 0px;
+}

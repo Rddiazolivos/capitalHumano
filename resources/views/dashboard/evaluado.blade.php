@@ -31,7 +31,7 @@
         </div>
     </div>
 
-        <div class='col-xs-12 col-sm-8 col-md-8'>
+        <div class='col-xs-12 col-sm-12 col-md-8 col-md-offset-2'>
             <div id="chart-div"></div>         
         </div>  
 @endsection
