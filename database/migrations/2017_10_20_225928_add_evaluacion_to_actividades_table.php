@@ -27,7 +27,7 @@ class AddEvaluacionToActividadesTable extends Migration
     public function down()
     {
         Schema::table('evaluacion', function (Blueprint $table) {
-            $table->dropForeign('evaluacion_actividades_id_foreign');
+            $table->dropForeign('actividad_id');
         });
     }
 }
