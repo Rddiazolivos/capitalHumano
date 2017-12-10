@@ -32,7 +32,7 @@
                         <a class="page-scroll" href="#two">Características</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="#three">Galeria</a>
+                        <a class="page-scroll" href="#three">Galería</a>
                     </li>
                     <li>
                         <a class="page-scroll" href="#four">Servicio</a>
@@ -243,7 +243,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="margin-top-0 wow fadeIn">Escribenos</h2>
+                    <h2 class="margin-top-0 wow fadeIn">Escríbenos</h2>
                     <hr class="primary">
                     <p>Complete el siguiente formulario y nos pondremos en contacto con usted lo antes posible.</p>
                 </div>
@@ -294,13 +294,13 @@
                     </ul>
                 </div>
                 <div class="col-xs-12 col-sm-3 column">
-                    <h4>Mantente al dia.</h4>
+                    <h4>Mantente al día.</h4>
                     <form>
                         <div class="form-group">
                           <input type="text" class="form-control" title="No spam, te lo prometemos!" placeholder="Tu Correo">
                         </div>
                         <div class="form-group">
-                          <button class="btn btn-primary" data-toggle="modal" data-target="#alertModal" type="button">Subscribete</button>
+                          <button class="btn btn-primary" data-toggle="modal" data-target="#alertModal" type="button">Suscríbete</button>
                         </div>
                     </form>
                 </div>

@@ -28,7 +28,7 @@ class rolsTableSeeder extends Seeder
         ]);
         DB::table('departamentos')->insert([
             [
-                'nombre' => 'Direción',
+                'nombre' => 'Dirección',
                 'descripcion' => 'Altos cargos',
             ],
             [
@@ -36,7 +36,7 @@ class rolsTableSeeder extends Seeder
                 'descripcion' => 'Departamento a cargo de ventas',
             ],
             [
-                'nombre' => 'Recursos humanos',
+                'nombre' => 'Recursos Humanos',
                 'descripcion' => 'Departamento a cargo de personal',
             ],
             [
@@ -44,7 +44,7 @@ class rolsTableSeeder extends Seeder
                 'descripcion' => 'Departamento a cargo de la administración',
             ],
             [
-                'nombre' => 'Finanza y contabilidad',
+                'nombre' => 'Finanza y Contabilidad',
                 'descripcion' => 'Departamento a cargo de dinero',
             ],
             [
@@ -52,7 +52,7 @@ class rolsTableSeeder extends Seeder
                 'descripcion' => 'Departamento a cargo de marketing',
             ],
             [
-                'nombre' => 'Informatica',
+                'nombre' => 'Informática',
                 'descripcion' => 'Core',
             ],
         ]);
