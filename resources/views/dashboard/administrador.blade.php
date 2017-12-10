@@ -98,9 +98,9 @@
             </a> 
         </div>
     </div>
-        <div class='col-xs-12 col-sm-12 col-md-8 col-md-offset-2'>
-            <div id="chart-div"></div>            
-        </div>  
+    <div class='col-xs-12 col-sm-12 col-md-8 col-md-offset-2 pb-3'>
+        <div id="chart-div"></div>            
+    </div>  
 @endsection
 
 @piechart('IMDB', 'chart-div')

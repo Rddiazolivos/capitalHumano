@@ -52,8 +52,9 @@
 
                 <div class="collapse navbar-collapse" id="app-navbar-collapse">
                     <!-- Left Side Of Navbar -->
-                    @if(Auth::check())
+                    @if(Auth::check())                    
                     <ul class="nav navbar-nav menu-celular hidden-sm hidden-md hidden-lg ">
+                        @if ( Auth::user()->rol->nombre === 'Administrador')
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-folder-close"></span> Usuarios <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -65,6 +66,8 @@
                                     </li>
                                 </ul>
                         </li>
+                        @endif 
+                        @if ( Auth::user()->rol->nombre === 'Administrador' || Auth::user()->rol->nombre === 'Evaluador')
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-th"></span> Proyectos <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -76,6 +79,8 @@
                                     </li>                                    
                                 </ul>
                         </li>
+                        @endif 
+                        @if ( Auth::user()->rol->nombre != 'Gerente' )
                         <li class="dropdown">
                             <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-list-alt"></span> Actividades <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
@@ -87,17 +92,32 @@
                                     </li>
                                 </ul>
                         </li>
+                        @endif
+                        @if (Auth::user()->rol->nombre === 'Evaluador' || Auth::user()->rol->nombre === 'Administrador')
+                        <li>
+                            <a href="{{ route('evaluacion.index') }}" ><span class="glyphicon glyphicon-education"></span> Evaluaciones</a>
+                        </li>
+                        @elseif( Auth::user()->rol->nombre === 'Evaluado')
+                        <li>
+                            <a href="{{ route('ascendente.index') }}" ><span class="glyphicon glyphicon-education"></span> Evaluaciones</a>
+                        </li>
+                        @endif
+                        @if ( Auth::user()->rol->nombre === 'Gerente' || Auth::user()->rol->nombre === 'Evaluador')
                         <li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-file"></span> Reportes <span class="caret"></span></a>
+                            <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><span class="glyphicon glyphicon-save-file"></span> Reportes <span class="caret"></span></a>
                                 <ul class="dropdown-menu" role="menu">
                                     <li>
                                         <a href="{{ route('reporte.trabajador') }}"><span class="glyphicon glyphicon-tasks"></span> Reporte por trabajador</a>
                                     </li>
                                     <li>
-                                        <a href="{{ route('reporte.actividad') }}"><span class="glyphicon glyphicon-print text-primary"></span> Reporte avance actividades</a>
+                                        <a href="{{ route('reporte.actividad') }}"><span class="glyphicon glyphicon-scale"></span> Reporte avance actividades</a>
+                                    </li>
+                                    <li>
+                                        <a href="{{ route('reporte.Usuario') }}"><span class="glyphicon glyphicon-duplicate text-primary"> </span> Reporte por trabajador</a>
                                     </li>
                                 </ul>
                         </li>
+                        @endif
                     </ul>
                     @endif
 

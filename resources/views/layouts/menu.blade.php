@@ -193,7 +193,7 @@
 
             </div>
         </div>
-        <div class="text-center" style="position:relative;">
+        <div class="text-center hidden-xs" style="position:relative;">
             <img src="{{ asset('img/SDV_icono.png') }}" class="img-responsive media-center" style="position:fixed; bottom: 20px; width: 120px;">
         </div>
         </div>

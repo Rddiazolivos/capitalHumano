@@ -11,6 +11,7 @@
     </div>
     <div class="col-md-10 col-md-offset-1">
         <div class="panel panel-default">
+            <div class="table-responsive"> 
             <table class="table table-hover">
                 <thead>
                     <tr>
@@ -30,7 +31,7 @@
                         <td><p>{{ $usuario->condicion_nombre }}</p></td>
                         <td>
                             <a href="{{ route('usuario.detalle', $usuario->id) }}">
-                                <i class="icon-lg ion-eye"></i>
+                                <i class="icon-lg ion-eye text-success"></i>
                             </a>
                             <a href="{{ route('usuario.edit', $usuario->id) }}">
                                 <i class="glyphicon glyphicon-pencil"></i>
@@ -39,7 +40,8 @@
                     </tr>
                 </tbody>                    
                 @endforeach
-            </table>                                    
+            </table>  
+            </div>                                  
             {{$usuarios->links()}}
         </div>
     </div>
