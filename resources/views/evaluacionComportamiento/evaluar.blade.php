@@ -13,7 +13,6 @@
                     {{ csrf_field() }}  
                     @endif                                              
 
-                    <div class="table-responsive">
                       <table class="table table-hover">
                         @foreach($areas as $area)
                         @if(count($area->pregunta->where('encuesta_id', $proyecto->encuDescendente_id)) > 0)                        
@@ -29,11 +28,11 @@
                             <td>
                                 <div class="container-fluid">
                                 <div class="row">
-                                    <div class="col-md-9 col-sm-8 col-xs-8">
+                                    <div class="col-md-9 col-sm-12 col-xs-12">
                                         <strong>{{$pregunta->concepto}} </strong></br>
                                         {{$pregunta->explicacion}}
                                     </div>
-                                    <div class="col-md-3 col-sm-4 col-xs-4">                            
+                                    <div class="col-md-3 col-sm-6 col-xs-12 col-sm-offset-3">                            
                                         <select name="MiArray[]" id="prioridad_id" class="form-control" required @if(Auth::user()->rol->nombre != 'Evaluador') disabled @endif >
                                             <option selected hidden value="">-No evaluado-</option>
                                             <option value="1">Débil</option>
@@ -58,7 +57,6 @@
                         @endif
                         @endforeach
                       </table>
-                    </div>
                                       
                     <!-- el campo oculto -->
                     <input name="proyecto_id" type="hidden" value="{{$proyecto->id}}">

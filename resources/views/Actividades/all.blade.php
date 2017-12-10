@@ -9,7 +9,7 @@
                 <div class="container-fluid">
                     <div class='row'>
                         <form class='form-inline' role='search' method="GET" action="{{ route('actividad.all') }}">
-                            <div class="col-md-8 form-group">
+                            <div class="col-md-8 col-sm-12 form-group pb-3">
                                 <select name="estado_id" id="estado_id" class="form-control">
                                     <option value="10" @if(10==old('estado_id', $estado_id)) selected='selected' @endif > Todas</option>         
                                   @foreach($estados as $estado)
@@ -23,7 +23,7 @@
                                   @endforeach
                                 </select>
                             </div>
-                            <div class="col-md-4 input-group form-group">
+                            <div class="col-md-4 col-sm-8  input-group form-group">
                                 <input type='text' class='form-control' placeholder='Buscar' name="scope" value="{{ old('scope', $scope) }}">
                                 <div class="input-group-btn">
                                     <button type='submit' class='btn btn-default' id='botonFiltro'><i class="glyphicon glyphicon-search"></i></button>
