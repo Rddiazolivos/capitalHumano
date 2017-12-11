@@ -5,7 +5,7 @@
 
 @section('contenido')
       <div class="page-header">
-        <h1>Dashboard</h1>      
+        <h1>Panel</h1>      
       </div>   
 
     <div class="col-xs-12 col-sm-6 col-md-3">

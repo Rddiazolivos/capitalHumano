@@ -54,7 +54,7 @@
                         @endif
                     @endif
                     <li>
-                        <a class="page-scroll" data-toggle="modal" title="A free Bootstrap video landing theme" href="#aboutModal">About</a>
+                        <a class="page-scroll" data-toggle="modal" title="A free Bootstrap video landing theme" href="#aboutModal">Acerca de</a>
                     </li>
                 </ul>
             </div>
@@ -328,7 +328,7 @@
                     Para organizaciones modernas que cuidan el talento
                 </h5>
                 <p class="text-justify">
-                    El sistema SED, por sus siglas Sistema de Evaluación de Desempeño, tiene por principal finalidad automatizar, normalizar y agilizar las entrevistas de evaluación de desempeño realizadas a los trabajadores dentro de una organización. Para lograr estos objetivos el sistema cuenta con tecnología de punta para crear una interfaz amigable y adaptable, fácil de usar. Finalmente, el sistema genera reportes y documentos formales.
+                    SDV, por sus siglas "Sistema de Desempeño y Valoración", tiene por principal finalidad automatizar, normalizar y agilizar las evaluaciones de desempeño realizadas a los trabajadores dentro de una organización. Para lograr estos objetivos el sistema cuenta con tecnología de punta para crear una interfaz amigable y adaptable, fácil de usar. Finalmente, el sistema genera reportes de las distintas mediciones, aportando en la toma de decisiones en bases a datos sólidos y confiables ya que el sistema estará en constante retroalimentación de información.
                 </p>
                 <br/>
                 <button class="btn btn-primary btn-lg center-block" data-dismiss="modal" aria-hidden="true"> OK </button>
