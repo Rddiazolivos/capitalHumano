@@ -85,10 +85,7 @@
                     <h2 class="margin-top-0 text-primary">SDV</h2>
                     <br>
                     <p class="text-faded">
-                        Nuestro sistema, tiene por principal finalidad automatizar, normalizar y agilizar las evaluaciones de desempeño realizadas a los trabajadores dentro de una organización.
-
-                        Para lograr estos objetivos el sistema cuenta con tecnología de punta para crear una interfaz amigable y adaptable, fácil de usar.
-                        Finalmente, el sistema genera reportes y documentos formales.
+                        SDV, por sus siglas "Sistema de Desempeño y Valoración", tiene por principal finalidad automatizar, normalizar y agilizar las evaluaciones de desempeño realizadas a los trabajadores dentro de una organización. Para lograr estos objetivos el sistema cuenta con tecnología de punta para crear una interfaz amigable y adaptable, fácil de usar. Finalmente, el sistema genera reportes de las distintas mediciones, aportando en la toma de decisiones en bases a datos sólidos y confiables ya que el sistema estará en constante retroalimentación de información.
                     </p>
                     <a href="#four" class="btn btn-default btn-xl page-scroll">Leer más</a>
                 </div>
@@ -130,48 +127,43 @@
             </div>
         </div>
     </section>
-    <section id="three" class="no-padding">
-        <div class="container-fluid">
-            <div class="row no-gutter">
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/sdv4.jpg">
-                        <img src="./img/sdv4.jpg" class="img-responsive" alt="Image 1">
-                        <div class="gallery-box-caption">
-                            <div class="gallery-box-content">
-                                <div>
-                                    <i class="icon-lg ion-ios-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/sdv2.jpg">
-                        <img src="./img/sdv2.jpg" class="img-responsive" alt="Image 2">
-                        <div class="gallery-box-caption">
-                            <div class="gallery-box-content">
-                                <div>
-                                    <i class="icon-lg ion-ios-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
-                <div class="clearfix hidden-lg"> </div>
-                <div class="col-lg-4 col-sm-6">
-                    <a href="#galleryModal" class="gallery-box" data-toggle="modal" data-src="./img/sdv3.jpg">
-                        <img src="./img/sdv3.jpg" class="img-responsive" alt="Image 3">
-                        <div class="gallery-box-caption">
-                            <div class="gallery-box-content">
-                                <div>
-                                    <i class="icon-lg ion-ios-search"></i>
-                                </div>
-                            </div>
-                        </div>
-                    </a>
-                </div>
+    <section id="three" >
+        <div class="container">
+             <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                  <!-- Indicators -->
+                  <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                  </ol>
+
+                  <!-- Wrapper for slides -->
+                  <div class="carousel-inner">
+                    <div class="item active">
+                      <img src="./img/galeria1.png" alt="Los Angeles">
+                    </div>
+
+                    <div class="item">
+                      <img src="./img/galeria2.png" alt="Chicago">
+                    </div>
+
+                    <div class="item">
+                      <img src="./img/galeria3.png" alt="New York">
+                    </div>
+                  </div>
+
+                  <!-- Left and right controls -->
+                  <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+                    <span class="ion ion-arrow-left-b"></span>
+                    <span class="sr-only">a</span>
+                  </a>
+                  <a class="right carousel-control" href="#myCarousel" data-slide="next">
+                    <span class="ion ion-arrow-right-b"></span>
+                    <span class="sr-only">s</span>
+                  </a>
             </div>
         </div>
+                <!--carrousel -->
     </section>
     <section class="container-fluid" id="four">
         <div class="row">
@@ -207,8 +199,6 @@
                         <i class="icon-lg ion-ios-flask-outline"></i>
                     </div>
                 </div>
-            </div>
-        </div>
     </section>
     <aside class="bg-dark">
         <div class="container text-center">
