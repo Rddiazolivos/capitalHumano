@@ -8,7 +8,7 @@
 </div>
 <div class="col-md-10 col-md-offset-1">
 	<div>
-		<h4>Desempeño: {{$promedioD}}</h4>
+		<h4>Evaluación por comportamiento: {{$promedioD}}</h4>
 	</div>  
 	<hr>
 	<div class='col-xs-12 col-sm-12 col-md-8 col-md-offset-2'>
@@ -17,7 +17,7 @@
 </div>
 <div class="col-md-10 col-md-offset-1">
 	<div>
-		<h4>Resultado: {{$promedioR}}</h4>
+		<h4>Evaluación en base a resultados: {{$promedioR}}</h4>
 	</div>  
 	<hr>
 	<div class='col-xs-12 col-sm-12 col-md-8 col-md-offset-2'>

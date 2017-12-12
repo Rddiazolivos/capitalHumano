@@ -137,16 +137,25 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-tasks"></span><a href="{{ route('reporte.desempeno') }}">Reporte por desempeño</a>
+                                        <span class="glyphicon glyphicon-open-file text-success"></span><a href="{{ route('reporte.desempeno') }}">Reporte por desempeño</a>
                                     </td>
                                 </tr>
                                 <tr>
                                     <td>
-                                        <span class="glyphicon glyphicon-tasks"></span><a href="{{ route('reporte.Usuario') }}">Reporte por trabajador</a>
+                                        <span class="glyphicon glyphicon-ok-circle"></span><a href="{{ route('reporte.Usuario') }}">Reporte general por trabajador</a>
                                     </td>
                                 </tr>
                             </table>
                         </div>
+                    </div>
+                </div>
+            @endif
+            @if ( Auth::user()->rol->nombre === 'Evaluado')
+                <div class="panel panel-default panel-empty">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-parent="#accordion" href="{{ route('pagina.MiUsuario') }}"><span class="glyphicon glyphicon-ok-circle"></span>Mis resultados</a>
+                        </h4>
                     </div>
                 </div>
             @endif

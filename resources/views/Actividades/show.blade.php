@@ -101,11 +101,7 @@
                             <td>{{ $actividad->nombre }}</td>
                             <td>{{ $actividad->prioridad->nombre }}</td>
                             <td>{{ $actividad->estado->nombre }}</td>
-                            <td>                                                            
-                                @if($actividad->asignacion)
-                                    <!-- Para comentar -->
-                                    <a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-edit text-success"></span></a>
-                                @endif
+                            <td>                                                                                            
                                 <!--Evaluar  -->
                                 @if($actividad->evaluacion == null && $actividad->estado_id == 2)
                                 <a data-toggle="tooltip" title="Evaluar Actividad" href="{{ route('evaluar.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-education text-danger"></span></a>
@@ -117,6 +113,10 @@
                                 <a data-toggle="tooltip" title="Asignar responsable" href="{{ route('responsable.crear' , $actividad->id) }}"><span class="glyphicon glyphicon-check text-danger"></span></a>
                                 @elseif($actividad->asignacion == 1 && $actividad->estado_id == 1)
                                 <a data-toggle="tooltip" title="Editar responsable" href="{{ route('responsable.editar' , $actividad->id) }}"><span class="glyphicon glyphicon-check glyphicon-check text-primary"></span></a>
+                                @endif
+                                @if($actividad->asignacion)
+                                    <!-- Para comentar -->
+                                    <a data-toggle="tooltip" title="Ver Actividad" href="{{ route('comentario.crear', $actividad->id) }}"><span class="glyphicon glyphicon-eye-open text-success"></span></a>
                                 @endif
                                 <!--Para eliminar-->
                                 @if($actividad->estado_id == 1 &&  count($actividad->comentario) == 0 && count($actividad->responsables) == 0)

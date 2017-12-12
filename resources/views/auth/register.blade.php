@@ -80,9 +80,9 @@
                         </div>
 
                         <div class="form-group{{ $errors->has('sexo') ? ' has-error' : '' }}">
-                            <label for="sexo" class="col-md-4 control-label">Sexo</label>
+                            <label for="sexo" class="col-md-3 control-label">Sexo</label>
 
-                            <div class="col-md-6">
+                            <div class="col-md-9">
                                 <label class="radio-inline"><input type="radio" name="sexo" value="F"  @if(old('sexo') ==  'F') checked="checked" @endif required autofocus> Mujer</label>
                                 <label class="radio-inline"><input type="radio" name="sexo" value="M"  @if(old('sexo') ==  'M') checked="checked" @endif required autofocus> Hombre</label>
                                 

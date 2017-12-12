@@ -245,5 +245,78 @@ class pdfController extends Controller
         
         return view('pdf.pagina.usuario', $datos);
     }
+
+     public function paginaMiUsuario()
+    {        
+        //dd($request);
+        $todaRespuesta = userRespuesta::where('user_id', \Auth::user()->id)->get();
+        //Para calcular el promedio
+        $promedioD = $todaRespuesta->avg('resultado');
+        $notaMinimaD = $todaRespuesta->min('resultado');
+        $notaMaximaD = $todaRespuesta->max('resultado');
+
+        //grafico de barras para desempeño
+        $finances = \Lava::DataTable();
+
+        $finances->addstringColumn('Rango')
+                 ->addNumberColumn('Calificación')
+                 ->addRow(['Mínimo', $notaMinimaD])
+                 ->addRow(['Máximo', $notaMaximaD])
+                 ->addRow(['Promedio', $promedioD]);
+
+        $chart2 = \Lava::ColumnChart('Finances', $finances, [
+            'title' => 'Calificación',
+            'titleTextStyle' => [
+                'color'    => 'rgb(123, 65, 89)',
+                'fontSize' => 16
+            ],
+            'isStacked'          => true,
+            'colors' => ['#0A6187'],
+        ]);
+
+        //Para calcular el resultado
+        $respResultado = actividad::with('evaluacion')
+                            ->whereHas('responsables', function ($query)  {
+                                $query->where('responsable_id', \Auth::user()->id);
+                            })                            
+                            ->get()
+                            ->pluck('evaluacion')->flatten()
+                            ->filter();
+
+        $respResultado->filter()->all();
+        $promedioR = $respResultado->avg('calificacion');
+        $notaMinimaR = $respResultado->min('calificacion');
+        $notaMaximaR = $respResultado->max('calificacion');
+
+        //grafico de barras para resultado
+        $resultado = \Lava::DataTable();
+
+        $resultado->addstringColumn('Rango')
+                 ->addNumberColumn('Calificación')
+                 ->addRow(['Mínimo', $notaMinimaR])
+                 ->addRow(['Máximo', $notaMaximaR])
+                 ->addRow(['Promedio', $promedioR]);
+
+        $chartResultado = \Lava::ColumnChart('Resultado', $resultado, [
+            'title' => 'Calificación',
+            'titleTextStyle' => [
+                'color'    => 'rgb(123, 65, 89)',
+                'fontSize' => 16
+            ],
+            'isStacked'          => true,
+             'colors' => ['#C7C7C7'],
+        ]);
+
+
+        $datos =array(
+            "usuario" => User::find(\Auth::user()->id),
+            "promedioD" => $promedioD,
+            "promedioR" => $promedioR,
+            "lava2" => $chart2,
+            "lava3" => $chartResultado,
+        );
+        
+        return view('pdf.pagina.usuario', $datos);
+    }
 }
     

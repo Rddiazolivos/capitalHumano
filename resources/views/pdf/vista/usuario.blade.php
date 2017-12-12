@@ -22,7 +22,7 @@
                 </div>
 
                 <div class="form-group">
-                    <div class="col-md-6 col-md-offset-4">
+                    <div class="col-md-12 text-center">
   						<button name="tipo" value="1" type="submit" class="btn btn-primary">Visualizar</button>
                     </div>
                 </div>

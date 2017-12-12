@@ -67,6 +67,7 @@ Route::group(['middleware' => ['auth']], function () {
 	Route::post('pdf4', 'pdfController@archivoUsuario')->name('pdf.Usuario');
 	Route::get('reporteUsuario', 'pdfController@vistaUsuario')->name('reporte.Usuario');
 	Route::post('archivo4', 'pdfController@paginaUsuario')->name('pagina.Usuario');
+	Route::get('miUsuario', 'pdfController@paginaMiUsuario')->name('pagina.MiUsuario');
 
 	Route::get('evaluacion/datos', 'EvaluacionProyectoController@datos')->name('evaluacion.datos');
 	Route::get('evaluaciones/{userrespuesta}/edit', 'EvaluacionProyectoController@edit')->name('evaluacion.editar');
