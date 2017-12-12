@@ -53,6 +53,8 @@ class EvaluacionController extends Controller
         $evaluacion->save();
 
         $actividad = actividad::find($request->actividad_id);
+        $actividad->estado_id = 3;
+        $actividad->save();
 
         //redirección
         return ($url = \Session::get('backUrl')) 
